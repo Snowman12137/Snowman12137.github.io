@@ -34,7 +34,7 @@
   <!-- feed -->
   <!-- 页面元数据 -->
   <title>大三网络安全人工智能实验报告 - 小吴の博客</title>
-  <meta name="keywords" content="null">
+  <meta name="keywords" content="学校作业,机器学习,null">
   <meta desc name="description" content="我的博客 - Snowman - 小吴の博客">
   
 <meta property="og:type" content="article">
@@ -45,8 +45,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-05-04T12:09:16.000Z">
-<meta property="article:modified_time" content="2023-06-29T02:47:17.295Z">
+<meta property="article:modified_time" content="2023-09-02T14:31:50.024Z">
 <meta property="article:author" content="Snowman">
+<meta property="article:tag" content="学校作业">
+<meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2111,7 +2113,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1693638413402),
+    lastupdate: new Date(1693665247944),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2480,6 +2482,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
             
+  
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/">学校作业</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" itemprop="url"><span itemprop="name">学校作业</span></a>
+      </span>
+    
+  </div>
+  
+
 
 
           
@@ -2579,8 +2595,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <blockquote>
 <p>我用了一层conv和一层pool来获取cherng图片的特征。之后把这些特征减小为10个层，所以用flatten把特征集中成vector后，再用一个全连接层连接到输出层。</p>
 <p>使用留出法原始的训练比例，两个Epoch，得到的结果很好。达到97%。</p>
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-204353234629104253861.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-204353234629104253861.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-204353234629104253861"></p>
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504130858116.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504130858116.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-204353234629104253861.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-204353234629104253861.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-204353234629104253861"></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504130858116.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504130858116.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
 </blockquote>
 <p><strong>为了对比留出法及K折验证法建立的简陋模型</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = nn.Sequential(nn.Flatten(), nn.Linear(<span class="number">784</span>, <span class="number">256</span>), nn.ReLU(),nn.Linear(<span class="number">256</span>, <span class="number">10</span>))</span><br></pre></td></tr></table></figure>
@@ -2588,7 +2604,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <blockquote>
 <p>可以看到这个简陋模型得到的结果很差，准确率只有83%，用于之后的K折校验法的对比组。预处理和上述相同，Epoch只有一组。</p>
 </blockquote>
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/6f0c721b1033b4c3223405a077779932787c.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/6f0c721b1033b4c3223405a077779932787c.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="6f0c721b1033b4c3223405a077779932787c"></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/6f0c721b1033b4c3223405a077779932787c.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/6f0c721b1033b4c3223405a077779932787c.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="6f0c721b1033b4c3223405a077779932787c"></p>
 <h4 id="2）模型迭代训练的程序设计（伪代码或源代码截图）及说明解释-（10分）"><a href="#2）模型迭代训练的程序设计（伪代码或源代码截图）及说明解释-（10分）" class="headerlink" title="2）模型迭代训练的程序设计（伪代码或源代码截图）及说明解释 （10分）"></a>2）模型迭代训练的程序设计（伪代码或源代码截图）及说明解释 （10分）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">train</span>(<span class="params">model, optimizer,criterion,epoch</span>): </span><br><span class="line">    model.train() <span class="comment"># setting up for training</span></span><br><span class="line">    <span class="keyword">for</span> batch_idx, (data, target) <span class="keyword">in</span> <span class="built_in">enumerate</span>(train_loader): </span><br><span class="line">        data = data.view(-<span class="number">1</span>, <span class="number">28</span>*<span class="number">28</span>).requires_grad_()</span><br><span class="line">        optimizer.zero_grad() <span class="comment"># setting gradient to zero</span></span><br><span class="line">        output = model(data) <span class="comment"># forward</span></span><br><span class="line">        loss = criterion(output, target) <span class="comment"># loss computation</span></span><br><span class="line">        loss.backward() <span class="comment"># back propagation here pytorch will take care of it</span></span><br><span class="line">        optimizer.step() <span class="comment"># updating the weight values</span></span><br><span class="line">        <span class="keyword">if</span> batch_idx % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Train Epoch: &#123;&#125; [&#123;&#125;/&#123;&#125; (&#123;:.0f&#125;%)]\tLoss: &#123;:.6f&#125;&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">                epoch, batch_idx * <span class="built_in">len</span>(data), <span class="built_in">len</span>(train_loader.dataset),</span><br><span class="line">                <span class="number">100.</span> * batch_idx / <span class="built_in">len</span>(train_loader), loss.item()))</span><br><span class="line"></span><br><span class="line">       </span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -2598,7 +2614,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 <h4 id="3）模型训练过程中周期性测试的程序设计（伪代码或源代码截图）及说明解释（周期性测试指的是每训练n个step就对模型进行一次测试，得到准确率和loss值）（10分）"><a href="#3）模型训练过程中周期性测试的程序设计（伪代码或源代码截图）及说明解释（周期性测试指的是每训练n个step就对模型进行一次测试，得到准确率和loss值）（10分）" class="headerlink" title="3）模型训练过程中周期性测试的程序设计（伪代码或源代码截图）及说明解释（周期性测试指的是每训练n个step就对模型进行一次测试，得到准确率和loss值）（10分）"></a>3）模型训练过程中周期性测试的程序设计（伪代码或源代码截图）及说明解释（周期性测试指的是每训练n个step就对模型进行一次测试，得到准确率和loss值）（10分）</h4><blockquote>
 <p>我选用了每100步进行一个打印的频率，打印训练进度和Loss值，最后打印平均损失值和准确率。</p>
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504133405002.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504133405002.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504133405002"></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504133405002.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504133405002.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504133405002"></p>
 </blockquote>
 <h4 id="4）分层采样的程序设计（伪代码或源代码截图）及说明解释-（10分）"><a href="#4）分层采样的程序设计（伪代码或源代码截图）及说明解释-（10分）" class="headerlink" title="4）分层采样的程序设计（伪代码或源代码截图）及说明解释 （10分）"></a>4）分层采样的程序设计（伪代码或源代码截图）及说明解释 （10分）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">train_transform = transforms.Compose([</span><br><span class="line">        transforms.ToTensor(),</span><br><span class="line">        transforms.Normalize(mean, std)</span><br><span class="line">        ])</span><br><span class="line"> </span><br><span class="line">test_transform = transforms.Compose([</span><br><span class="line">        transforms.ToTensor(),</span><br><span class="line">        transforms.Normalize(mean, std)</span><br><span class="line">        ])</span><br><span class="line"> </span><br><span class="line">train_loader = torch.utils.data.DataLoader(</span><br><span class="line">        datasets.MNIST(<span class="string">&#x27;./mnist&#x27;</span>, train=<span class="literal">True</span>, download=<span class="literal">True</span>,</span><br><span class="line">                       transform=train_transform),</span><br><span class="line">        batch_size=BATCH_SIZE, shuffle=<span class="literal">True</span>) <span class="comment"># train dataset</span></span><br><span class="line"> </span><br><span class="line">test_loader = torch.utils.data.DataLoader(</span><br><span class="line">        datasets.MNIST(<span class="string">&#x27;./mnist&#x27;</span>, train=<span class="literal">False</span>, </span><br><span class="line">                         transform=test_transform),</span><br><span class="line">        batch_size=BATCH_SIZE, shuffle=<span class="literal">False</span>) <span class="comment"># test dataset</span></span><br></pre></td></tr></table></figure>
 
@@ -2634,12 +2650,12 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h4 id="1）模型在验证集下的准确率（输出结果并截图）（10分）"><a href="#1）模型在验证集下的准确率（输出结果并截图）（10分）" class="headerlink" title="1）模型在验证集下的准确率（输出结果并截图）（10分）"></a>1）模型在验证集下的准确率（输出结果并截图）（10分）</h4><blockquote>
 <p>下面的实验是k值为[2,10]下的结果，训练模型为简陋模型。</p>
 <ul>
-<li><p>对照组：简陋模型，epoch为1，分层抽样（正确率只有83.79%）<img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/6f0c721b1033b4c05a077779932787c.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/6f0c721b1033b4c05a077779932787c.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="6f0c721b1033b4c05a077779932787c"></p>
+<li><p>对照组：简陋模型，epoch为1，分层抽样（正确率只有83.79%）<img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/6f0c721b1033b4c05a077779932787c.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/6f0c721b1033b4c05a077779932787c.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="6f0c721b1033b4c05a077779932787c"></p>
 </li>
 <li><p>k折校验：简陋模型，epoch为1，K折交叉验证(K值为2到10)准确率越来越大</p>
 </li>
 </ul>
-<p> <img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/b9d3aa67dbc5d072329072416f16959.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/b9d3aa67dbc5d072329072416f16959.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="b9d3aa67dbc5d072329072416f16959"></p>
+<p> <img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/b9d3aa67dbc5d072329072416f16959.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/b9d3aa67dbc5d072329072416f16959.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="b9d3aa67dbc5d072329072416f16959"></p>
 </blockquote>
 <h4 id="2）不同模型参数（隐藏层数、隐藏层节点数）对准确率的影响和分析-（10分）"><a href="#2）不同模型参数（隐藏层数、隐藏层节点数）对准确率的影响和分析-（10分）" class="headerlink" title="2）不同模型参数（隐藏层数、隐藏层节点数）对准确率的影响和分析 （10分）"></a>2）不同模型参数（隐藏层数、隐藏层节点数）对准确率的影响和分析 （10分）</h4><blockquote>
 <p>本次实验中只探讨了简陋版模型与卷积模型的对比：</p>
@@ -2651,7 +2667,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">class</span> <span class="title class_">Net</span>(nn.Module):</span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">       <span class="built_in">super</span>(Net, self).__init__()</span><br><span class="line">       self.conv = nn.Conv2d(<span class="number">1</span>, <span class="number">32</span>, <span class="number">3</span>)</span><br><span class="line">       self.dropout = nn.Dropout2d(<span class="number">0.25</span>)</span><br><span class="line">       self.fc = nn.Linear(<span class="number">5408</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">   <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):</span><br><span class="line">       x = self.conv(x)</span><br><span class="line">       x = F.relu(x)</span><br><span class="line">       x = F.max_pool2d(x, <span class="number">2</span>)</span><br><span class="line">       x = self.dropout(x)</span><br><span class="line">       x = torch.flatten(x, <span class="number">1</span>)</span><br><span class="line">       x = self.fc(x)</span><br><span class="line">       output = F.log_softmax(x, dim=<span class="number">1</span>)</span><br><span class="line">       <span class="keyword">return</span> output</span><br></pre></td></tr></table></figure>
 
 <p>可以看到在epoch&#x3D;1的情况下准确率达到97%，拟合效果非常好</p>
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504152837721.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504152837721.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504152837721"></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504152837721.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504152837721.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504152837721"></p>
 </blockquote>
 <h4 id="3）不同训练参数（batch-size、epoch-num、学习率）对准确率的影响和分析-（10分）"><a href="#3）不同训练参数（batch-size、epoch-num、学习率）对准确率的影响和分析-（10分）" class="headerlink" title="3）不同训练参数（batch size、epoch num、学习率）对准确率的影响和分析 （10分）"></a>3）不同训练参数（batch size、epoch num、学习率）对准确率的影响和分析 （10分）</h4><blockquote>
 <ul>
@@ -2660,7 +2676,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;BATCH_SIZE =<span class="number">64</span></span><br><span class="line">&gt;Iterations = <span class="number">1</span>        <span class="comment"># epoch</span></span><br><span class="line">&gt;learning_rate = <span class="number">0.01</span></span><br></pre></td></tr></table></figure>
 
 <p>原始结果（83%）</p>
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504160123451.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504160123451.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504160123451"></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504160123451.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504160123451.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504160123451"></p>
 <ul>
 <li>BATCH_SIZE讨论（可以发现当BATCH_SIZE越大时，准确率直线下降）</li>
 </ul>
@@ -2668,7 +2684,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504155956629.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504155956629.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504155956629"></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504155956629.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504155956629.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504155956629"></p>
 <ul>
 <li>epoch讨论(可以发现随着epoch的增大，准确率有较大提升，但是随着epoch越来越大，准确率增长越来越慢)</li>
 </ul>
@@ -2683,14 +2699,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
 </blockquote>
-<p> <img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504162010713.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504162010713.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504162010713"></p>
+<p> <img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504162010713.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504162010713.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504162010713"></p>
 </blockquote>
 <h4 id="4）留出法不同比例对结果的影响和分析-（10分）"><a href="#4）留出法不同比例对结果的影响和分析-（10分）" class="headerlink" title="4）留出法不同比例对结果的影响和分析 （10分）"></a>4）留出法不同比例对结果的影响和分析 （10分）</h4><blockquote>
 <p>因为pytorch中的训练集是固定输出的，对其更改较难，所以本小节使用TensorFlow进行实验：</p>
 <p>数据集划分:其中a为训练比率，总共有70000个样本，按照比例进行训练和测试，结果如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt;np.random.seed(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">&gt;a = <span class="number">0.8</span></span><br><span class="line">&gt;<span class="keyword">from</span> keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line">&gt;(x_train_image,y_train_label),(x_test_image,y_test_label)=mnist.load_data()</span><br><span class="line">&gt;<span class="comment"># x_all = x_train_image + x_test_image</span></span><br><span class="line"></span><br><span class="line">&gt;temp = np.append( x_train_image , x_test_image)</span><br><span class="line">&gt;x_all = temp.reshape(<span class="number">70000</span>,<span class="number">28</span>,<span class="number">28</span>)</span><br><span class="line">&gt;<span class="built_in">print</span>(<span class="built_in">len</span>(y_train_label))</span><br><span class="line"></span><br><span class="line">&gt;y_lable = np.append(y_train_label,y_test_label)</span><br><span class="line"></span><br><span class="line">&gt;train_num = <span class="built_in">int</span>(<span class="number">60000</span>*a)</span><br><span class="line"></span><br><span class="line">&gt;x_train_image = x_all[:train_num]</span><br><span class="line">&gt;y_train_label = y_lable[:train_num]</span><br><span class="line"></span><br><span class="line">&gt;x_test_image = x_all[train_num:]</span><br><span class="line">&gt;y_test_label = y_lable[train_num:]</span><br><span class="line"></span><br><span class="line">&gt;x_Train=x_train_image.reshape(train_num,<span class="number">784</span>).astype(<span class="string">&#x27;float32&#x27;</span>)</span><br><span class="line">&gt;x_Test=x_test_image.reshape(<span class="number">70000</span>-train_num,<span class="number">784</span>).astype(<span class="string">&#x27;float32&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504201332595.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504201332595.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504201332595"></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504201332595.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504201332595.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504201332595"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;[<span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.3</span>, <span class="number">0.4</span>, <span class="number">0.5</span>, <span class="number">0.6</span>, <span class="number">0.7</span>, <span class="number">0.8</span>, <span class="number">0.9</span>, <span class="number">0.95</span>, <span class="number">0.9999</span>]</span><br><span class="line">&gt;[<span class="number">0.9213</span>, <span class="number">0.9381</span>, <span class="number">0.9528</span>, <span class="number">0.9620</span>, <span class="number">0.9666</span>, <span class="number">0.9673</span>, <span class="number">0.9709</span>, <span class="number">0.9752</span>, <span class="number">0.9758</span>, <span class="number">0.9784</span>, <span class="number">0.9780</span>]</span><br></pre></td></tr></table></figure>
 
 <p>可以看到随着训练样本的比率上升，总体的准确率也对应的明显的上升了，但是最后一组0.9999比率的组，较前一组0.95有所下降，这表明过大的训练比率对结果也会产生损害。</p>
@@ -2699,7 +2715,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>把k值从2-10进行迭代计算，其他参数不变，结果为：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;testAcc_compare_map = &#123;&#125;</span><br><span class="line">&gt;<span class="keyword">for</span> k_split_value <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, <span class="number">10</span>+<span class="number">1</span>):</span><br><span class="line">   <span class="built_in">print</span>(<span class="string">&#x27;now k_split_value is:&#x27;</span>, k_split_value)</span><br><span class="line">   testAcc_compare_map[k_split_value] = cross_validation(k_split_value)</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">&gt;<span class="keyword">for</span> key <span class="keyword">in</span> testAcc_compare_map:</span><br><span class="line">   <span class="built_in">print</span>(np.mean(testAcc_compare_map[key]))</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504162750415.png" class="lazyload" data-srcset="https://gitee.com/xiaofeifei12138/picture/raw/master/img/image-20230504162750415.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504162750415"></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504162750415.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230504162750415.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230504162750415"></p>
 <p>可见K值对结果影响很大，且在一定范围内，越大越好。</p>
 </blockquote>
 <h3 id="五、实验总结及心得"><a href="#五、实验总结及心得" class="headerlink" title="五、实验总结及心得"></a><strong>五、实验总结及心得</strong></h3><blockquote>
@@ -2730,10 +2746,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-06-29T10:47:17+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-02T22:31:50+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2023年6月29日</p>
+    <p>更新于：2023年9月2日</p>
   </a>
 </div>
 
@@ -2741,6 +2757,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         
           
+  
+  
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>学校作业</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>机器学习</p></a></div>
+  <span hidden itemprop="keywords">学校作业 机器学习</span>
+  
+
 
         
       
@@ -3376,7 +3399,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2023/05/04/大三网络安全人工智能实验报告/","name":"大三网络安全人工智能实验报告"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"大三网络安全人工智能实验报告","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/","wordCount":0,"datePublished":"2023-05-04T12:09:16.000Z","dateModified":"2023-06-29T02:47:17.295Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/学校作业/","name":"学校作业"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2023/05/04/大三网络安全人工智能实验报告/","name":"大三网络安全人工智能实验报告"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"大三网络安全人工智能实验报告","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/","wordCount":0,"datePublished":"2023-05-04T12:09:16.000Z","dateModified":"2023-09-02T14:31:50.024Z","articleSection":"学校作业","keywords":"学校作业,机器学习","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
@@ -3388,3 +3411,5 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyEnd end-->
   </body>
 </html>
+<script type="text/javascript" src="/js/love.js"></script>
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
