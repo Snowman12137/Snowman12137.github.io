@@ -41,11 +41,11 @@
 <meta property="og:title" content="SGX(Software Guard eXtensions)_linux构建可信执行环境(一)">
 <meta property="og:url" content="https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/index.html">
 <meta property="og:site_name" content="小吴の博客">
-<meta property="og:description" content="SGX(Software Guard eXtensions)_linux构建可信执行环境(一)：如何开发第一个最简单的 SGX 应用 HelloWorld 一、在Linux下安装SDK">
+<meta property="og:description" content="SGX(Software Guard eXtensions)_linux构建可信执行环境(一)：如何开发第一个最简单的 SGX 应用 HelloWorld一、了解SGX1.1SGX定义 Intel 软件防护扩展SGX（Software Guard Extension）是一项针对台式机和服务器平台的旨在满足可信计算需求的技术。Intel SGX是Intel架构新的扩展，在原有架构上增加了一组新的指令">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-09-02T08:42:16.000Z">
-<meta property="article:modified_time" content="2023-09-05T06:33:26.217Z">
+<meta property="article:modified_time" content="2023-09-05T14:32:58.232Z">
 <meta property="article:author" content="Snowman">
 <meta property="article:tag" content="SGX">
 <meta property="article:tag" content="Linux">
@@ -2178,7 +2178,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1693895843909),
+    lastupdate: new Date(1693924406951),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2592,8 +2592,98 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="SGX-Software-Guard-eXtensions-linux构建可信执行环境-一-：如何开发第一个最简单的-SGX-应用-HelloWorld"><a href="#SGX-Software-Guard-eXtensions-linux构建可信执行环境-一-：如何开发第一个最简单的-SGX-应用-HelloWorld" class="headerlink" title="SGX(Software Guard eXtensions)_linux构建可信执行环境(一)：如何开发第一个最简单的 SGX 应用 HelloWorld"></a>SGX(Software Guard eXtensions)_linux构建可信执行环境(一)：如何开发第一个最简单的 SGX 应用 HelloWorld</h1><hr>
-<h2 id="一、在Linux下安装SDK"><a href="#一、在Linux下安装SDK" class="headerlink" title="一、在Linux下安装SDK"></a>一、在Linux下安装SDK</h2>
+    <h1 id="SGX-Software-Guard-eXtensions-linux构建可信执行环境-一-：如何开发第一个最简单的-SGX-应用-HelloWorld"><a href="#SGX-Software-Guard-eXtensions-linux构建可信执行环境-一-：如何开发第一个最简单的-SGX-应用-HelloWorld" class="headerlink" title="SGX(Software Guard eXtensions)_linux构建可信执行环境(一)：如何开发第一个最简单的 SGX 应用 HelloWorld"></a>SGX(Software Guard eXtensions)_linux构建可信执行环境(一)：如何开发第一个最简单的 SGX 应用 HelloWorld</h1><h2 id="一、了解SGX"><a href="#一、了解SGX" class="headerlink" title="一、了解SGX"></a>一、了解SGX</h2><h3 id="1-1SGX定义"><a href="#1-1SGX定义" class="headerlink" title="1.1SGX定义"></a>1.1SGX定义</h3><ul>
+<li><p>Intel 软件防护扩展SGX（Software Guard Extension）是一项针对台式机和服务器平台的旨在满足可信计算需求的技术。Intel SGX是Intel架构新的扩展，在原有架构上增加了一组新的指令集和内存访问机制。</p>
+</li>
+<li><p>Intel在2015年从第6代Intel酷睿处理器平台开始引入了Intel软件防护扩展新指令集，使用特殊指令和软件可将应用程序代码放入一个enclave中执行。Enclave可以提供一个隔离的可信执行环境，可以在BIOS、虚拟机监控器、主操作系统和驱动程序均被恶意代码攻陷的情况下，仍对enclave内的代码和内存数据提供保护，防止恶意软件影响enclave内的代码和数据，从而保障用户的关键代码和数据的机密性和完整性。</p>
+</li>
+</ul>
+<h3 id="1-2基本原理"><a href="#1-2基本原理" class="headerlink" title="1.2基本原理"></a>1.2基本原理</h3><ul>
+<li>SGX应用由两部分组成：<br> untrusted 不可信区：代码和数据运行在普通非加密内存区域，程序main入口必须在非可信区。<br> trusted 可信区：代码和数据运行在硬件加密内存区域，此区域由CPU创建的且只有CPU有权限访问。</li>
+</ul>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/6277797-c325c2fded33f003.jpg" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/6277797-c325c2fded33f003.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="6277797-c325c2fded33f003"></p>
+<ul>
+<li><p>当一个安全区域函数被调用时，只有安全区域内的代码才能看到其数据，外部访问总是被拒绝；返回时，安全区数据将保留在受保护的内存中。</p>
+</li>
+<li><p>非可信区只能通过ECALL函数调用可信区内的函数，可信区只能通过OCALL函数调用非可信区的函数，ECALL函数和OCALL函数通过EDL文件声明。</p>
+</li>
+</ul>
+<h3 id="1-3两大机制"><a href="#1-3两大机制" class="headerlink" title="1.3两大机制"></a>1.3两大机制</h3><h4 id="1-3-1保护机制"><a href="#1-3-1保护机制" class="headerlink" title="1.3.1保护机制"></a>1.3.1保护机制</h4><p>针对enclave的保护机制主要包括两个部分：一是enclave内存访问语义的变化，二是应用程序地址映射关系的保护。这两项功能共同完成对enclave的机密性和完整性的保护。</p>
+<h4 id="1-3-2-认证机制"><a href="#1-3-2-认证机制" class="headerlink" title="1.3.2 认证机制"></a>1.3.2 认证机制</h4><p>SGX 提出了两种类型的身份认证方式：一种是平台内部 enclave 间的认证，用来认证进行报告的 enclave 和自己是否运行在同一个平台上；另一种是平台间的远程认证，用于远程的认证者认证 enclave 的身份信息。</p>
+<ul>
+<li>本地证明：同一平台的两个Enclave之间的证明过程。</li>
+<li>远程证明：Enclave和不在平台上的第三方之间的证明过程。</li>
+</ul>
+<h2 id="二、Linux下安装SGX"><a href="#二、Linux下安装SGX" class="headerlink" title="二、Linux下安装SGX"></a>二、Linux下安装SGX</h2><blockquote>
+<p>简介：我们需要安装几个东西。第一是驱动Drive，有了驱动才可以调用intel芯片里面的硬件部分。第二个是PSW(平台软件)，其是允许支持SGX的应用程序在目标平台上执行的软件栈，包含四部分1.提供对硬件功能进行访问的驱动程序；2.为执行和认证提供多个支持库；3.运行所必需的架构型enclave；4.加载并与enclave进行通信的服务；。第三个是软件开发工具包（SDK）为开发人员提供了开发支持SGX的应用程序所需的一切，它由一个生成应用程序和enclave之间的接口函数的工具，一个在使用它之前对enclave进行签名的工具，一个调试它的工具以及一个性能检查的工具组成。另外，它还包含模板和样本参数，用于在Windows下使用Visual Studio开发enclave，或在Linux下使用Makefile。</p>
+<p>有了这三样东西我们才可以进行代码开发</p>
+</blockquote>
+<ul>
+<li>以Ubuntu20.04 LTS为例</li>
+<li>硬件需求仅当安装sgx驱动和PSW时需要，安装sgx sdk并不需要硬件支持。</li>
+<li>硬件不支持的情况下，可以在模拟环境下编写测试SGX程序，其中makefile里SGX_MODE&#x3D;SIM。（虽然 SGX是基于硬件的，但是依旧可以使用软件条件进行模拟）</li>
+</ul>
+<p><strong>先安装驱动、PSW、SDK所需依赖</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libssl-dev libcurl4-openssl-dev libprotobuf-dev</span><br><span class="line">sudo apt-get install build-essential python</span><br></pre></td></tr></table></figure>
+
+<p><strong>下载Intel SGX驱动并安装</strong></p>
+<ul>
+<li>注意所有版本的驱动、SPW、SDK都在这里<a target="_blank" rel="noopener" href="https://download.01.org/intel-sgx/sgx-linux/2.21/distro/">https://download.01.org/intel-sgx/sgx-linux/2.21/distro/</a></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.01.org/intel-sgx/sgx-linux/2.7.1/distro/ubuntu18.04-server/sgx_linux_x64_driver_2.6.0_4f5bb63.bin</span><br><span class="line"><span class="built_in">chmod</span> +x sgx_linux_x64_driver_2.6.0_4f5bb63.bin</span><br><span class="line">sudo ./sgx_linux_x64_driver_2.6.0_4f5bb63.bin</span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意安装完重启才生效</li>
+</ul>
+<p><strong>下载Intel SGX PSW并安装</strong></p>
+<ul>
+<li>注意：有的版本的没有PSW文件，也可以不装</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.01.org/intel-sgx/sgx-linux/2.7.1/distro/ubuntu18.04-server/libsgx-enclave-common_2.7.101.3-bionic1_amd64.deb</span><br><span class="line">sudo dpkg -i ./libsgx-enclave-common_2.7.101.3-bionic1_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p><strong>下载并安装Intel SGX SDK</strong></p>
+<ul>
+<li>安装过程中可以手动输入SDK要安装到的目标位置</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.01.org/intel-sgx/sgx-linux/2.7.1/distro/ubuntu18.04-server/sgx_linux_x64_sdk_2.7.101.3.bin</span><br><span class="line"><span class="built_in">chmod</span> +x ./sgx_linux_x64_sdk_2.7.101.3.bin</span><br><span class="line">./sgx_linux_x64_sdk_2.7.101.3.bin</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加环境变量，执行上一步结束时输出的命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /path/to/sgxsdk/environment</span><br></pre></td></tr></table></figure>
+
+<p><strong>接下来进入到sgxsdk&#x2F;SampleCode&#x2F;SampleEnclave文件夹里</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /path/to/sgxsdk/SampleCode/SampleEnclave</span><br></pre></td></tr></table></figure>
+
+<p><strong>编辑一下Makefile</strong></p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Intel SGX SDK 的安装位置</span></span><br><span class="line">SGX_SDK ?= /home/luoyhang003/SGX/sgxsdk</span><br><span class="line"><span class="comment"># 运行类型：HW 真实环境；SIM 模拟器环境</span></span><br><span class="line">SGX_MODE ?= SIM</span><br><span class="line"><span class="comment"># 运行架构：仅支持 64 位</span></span><br><span class="line">SGX_ARCH ?= x64</span><br><span class="line"><span class="comment"># 是否为：Debug 调试模式</span></span><br><span class="line">SGX_DEBUG ?= 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>退出然后运行示例</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译</span></span><br><span class="line">sudo make</span><br><span class="line"><span class="comment"># 运行</span></span><br><span class="line">./app</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意一定要添加环境变量source &#x2F;path&#x2F;to&#x2F;sgxsdk&#x2F;environment，这行命令是临时环境变量，即存活时间为一个终端的市场，一旦重启或开启新的终端环境变量即会失效，需要手动添加。也可以永久化环境变量。</li>
+</ul>
+<p>成功运行截图</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230905153050489.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230905153050489.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230905153050489"></p>
+<h2 id="三、文件结构与代码"><a href="#三、文件结构与代码" class="headerlink" title="三、文件结构与代码"></a>三、文件结构与代码</h2><p><strong>目录结构</strong></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230905153832469.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/image-20230905153832469.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20230905153832469"></p>
+<p><strong>编译&amp;运行</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">$ make</span><br><span class="line">GEN  =&gt;  App/Enclave_u.h</span><br><span class="line">CC   &lt;=  App/Enclave_u.c</span><br><span class="line">CXX  &lt;=  App/App.cpp</span><br><span class="line">LINK =&gt;  app</span><br><span class="line">GEN  =&gt;  Enclave/Enclave_t.h</span><br><span class="line">CC   &lt;=  Enclave/Enclave_t.c</span><br><span class="line">CXX  &lt;=  Enclave/Enclave.cpp</span><br><span class="line">LINK =&gt;  enclave.so</span><br><span class="line">&lt;EnclaveConfiguration&gt;</span><br><span class="line">    &lt;ProdID&gt;0&lt;/ProdID&gt;</span><br><span class="line">    &lt;ISVSVN&gt;0&lt;/ISVSVN&gt;</span><br><span class="line">    &lt;StackMaxSize&gt;0x40000&lt;/StackMaxSize&gt;</span><br><span class="line">    &lt;HeapMaxSize&gt;0x100000&lt;/HeapMaxSize&gt;</span><br><span class="line">    &lt;TCSNum&gt;10&lt;/TCSNum&gt;</span><br><span class="line">    &lt;TCSPolicy&gt;1&lt;/TCSPolicy&gt;</span><br><span class="line">    &lt;!-- Recommend changing <span class="string">&#x27;DisableDebug&#x27;</span> to 1 to make the enclave undebuggable <span class="keyword">for</span> enclave release --&gt;</span><br><span class="line">    &lt;DisableDebug&gt;0&lt;/DisableDebug&gt;</span><br><span class="line">    &lt;MiscSelect&gt;0&lt;/MiscSelect&gt;</span><br><span class="line">    &lt;MiscMask&gt;0xFFFFFFFF&lt;/MiscMask&gt;</span><br><span class="line">&lt;/EnclaveConfiguration&gt;</span><br><span class="line">tcs_num 10, tcs_max_num 10, tcs_min_pool 1</span><br><span class="line">The required memory is 3960832B.</span><br><span class="line">The required memory is 0x3c7000, 3868 KB.</span><br><span class="line">Succeed.</span><br><span class="line">SIGN =&gt;  enclave.signed.so</span><br><span class="line">The project has been built <span class="keyword">in</span> debug hardware mode.</span><br><span class="line"></span><br><span class="line">$ ./app</span><br><span class="line">Hello world</span><br><span class="line">Info: SampleEnclave successfully returned.</span><br><span class="line">Enter a character before <span class="built_in">exit</span> ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>编译流程(Makefile)</strong></p>
+<ol>
+<li>通过 <code>sgx_edger8r</code> 工具在 <code>App/</code> 目录下生成不可信代码(Enclave_u.c 和 Enclave_u.h)，这部分生成代码主要会调用 ECALL (sgx_ecall)；</li>
+<li>编译不可信部分 Binary: <code>app</code>；</li>
+<li>通过<code>sgx_edger8r</code> 工具在 <code>Enclave/</code> 目录下生成可信代码(Enclave_t.c 和 Enclave_t.h)；</li>
+<li>编译可信动态链接库(enclave.so)；</li>
+<li>通过<code>sgx_sing</code>工具签名可信动态链接库(enclave.signed.so)；</li>
+<li>结束。</li>
+</ol>
+<p><strong>编译后目录结构</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">HelloWorld</span><br><span class="line">├── app</span><br><span class="line">├── App</span><br><span class="line">│   ├── App.cpp</span><br><span class="line">│   ├── App.h</span><br><span class="line">│   ├── App.o        #[generated]</span><br><span class="line">│   ├── Enclave_u.c  #[generated] </span><br><span class="line">│   ├── Enclave_u.h  #[generated] </span><br><span class="line">│   └── Enclave_u.o  #[generated]</span><br><span class="line">├── Enclave</span><br><span class="line">│   ├── Enclave.config.xml</span><br><span class="line">│   ├── Enclave.cpp</span><br><span class="line">│   ├── Enclave.edl</span><br><span class="line">│   ├── Enclave.h</span><br><span class="line">│   ├── Enclave.lds</span><br><span class="line">│   ├── Enclave.o     #[generated]</span><br><span class="line">│   ├── Enclave_private.pem</span><br><span class="line">│   ├── Enclave_t.c   #[generated]</span><br><span class="line">│   ├── Enclave_t.h   #[generated]</span><br><span class="line">│   └── Enclave_t.o   #[generated]</span><br><span class="line">├── enclave.signed.so #[generated]</span><br><span class="line">├── enclave.so        #[generated]</span><br><span class="line">├── Include</span><br><span class="line">└── Makefile</span><br></pre></td></tr></table></figure>
+
+<p><strong>HelloWorld</strong></p>
+<p>* </p>
+
   </div>
   
   
@@ -2617,7 +2707,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-05T14:33:26+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2023-09-05T22:32:58+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2023年9月5日</p>
@@ -2774,7 +2864,7 @@ RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网
 
 
   <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9C%A8Linux%E4%B8%8B%E5%AE%89%E8%A3%85SDK"><span class="toc-text">一、在Linux下安装SDK</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BA%86%E8%A7%A3SGX"><span class="toc-text">一、了解SGX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1SGX%E5%AE%9A%E4%B9%89"><span class="toc-text">1.1SGX定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">1.2基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3%E4%B8%A4%E5%A4%A7%E6%9C%BA%E5%88%B6"><span class="toc-text">1.3两大机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1%E4%BF%9D%E6%8A%A4%E6%9C%BA%E5%88%B6"><span class="toc-text">1.3.1保护机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="toc-text">1.3.2 认证机制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Linux%E4%B8%8B%E5%AE%89%E8%A3%85SGX"><span class="toc-text">二、Linux下安装SGX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BB%A3%E7%A0%81"><span class="toc-text">三、文件结构与代码</span></a></li></ol>
   </div>
 </section>
 
@@ -3084,7 +3174,7 @@ RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3319,7 +3409,7 @@ RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/SGX/","name":"SGX"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-构建可信执行环境-一/","name":"SGX(Software Guard eXtensions)_linux构建可信执行环境(一)"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SGX(Software Guard eXtensions)_linux构建可信执行环境(一)","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/","wordCount":0,"datePublished":"2023-09-02T08:42:16.000Z","dateModified":"2023-09-05T06:33:26.217Z","articleSection":"SGX","keywords":"SGX,Linux","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/SGX/","name":"SGX"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-构建可信执行环境-一/","name":"SGX(Software Guard eXtensions)_linux构建可信执行环境(一)"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"SGX(Software Guard eXtensions)_linux构建可信执行环境(一)","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/","wordCount":0,"datePublished":"2023-09-02T08:42:16.000Z","dateModified":"2023-09-05T14:32:58.232Z","articleSection":"SGX","keywords":"SGX,Linux","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
