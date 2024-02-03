@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://snowman12137.github.io/"/>
+  
+  <link rel="canonical" href="https://snowman12137.github.io/2024/02/01/node-js学习（二）/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,18 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>小吴の博客</title>
-  <meta name="keywords" content="">
+  <title>Node.js学习（二） - 小吴の博客</title>
+  <meta name="keywords" content="Nodejs学习,null">
   <meta desc name="description" content="我的博客 - Snowman - 小吴の博客">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="小吴の博客">
-<meta property="og:url" content="https://snowman12137.github.io/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js学习（二）">
+<meta property="og:url" content="https://snowman12137.github.io/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="小吴の博客">
-<meta property="og:description" content="我的博客">
+<meta property="og:description" content="Node.js学习（二）1.文件系统Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法如下所示： 1var fs &#x3D; require(&quot;fs&quot;)  a.异步和同步Node.js 文件系统（fs 模块）模块中的方法均有异步和同步版本，例如读取文件内容的函数有异步的 fs.readFile() 和同步的 fs.read">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2024-01-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-03T17:04:20.106Z">
 <meta property="article:author" content="Snowman">
+<meta property="article:tag" content="Nodejs学习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2166,7 +2169,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2233,7 +2236,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin begin-->
     
     <!-- Custom Files bodyBegin end-->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2500,194 +2503,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div id="l_body">
       <div id="l_cover">
   
-    
-      <div class="cover-wrapper  dock" id='full'>
-        
-  <div id="parallax-window"></div>
-
-<div class='cover-body'>
-  <div class='top'>
-    
-    
-      <p class="title">小吴の博客-Sn0wm1an</p>
-    
-    
-      <p class="subtitle">一只学习网络安全的小白</p>
-    
-  </div>
-  <div class='bottom'>
-    <div class='menu navigation'>
-      <div class='list-h'>
-        
-          
-            <a href="/categories/"
-              
-              
-              active-action="action-categories">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f5c3.svg'><p>分类</p>
-            </a>
-          
-            <a href="/tags/"
-              
-              
-              active-action="action-tags">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f516.svg'><p>标签</p>
-            </a>
-          
-            <a href="/examples/"
-              
-              
-              active-action="action-examples">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f396.svg'><p>示例</p>
-            </a>
-          
-            <a href="/contributors/"
-              
-              
-              active-action="action-contributors">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f389.svg'><p>社区</p>
-            </a>
-          
-            <a href="/archives/"
-              
-              
-              active-action="action-archives">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4f0.svg'><p>博客</p>
-            </a>
-          
-            <a href="/about/"
-              
-              
-              active-action="action-about">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f9ec.svg'><p>关于</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-        <div id="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-      </div>
-    
-  
 </div>
 
       <div id="safearea">
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/02/Node-js学习（三）/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/"  itemprop="url">
-        Node.js学习（三）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Node.js学习（三）1.工具模块a.OS模块12345678910111213141516var os = require(&quot;os&quot;);//引入// CPU 的字节序console.log(&#x27;endianness : &#x27; + os.endianness());// 操作系统名console.log(&#x27;type : &#x27; + os....
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-02-02T00:00:00+08:00">2024-02-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/">Electron-Vue-WebRTC客户端学习</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Electron-Vue-WebRTC客户端学习</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/01/Node-js学习（二）/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="小吴の博客">
@@ -2697,672 +2519,306 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="我的博客">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         Node.js学习（二）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Node.js学习（二）1.文件系统Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法如下所示：
-1var fs = require(&quot;fs&quot;)
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Sn0wm1an</p>
+  </a>
+</div>
 
-a.异步和同步Node.js 文件系统（fs 模块）模块中的方法均有异步和同步版本，例如读取文件内容的函数有异步的 fs.readFile() 和同步的 fs.r...
-      
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.2k 字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：5 分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/">Electron-Vue-WebRTC客户端学习</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Electron-Vue-WebRTC客户端学习</span></a>
+      </span>
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-02-01T00:00:00+08:00">2024-02-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/">Electron-Vue-WebRTC客户端学习</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Electron-Vue-WebRTC客户端学习</span></a>
-            </span>
+
+
+
           
         
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-02-01T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2024年2月1日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="Node-js学习（二）"><a href="#Node-js学习（二）" class="headerlink" title="Node.js学习（二）"></a>Node.js学习（二）</h1><h2 id="1-文件系统"><a href="#1-文件系统" class="headerlink" title="1.文件系统"></a>1.文件系统</h2><p>Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法如下所示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="a-异步和同步"><a href="#a-异步和同步" class="headerlink" title="a.异步和同步"></a>a.异步和同步</h3><p>Node.js 文件系统（fs 模块）模块中的方法均有异步和同步版本，例如读取文件内容的函数有异步的 fs.readFile() 和同步的 fs.readFileSync()。</p>
+<p>异步的方法函数最后一个参数为回调函数，回调函数的第一个参数包含了错误信息(error)。</p>
+<p>建议大家使用异步方法，比起同步，异步方法性能更高，速度更快，而且没有阻塞。</p>
+<p>input.txt文件内容如下:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">菜鸟教程官网地址：www.<span class="property">runoob</span>.<span class="property">com</span></span><br><span class="line">文件读取实例</span><br></pre></td></tr></table></figure>
+
+<p>file.js</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="comment">// 异步读取</span></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&#x27;input.txt&#x27;</span>, <span class="keyword">function</span> (<span class="params">err, data</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (err) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(err);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;异步读取: &quot;</span> + data.<span class="title function_">toString</span>());</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 同步读取</span></span><br><span class="line"><span class="keyword">var</span> data = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;input.txt&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;同步读取: &quot;</span> + data.<span class="title function_">toString</span>());</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;程序执行完毕。&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ node file.<span class="property">js</span> </span><br><span class="line">同步读取: 菜鸟教程官网地址：www.<span class="property">runoob</span>.<span class="property">com</span></span><br><span class="line">文件读取实例</span><br><span class="line"></span><br><span class="line">程序执行完毕。</span><br><span class="line">异步读取: 菜鸟教程官网地址：www.<span class="property">runoob</span>.<span class="property">com</span></span><br><span class="line">文件读取实例</span><br></pre></td></tr></table></figure>
+
+<h3 id="b-打开文件"><a href="#b-打开文件" class="headerlink" title="b.打开文件"></a>b.打开文件</h3><p>以下为在异步模式下打开文件的语法格式：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.<span class="title function_">open</span>(path, flags[, mode], callback)</span><br></pre></td></tr></table></figure>
+
+<p>参数使用说明如下：</p>
+<ul>
+<li><strong>path</strong> - 文件的路径。</li>
+<li><strong>flags</strong> - 文件打开的行为。具体值详见下文。</li>
+<li><strong>mode</strong> - 设置文件模式(权限)，文件创建默认权限为 0666(可读，可写)。</li>
+<li><strong>callback</strong> - 回调函数，带有两个参数如：callback(err, fd)。</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步打开文件</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;准备打开文件！&quot;</span>);</span><br><span class="line">fs.<span class="title function_">open</span>(<span class="string">&#x27;input.txt&#x27;</span>, <span class="string">&#x27;r+&#x27;</span>, <span class="keyword">function</span>(<span class="params">err, fd</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (err) &#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(err);</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;文件打开成功！&quot;</span>);     </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-GET-x2F-POST请求"><a href="#2-GET-x2F-POST请求" class="headerlink" title="2.GET&#x2F;POST请求"></a>2.<strong>GET&#x2F;POST请求</strong></h2><h3 id="a-获取GET请求内容"><a href="#a-获取GET请求内容" class="headerlink" title="a.获取GET请求内容"></a>a.获取GET请求内容</h3><p>由于GET请求直接被嵌入在路径中，URL是完整的请求路径，包括了?后面的部分，因此你可以手动解析后面的内容作为GET请求的参数。</p>
+<p>node.js 中 url 模块中的 parse 函数提供了这个功能。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">&#x27;url&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">&#x27;util&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">    res.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain; charset=utf-8&#x27;</span>&#125;);</span><br><span class="line">    res.<span class="title function_">end</span>(util.<span class="title function_">inspect</span>(url.<span class="title function_">parse</span>(req.<span class="property">url</span>, <span class="literal">true</span>)));</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>浏览器中访问<code>http://localhost:3000/user?name=Sn0wm1an&amp;url=xiaowublog.top</code></p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/23425665.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/23425665.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="23425665"></p>
+<h3 id="b-获取URL参数"><a href="#b-获取URL参数" class="headerlink" title="b.获取URL参数"></a>b.获取URL参数</h3><p>我们可以使用 url.parse 方法来解析 URL 中的参数，代码如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">&#x27;url&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">&#x27;util&#x27;</span>);</span><br><span class="line"> </span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">    res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>,<span class="string">&#x27;text/html; charset=utf-8&#x27;</span>);</span><br><span class="line">    <span class="comment">// 解析 url 参数</span></span><br><span class="line">    <span class="keyword">var</span> params = url.<span class="title function_">parse</span>(req.<span class="property">url</span>, <span class="literal">true</span>).<span class="property">query</span>;</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&quot;网站名：&quot;</span> + params.<span class="property">name</span>);</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    res.<span class="title function_">write</span>(<span class="string">&quot;网站 URL：&quot;</span> + params.<span class="property">url</span>);</span><br><span class="line">    res.<span class="title function_">end</span>();</span><br><span class="line"> </span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="c-获取-POST-请求内容"><a href="#c-获取-POST-请求内容" class="headerlink" title="c.获取 POST 请求内容"></a>c.<strong>获取 POST 请求内容</strong></h2><p>POST 请求的内容全部的都在请求体中，http.ServerRequest 并没有一个属性内容为请求体，原因是等待请求体传输可能是一件耗时的工作。</p>
+<p>比如上传文件，而很多时候我们可能并不需要理会请求体的内容，恶意的POST请求会大大消耗服务器的资源，所以 node.js 默认是不会解析请求体的，当你需要的时候，需要手动来做。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> querystring = <span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">&#x27;util&#x27;</span>);</span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">    <span class="comment">// 定义了一个post变量，用于暂存请求体的信息</span></span><br><span class="line">    <span class="keyword">var</span> post = <span class="string">&#x27;&#x27;</span>;     </span><br><span class="line">    <span class="comment">// 通过req的data事件监听函数，每当接受到请求体的数据，就累加到post变量中</span></span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="keyword">function</span>(<span class="params">chunk</span>)&#123;    </span><br><span class="line">        post += chunk;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 在end事件触发后，通过querystring.parse将post解析为真正的POST请求格式，然后向客户端返回。</span></span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;    </span><br><span class="line">        post = querystring.<span class="title function_">parse</span>(post);</span><br><span class="line">        res.<span class="title function_">end</span>(util.<span class="title function_">inspect</span>(post));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>以下实例表单通过 POST 提交并输出数据：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> querystring = <span class="built_in">require</span>(<span class="string">&#x27;querystring&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> postHTML = </span><br><span class="line">  <span class="string">&#x27;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;菜鸟教程 Node.js 实例&lt;/title&gt;&lt;/head&gt;&#x27;</span> +</span><br><span class="line">  <span class="string">&#x27;&lt;body&gt;&#x27;</span> +</span><br><span class="line">  <span class="string">&#x27;&lt;form method=&quot;post&quot;&gt;&#x27;</span> +</span><br><span class="line">  <span class="string">&#x27;网站名： &lt;input name=&quot;name&quot;&gt;&lt;br&gt;&#x27;</span> +</span><br><span class="line">  <span class="string">&#x27;网站 URL： &lt;input name=&quot;url&quot;&gt;&lt;br&gt;&#x27;</span> +</span><br><span class="line">  <span class="string">&#x27;&lt;input type=&quot;submit&quot;&gt;&#x27;</span> +</span><br><span class="line">  <span class="string">&#x27;&lt;/form&gt;&#x27;</span> +</span><br><span class="line">  <span class="string">&#x27;&lt;/body&gt;&lt;/html&gt;&#x27;</span>;</span><br><span class="line"> </span><br><span class="line">http.<span class="title function_">createServer</span>(<span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> body = <span class="string">&quot;&quot;</span>;</span><br><span class="line">  req.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="keyword">function</span> (<span class="params">chunk</span>) &#123;</span><br><span class="line">    body += chunk;</span><br><span class="line">  &#125;);</span><br><span class="line">  req.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 解析参数</span></span><br><span class="line">    body = querystring.<span class="title function_">parse</span>(body);</span><br><span class="line">    <span class="comment">// 设置响应头部信息及编码</span></span><br><span class="line">    res.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html; charset=utf8&#x27;</span>&#125;);</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span>(body.<span class="property">name</span> &amp;&amp; body.<span class="property">url</span>) &#123; <span class="comment">// 输出提交的数据</span></span><br><span class="line">        res.<span class="title function_">write</span>(<span class="string">&quot;网站名：&quot;</span> + body.<span class="property">name</span>);</span><br><span class="line">        res.<span class="title function_">write</span>(<span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">        res.<span class="title function_">write</span>(<span class="string">&quot;网站 URL：&quot;</span> + body.<span class="property">url</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  <span class="comment">// 输出表单</span></span><br><span class="line">        res.<span class="title function_">write</span>(postHTML);</span><br><span class="line">    &#125;</span><br><span class="line">    res.<span class="title function_">end</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-02-04T01:04:20+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2024年2月4日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/01/30/Node-js学习（一）/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
+          
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：1.2k 字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：5 分钟</p>
+    </a>
+  </div>
+
+
+        
+      
+        
+          
   
   
   
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Nodejs%E5%AD%A6%E4%B9%A0/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Nodejs学习</p></a></div>
+  <span hidden itemprop="keywords">Nodejs学习</span>
+  
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://snowman12137.github.io/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/&title=Node.js学习（二） - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://snowman12137.github.io/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/&title=Node.js学习（二） - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://snowman12137.github.io/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/&title=Node.js学习（二） - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Node.js学习（三）</p>
+          <p class='content'>Node.js学习（三）1.工具模块a.OS模块12345678910111213141516var os = require(&quot;os&quot;);//引入// CPU 的字节序co...</p>
+        </a>
+      
+      
+        <a class='next' href='/2024/01/30/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/'>
+          <p class='title'>Node.js学习（一）<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Node.js学习（一）1.Node.js的异步在了解Node.js异步之前，我们先看一看其前身JavaScript的异步编程技巧。
+一个异步过程的执行将不再与原有的序列有顺序关系。简单来理解就...</p>
+        </a>
+      
+    </div>
+  
+  <!-- 文章推荐 -->
+  
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/01/30/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"  itemprop="url">
-        Node.js学习（一）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Node.js学习（一）1.Node.js的异步在了解Node.js异步之前，我们先看一看其前身JavaScript的异步编程技巧。
-一个异步过程的执行将不再与原有的序列有顺序关系。简单来理解就是：同步按你的代码顺序执行，异步不按照代码顺序执行，异步的执行效率更高。
-什么时候用异步编程
-在前端编程中（甚至后端有时也是这样），我们在处理一些简短、快速的操作时，例如计算 1 + 1 的结果，往往...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-01-30T00:00:00+08:00">2024-01-30</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/">Electron-Vue-WebRTC客户端学习</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Electron-Vue-WebRTC客户端学习</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/01/30/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/01/29/metaGEM使用小记-解决各种问题-2024-2（二）-daf9e5675b4d49cc855dd652b38a99e5/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/01/29/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%BA%8C%EF%BC%89-daf9e5675b4d49cc855dd652b38a99e5/"  itemprop="url">
-        metaGEM使用小记(解决各种问题)2024.1(二)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        metaGEM使用小记(解决各种问题)2024.2（二）书接上文，貌似配置还有点问题。跑了半天以后迟迟看不到结果，htop一看CPU占用几乎为0，应该是没跑起来，squeue 再一看，状态是PD，意思是等待，正常情况应该是R。于是我有网上找了下原因，说只有空闲条件满足job的运行条件才会运行。
+  </article>
 
-我做了以下操作：
-先scancle 掉所有队列里的人物
-修改slurm.config 的参数稍大...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-01-29T00:00:00+08:00">2024-01-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/">MAGs云分析</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/" itemprop="url"><span itemprop="name">MAGs云分析</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/01/29/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%BA%8C%EF%BC%89-daf9e5675b4d49cc855dd652b38a99e5/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/01/28/metaGEM使用小记-解决各种问题-2024-1-2a55eec867d5441b9829bd5428024882/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/01/28/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-1-2a55eec867d5441b9829bd5428024882/"  itemprop="url">
-        metaGEM使用小记(解决各种问题)2024.1(一)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        metaGEM使用小记(解决各种问题)2024.1(一)前言，如何把数据从百度云上下载到linux服务器上可以直接通过pip下载：pip install bypy -y
-第一次使用时需要随便输入一个命令以激活授权界面，如输入 bypy info
-然后打开提示的连接
 
-将复制的内容粘贴到终端后回车，等待即可。
-登陆成功后会提示如下信息
-
-登录百度网盘(我的应用数据&#x2F;bypy&#x2F...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-01-28T00:00:00+08:00">2024-01-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/">MAGs云分析</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/" itemprop="url"><span itemprop="name">MAGs云分析</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/01/28/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-1-2a55eec867d5441b9829bd5428024882/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/09/02/解决Gitee图床不显示问题/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/09/02/%E8%A7%A3%E5%86%B3Gitee%E5%9B%BE%E5%BA%8A%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"  itemprop="url">
-        解决Gitee图床不显示问题(使用阿里云OSS搭建图床)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        问题前段时间搞博客弄了一个Gitee图床，图片可以上传成功，外部链接可以打开图片，但是hexo s后本地都打开不了图片，但是相应的源码标签里依然有图片链接地址。这就让我很疑惑。
-报错是class=lazyload error
-
-可以看到下图这里是有图片的，就是不能显示。
-
-在网上并没有找到相关的报错解释，然后我又查找了lazyload是懒加载，但是也没有查明相关的报错解决方法，于是我又怀疑是...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-09-02T16:51:50+08:00">2023-09-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url"><span itemprop="name">其他</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/09/02/%E8%A7%A3%E5%86%B3Gitee%E5%9B%BE%E5%BA%8A%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-构建可信执行环境-一/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/"  itemprop="url">
-        SGX(Software Guard eXtensions)_linux构建可信执行环境(一)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        SGX(Software Guard eXtensions)_linux构建可信执行环境(一)：如何开发第一个最简单的 SGX 应用 HelloWorld一、了解SGX1.1SGX定义
-Intel 软件防护扩展SGX（Software Guard Extension）是一项针对台式机和服务器平台的旨在满足可信计算需求的技术。Intel SGX是Intel架构新的扩展，在原有架构上增加了一组新...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-09-02T16:42:16+08:00">2023-09-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/SGX/">SGX</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/SGX/" itemprop="url"><span itemprop="name">SGX</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/05/15/RSA数学原理解析/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/15/RSA%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/"  itemprop="url">
-        RSA数学原理解析
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        1.引言
-RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网和电子商务中. 它使用一对密钥进行加密和解密, 分别称为公钥(public key)和私钥(private key). 使用公钥加密的内容只能用私钥解密, 使用私钥加密的内容只能用公钥解密, 并且不能通过公钥在可行的时间内计算出私钥. 这使得加密通信不需要交换私钥, 保证了通信的安全. 那么它是怎么做到...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-15T11:18:16+08:00">2023-05-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF%E5%85%A5%E9%97%A8/">CTF入门</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/CTF%E5%85%A5%E9%97%A8/" itemprop="url"><span itemprop="name">CTF入门</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/15/RSA%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/05/04/大三网络安全人工智能实验报告/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"  itemprop="url">
-        大三网络安全人工智能实验报告
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        《人工智能》课程实验报告网络与信息安全学院班  级：  20180XX             
-姓  名：  XXX          
-学  号：  20009XXXX            
-提交时间：  2023. 4. 20         
-基于神经网络的MNIST手写数字识别一、实验目的
-掌握运用神经网络模型解决有监督学习问题
-
-掌握机器学习中常用的模型训练测试方法
-
-了解不同...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-04T20:09:16+08:00">2023-05-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/">学校作业</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" itemprop="url"><span itemprop="name">学校作业</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/05/04/大三网络安全智能终端实验一/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%99%BA%E8%83%BD%E7%BB%88%E7%AB%AF%E5%AE%9E%E9%AA%8C%E4%B8%80/"  itemprop="url">
-        大三网络安全智能终端实验一
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        西安电子科技大学网信院
-智能终端实验实验报告（一）班级：2018XX学号：20009XXXX日期：2023.4.24一、实验摘要研究不断推动机器学习模型更快，更精确，更有效。然而，设计和训练模型的一个经常被忽视的方面是安全性和鲁棒性，特别是在面对希望欺骗模型的对手时。向图像添加不可察觉的扰动可以导致完全不同的模型性能。我们将通过一个图像分类器的例子来探讨这个主题。具体来说，我们将使用第一个和...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-04T20:09:16+08:00">2023-05-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/">学校作业</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" itemprop="url"><span itemprop="name">学校作业</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%99%BA%E8%83%BD%E7%BB%88%E7%AB%AF%E5%AE%9E%E9%AA%8C%E4%B8%80/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
 
 
 </div>
@@ -3373,156 +2829,31 @@ RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网
     
     
       
-<section class="widget blogger desktop mobile ">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/xaing.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>小吴の博客</h2>
-        
-        
-        
-          <p><span id="jinrishici-sentence">小吴の博客</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/2661275860@qq.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/Snowman12137/Snowman12137.github.io"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop">
-    
-  <header>
-    
-      <a href='/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/CTF%E5%85%A5%E9%97%A8/" href="/categories/CTF%E5%85%A5%E9%97%A8/"
-            active-action="action-categoriesCTFE585A5E997A8"
-            ><div class='name'>CTF入门</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/"
-            active-action="action-categoriesElectron-Vue-WebRTCE5AEA2E688B7E7ABAFE5ADA6E4B9A0"
-            ><div class='name'>Electron-Vue-WebRTC客户端学习</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/"
-            active-action="action-categoriesMAGsE4BA91E58886E69E90"
-            ><div class='name'>MAGs云分析</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/SGX/" href="/categories/SGX/"
-            active-action="action-categoriesSGX"
-            ><div class='name'>SGX</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%85%B6%E4%BB%96/" href="/categories/%E5%85%B6%E4%BB%96/"
-            active-action="action-categoriesE585B6E4BB96"
-            ><div class='name'>其他</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/"
-            active-action="action-categoriesE5ADA6E6A0A1E4BD9CE4B89A"
-            ><div class='name'>学校作业</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Nodejs%E5%AD%A6%E4%B9%A0/" style="font-size: 24px; color: #555">Nodejs学习</a> <a href="/tags/SGX/" style="font-size: 14px; color: #999">SGX</a> <a href="/tags/metaGEM/" style="font-size: 19px; color: #777">metaGEM</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/" style="font-size: 14px; color: #999">博客问题</a> <a href="/tags/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" style="font-size: 19px; color: #777">学校作业</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">机器学习</a> <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 14px; color: #999">现代密码学</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky">
+
+  
+  
+
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-text">1.文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-%E5%BC%82%E6%AD%A5%E5%92%8C%E5%90%8C%E6%AD%A5"><span class="toc-text">a.异步和同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="toc-text">b.打开文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-GET-x2F-POST%E8%AF%B7%E6%B1%82"><span class="toc-text">2.GET&#x2F;POST请求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-%E8%8E%B7%E5%8F%96GET%E8%AF%B7%E6%B1%82%E5%86%85%E5%AE%B9"><span class="toc-text">a.获取GET请求内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-%E8%8E%B7%E5%8F%96URL%E5%8F%82%E6%95%B0"><span class="toc-text">b.获取URL参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c-%E8%8E%B7%E5%8F%96-POST-%E8%AF%B7%E6%B1%82%E5%86%85%E5%AE%B9"><span class="toc-text">c.获取 POST 请求内容</span></a></li></ol>
+  </div>
+</section>
+
+  
 
 </div>
 
@@ -4415,7 +3746,7 @@ RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/Electron-Vue-WebRTC客户端学习/","name":"Electron-Vue-WebRTC客户端学习"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/02/01/Node-js学习（二）/","name":"Node.js学习（二）"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Node.js学习（二）","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/","wordCount":0,"datePublished":"2024-01-31T16:00:00.000Z","dateModified":"2024-02-03T17:04:20.106Z","articleSection":"Electron-Vue-WebRTC客户端学习","keywords":"Nodejs学习","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

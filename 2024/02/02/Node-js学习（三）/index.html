@@ -5,8 +5,8 @@
   <meta name="Volantis" content="6.0.0-alpha.1">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://snowman12137.github.io/"/>
+  
+  <link rel="canonical" href="https://snowman12137.github.io/2024/02/02/node-js学习（三）/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,18 +33,21 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>小吴の博客</title>
-  <meta name="keywords" content="">
+  <title>Node.js学习（三） - 小吴の博客</title>
+  <meta name="keywords" content="Nodejs学习,null">
   <meta desc name="description" content="我的博客 - Snowman - 小吴の博客">
   
-<meta property="og:type" content="website">
-<meta property="og:title" content="小吴の博客">
-<meta property="og:url" content="https://snowman12137.github.io/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js学习（三）">
+<meta property="og:url" content="https://snowman12137.github.io/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
 <meta property="og:site_name" content="小吴の博客">
-<meta property="og:description" content="我的博客">
+<meta property="og:description" content="Node.js学习（三）1.工具模块a.OS模块12345678910111213141516var os &#x3D; require(&quot;os&quot;);&#x2F;&#x2F;引入&#x2F;&#x2F; CPU 的字节序console.log(&amp;#x27;endianness : &amp;#x27; + os.endianness());&#x2F;&#x2F; 操作系统名console.log(&amp;#x27;type : &amp;#x27; + os.typ">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2024-02-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-03T17:04:09.455Z">
 <meta property="article:author" content="Snowman">
+<meta property="article:tag" content="Nodejs学习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2166,7 +2169,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2233,7 +2236,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin begin-->
     
     <!-- Custom Files bodyBegin end-->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2500,123 +2503,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div id="l_body">
       <div id="l_cover">
   
-    
-      <div class="cover-wrapper  dock" id='full'>
-        
-  <div id="parallax-window"></div>
-
-<div class='cover-body'>
-  <div class='top'>
-    
-    
-      <p class="title">小吴の博客-Sn0wm1an</p>
-    
-    
-      <p class="subtitle">一只学习网络安全的小白</p>
-    
-  </div>
-  <div class='bottom'>
-    <div class='menu navigation'>
-      <div class='list-h'>
-        
-          
-            <a href="/categories/"
-              
-              
-              active-action="action-categories">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f5c3.svg'><p>分类</p>
-            </a>
-          
-            <a href="/tags/"
-              
-              
-              active-action="action-tags">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f516.svg'><p>标签</p>
-            </a>
-          
-            <a href="/examples/"
-              
-              
-              active-action="action-examples">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f396.svg'><p>示例</p>
-            </a>
-          
-            <a href="/contributors/"
-              
-              
-              active-action="action-contributors">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f389.svg'><p>社区</p>
-            </a>
-          
-            <a href="/archives/"
-              
-              
-              active-action="action-archives">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4f0.svg'><p>博客</p>
-            </a>
-          
-            <a href="/about/"
-              
-              
-              active-action="action-about">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f9ec.svg'><p>关于</p>
-            </a>
-          
-        
-      </div>
-    </div>
-  </div>
-</div>
-
-        <div id="scroll-down"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
-      </div>
-    
-  
 </div>
 
       <div id="safearea">
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/02/Node-js学习（三）/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="小吴の博客">
@@ -2626,743 +2519,447 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="我的博客">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         Node.js学习（三）
-      </a>
-    </h2>
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Sn0wm1an</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：4.4k 字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：20 分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
   
-  <div class='md article-desc' itemprop="articleBody">
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/">Electron-Vue-WebRTC客户端学习</a>
     
-      
-        Node.js学习（三）1.工具模块a.OS模块12345678910111213141516var os = require(&quot;os&quot;);//引入// CPU 的字节序console.log(&#x27;endianness : &#x27; + os.endianness());// 操作系统名console.log(&#x27;type : &#x27; + os....
-      
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Electron-Vue-WebRTC客户端学习</span></a>
+      </span>
     
   </div>
   
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-02-02T00:00:00+08:00">2024-02-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/">Electron-Vue-WebRTC客户端学习</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Electron-Vue-WebRTC客户端学习</span></a>
-            </span>
+
+
+
           
         
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2024-02-02T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2024年2月2日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="Node-js学习（三）"><a href="#Node-js学习（三）" class="headerlink" title="Node.js学习（三）"></a>Node.js学习（三）</h1><h2 id="1-工具模块"><a href="#1-工具模块" class="headerlink" title="1.工具模块"></a>1.工具模块</h2><h3 id="a-OS模块"><a href="#a-OS模块" class="headerlink" title="a.OS模块"></a>a.OS模块</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> os = <span class="built_in">require</span>(<span class="string">&quot;os&quot;</span>);<span class="comment">//引入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// CPU 的字节序</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;endianness : &#x27;</span> + os.<span class="title function_">endianness</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 操作系统名</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;type : &#x27;</span> + os.<span class="title function_">type</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 操作系统名</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;platform : &#x27;</span> + os.<span class="title function_">platform</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 系统内存总量</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;total memory : &#x27;</span> + os.<span class="title function_">totalmem</span>() + <span class="string">&quot; bytes.&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 操作系统空闲内存量</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;free memory : &#x27;</span> + os.<span class="title function_">freemem</span>() + <span class="string">&quot; bytes.&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="b-Path模块"><a href="#b-Path模块" class="headerlink" title="b.Path模块"></a>b.Path模块</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="comment">// 格式化路径</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;normalization : &#x27;</span> + path.<span class="title function_">normalize</span>(<span class="string">&#x27;/test/test1//2slashes/1slash/tab/..&#x27;</span>));</span><br><span class="line"><span class="comment">// 连接路径</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;joint path : &#x27;</span> + path.<span class="title function_">join</span>(<span class="string">&#x27;/test&#x27;</span>, <span class="string">&#x27;test1&#x27;</span>, <span class="string">&#x27;2slashes/1slash&#x27;</span>, <span class="string">&#x27;tab&#x27;</span>, <span class="string">&#x27;..&#x27;</span>));</span><br><span class="line"><span class="comment">// 转换为绝对路径</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;resolve : &#x27;</span> + path.<span class="title function_">resolve</span>(<span class="string">&#x27;main.js&#x27;</span>));</span><br><span class="line"><span class="comment">// 路径中文件的后缀名</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;ext name : &#x27;</span> + path.<span class="title function_">extname</span>(<span class="string">&#x27;main.js&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="c-Net模块-Socket"><a href="#c-Net模块-Socket" class="headerlink" title="c.Net模块(Socket)"></a>c.Net模块(Socket)</h3><p>server.js服务端</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> server = net.<span class="title function_">createServer</span>(<span class="keyword">function</span>(<span class="params">connection</span>) &#123; </span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;client connected&#x27;</span>);</span><br><span class="line">   connection.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;客户端关闭连接&#x27;</span>);</span><br><span class="line">   &#125;);</span><br><span class="line">   connection.<span class="title function_">write</span>(<span class="string">&#x27;Hello World!\r\n&#x27;</span>);</span><br><span class="line">   connection.<span class="title function_">pipe</span>(connection);</span><br><span class="line">&#125;);</span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">8080</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123; </span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;server is listening&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>client.js客户端</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> net = <span class="built_in">require</span>(<span class="string">&#x27;net&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> client = net.<span class="title function_">connect</span>(&#123;<span class="attr">port</span>: <span class="number">8080</span>&#125;, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;连接到服务器！&#x27;</span>);  </span><br><span class="line">&#125;);</span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(data.<span class="title function_">toString</span>());</span><br><span class="line">   client.<span class="title function_">end</span>();</span><br><span class="line">&#125;);</span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123; </span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;断开与服务器的连接&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="d-DNS模块"><a href="#d-DNS模块" class="headerlink" title="d.DNS模块"></a>d.DNS模块</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dns = <span class="built_in">require</span>(<span class="string">&#x27;dns&#x27;</span>);</span><br><span class="line"></span><br><span class="line">dns.<span class="title function_">lookup</span>(<span class="string">&#x27;www.github.com&#x27;</span>, <span class="keyword">function</span> <span class="title function_">onLookup</span>(<span class="params">err, address, family</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;ip 地址:&#x27;</span>, address);</span><br><span class="line">   dns.<span class="title function_">reverse</span>(address, <span class="keyword">function</span> (<span class="params">err, hostnames</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(err.<span class="property">stack</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;反向解析 &#x27;</span> + address + <span class="string">&#x27;: &#x27;</span> + <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(hostnames));</span><br><span class="line">&#125;);  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>执行结果</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">address</span>: <span class="number">192.30</span><span class="number">.252</span><span class="number">.130</span></span><br><span class="line">reverse <span class="keyword">for</span> <span class="number">192.30</span><span class="number">.252</span><span class="number">.130</span>: [<span class="string">&quot;github.com&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Web模块"><a href="#2-Web模块" class="headerlink" title="2.Web模块"></a>2.Web模块</h3><p>web应用架构</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/3424235565.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/3424235565.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="3424235565"></p>
+<ul>
+<li><strong>Client</strong> - 客户端，一般指浏览器，浏览器可以通过 HTTP 协议向服务器请求数据。</li>
+<li><strong>Server</strong> - 服务端，一般指 Web 服务器，可以接收客户端请求，并向客户端发送响应数据。</li>
+<li><strong>Business</strong> - 业务层， 通过 Web 服务器处理应用程序，如与数据库交互，逻辑运算，调用外部程序等。</li>
+<li><strong>Data</strong> - 数据层，一般由数据库组成。</li>
+</ul>
+<h3 id="a-创建Web服务器"><a href="#a-创建Web服务器" class="headerlink" title="a.创建Web服务器"></a>a.创建Web服务器</h3><p>以下是演示一个最基本的 HTTP 服务器架构(使用 8080 端口)，创建 server.js 文件，代码如下所示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">&#x27;url&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">// 创建服务器</span></span><br><span class="line">http.<span class="title function_">createServer</span>( <span class="keyword">function</span> (<span class="params">request, response</span>) &#123;  </span><br><span class="line">   <span class="comment">// 解析请求，包括文件名</span></span><br><span class="line">   <span class="keyword">var</span> pathname = url.<span class="title function_">parse</span>(request.<span class="property">url</span>).<span class="property">pathname</span>;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 输出请求的文件名</span></span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Request for &quot;</span> + pathname + <span class="string">&quot; received.&quot;</span>);</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 从文件系统中读取请求的文件内容</span></span><br><span class="line">   fs.<span class="title function_">readFile</span>(pathname.<span class="title function_">substr</span>(<span class="number">1</span>), <span class="keyword">function</span> (<span class="params">err, data</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">         <span class="comment">// HTTP 状态码: 404 : NOT FOUND</span></span><br><span class="line">         <span class="comment">// Content Type: text/html</span></span><br><span class="line">         response.<span class="title function_">writeHead</span>(<span class="number">404</span>, &#123;<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span>&#125;);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;             </span><br><span class="line">         <span class="comment">// HTTP 状态码: 200 : OK</span></span><br><span class="line">         <span class="comment">// Content Type: text/html</span></span><br><span class="line">         response.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/html&#x27;</span>&#125;);    </span><br><span class="line">         </span><br><span class="line">         <span class="comment">// 响应文件内容</span></span><br><span class="line">         response.<span class="title function_">write</span>(data.<span class="title function_">toString</span>());        </span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//  发送响应数据</span></span><br><span class="line">      response.<span class="title function_">end</span>();</span><br><span class="line">   &#125;);   </span><br><span class="line">&#125;).<span class="title function_">listen</span>(<span class="number">8080</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 控制台会输出以下信息</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server running at http://127.0.0.1:8080/&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>index.html</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span>菜鸟教程(runoob.com)<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>我的第一个标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第一个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="b创建Web客户端"><a href="#b创建Web客户端" class="headerlink" title="b创建Web客户端"></a>b创建Web客户端</h3><p>创建</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 用于请求的选项</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">   <span class="attr">host</span>: <span class="string">&#x27;localhost&#x27;</span>,</span><br><span class="line">   <span class="attr">port</span>: <span class="string">&#x27;8080&#x27;</span>,</span><br><span class="line">   <span class="attr">path</span>: <span class="string">&#x27;/index.html&#x27;</span>  </span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 处理响应的回调函数</span></span><br><span class="line"><span class="keyword">var</span> callback = <span class="keyword">function</span>(<span class="params">response</span>)&#123;</span><br><span class="line">   <span class="comment">// 不断更新数据</span></span><br><span class="line">   <span class="keyword">var</span> body = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">   response.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">      body += data;</span><br><span class="line">   &#125;);</span><br><span class="line">   </span><br><span class="line">   response.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// 数据接收完成</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(body);</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 向服务端发送请求</span></span><br><span class="line"><span class="keyword">var</span> req = http.<span class="title function_">request</span>(options, callback);</span><br><span class="line">req.<span class="title function_">end</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Express框架"><a href="#3-Express框架" class="headerlink" title="3.Express框架"></a>3.Express框架</h2><p>Express 是一个简洁而灵活的 node.js Web应用框架, 提供了一系列强大特性帮助你创建各种 Web 应用，和丰富的 HTTP 工具。</p>
+<p>使用 Express 可以快速地搭建一个完整功能的网站。</p>
+<p>Express 框架核心特性：</p>
+<ul>
+<li>可以设置中间件来响应 HTTP 请求。</li>
+<li>定义了路由表用于执行不同的 HTTP 请求动作。</li>
+<li>可以通过向模板传递参数来动态渲染 HTML 页面。</li>
+</ul>
+<h3 id="a-安装"><a href="#a-安装" class="headerlink" title="a.安装"></a>a.安装</h3><p>安装 Express 并将其保存到依赖列表中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install express --save</span><br></pre></td></tr></table></figure>
+
+<p>以上命令会将 Express 框架安装在当前目录的 <strong>node_modules</strong> 目录中， <strong>node_modules</strong> 目录下会自动创建 express 目录。以下几个重要的模块是需要与 express 框架一起安装的：</p>
+<ul>
+<li><strong>body-parser</strong> - node.js 中间件，用于处理 JSON, Raw, Text 和 URL 编码的数据。</li>
+<li><strong>cookie-parser</strong> - 这就是一个解析Cookie的工具。通过req.cookies可以取到传过来的cookie，并把它们转成对象。</li>
+<li><strong>multer</strong> - node.js 中间件，用于处理 enctype&#x3D;”multipart&#x2F;form-data”（设置表单的MIME编码）的表单数据。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cnpm install body-parser --save</span><br><span class="line">cnpm install cookie-parser --save</span><br><span class="line">cnpm install multer --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="b-请求和响应"><a href="#b-请求和响应" class="headerlink" title="b.请求和响应"></a>b.请求和响应</h3><p>Express 应用使用回调函数的参数： <strong>request</strong> 和 <strong>response</strong> 对象来处理请求和响应的数据。</p>
+<p><strong>request</strong> 和 <strong>response</strong> 对象的具体介绍：</p>
+<p><strong>Request 对象</strong> - request 对象表示 HTTP 请求，包含了请求查询字符串，参数，内容，HTTP 头部等属性。常见属性有：</p>
+<ol>
+<li>req.app：当callback为外部文件时，用req.app访问express的实例</li>
+<li>req.baseUrl：获取路由当前安装的URL路径</li>
+<li>req.body &#x2F; req.cookies：获得「请求主体」&#x2F; Cookies</li>
+<li>req.hostname &#x2F; req.ip：获取主机名和IP地址</li>
+<li>req.originalUrl：获取原始请求URL</li>
+<li>req.params：获取路由的parameters</li>
+<li>req.path：获取请求路径</li>
+<li>req.protocol：获取协议类型</li>
+<li>req.query：获取URL的查询参数串</li>
+<li>req.route：获取当前匹配的路由</li>
+<li>req.subdomains：获取子域名</li>
+<li>req.accepts()：检查可接受的请求的文档类型</li>
+<li>req.get()：获取指定的HTTP请求头</li>
+</ol>
+<p><strong>Response 对象</strong> - response 对象表示 HTTP 响应，即在接收到请求时向客户端发送的 HTTP 响应数据。常见属性有：</p>
+<ol>
+<li>res.app：同req.app一样</li>
+<li>res.append()：追加指定HTTP头</li>
+<li>res.set()在res.append()后将重置之前设置的头</li>
+<li>res.cookie(name，value [，option])：设置Cookie</li>
+<li>res.clearCookie()：清除Cookie</li>
+<li>res.download()：传送指定路径的文件</li>
+<li>res.get()：返回指定的HTTP头</li>
+<li>res.json()：传送JSON响应</li>
+<li>res.jsonp()：传送JSONP响应</li>
+<li>res.location()：只设置响应的Location HTTP头，不设置状态码或者close response</li>
+<li>res.render(view,[locals],callback)：渲染一个view，同时向callback传递渲染后的字符串，如果在渲染过程中有错误发生next(err)将会被自动调用。callback将会被传入一个可能发生的错误以及渲染后的页面，这样就不会自动输出了。</li>
+<li>res.send()：传送HTTP响应</li>
+<li>res.sendFile(path [，options] [，fn])：传送指定路径的文件 -会自动根据文件extension设定Content-Type</li>
+<li>res.set()：设置HTTP头，传入object可以一次设置多个头</li>
+</ol>
+<h2 id="c-路由"><a href="#c-路由" class="headerlink" title="c.路由"></a>c.路由</h2><p>我们已经了解了 HTTP 请求的基本应用，而路由决定了由谁(指定脚本)去响应客户端请求。在HTTP请求中，我们可以通过路由提取出请求的URL以及GET&#x2F;POST参数。接下来我们扩展 Hello World，添加一些功能来处理更多类型的 HTTP 请求。创建 express_demo2.js 文件，代码如下所示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="comment">//  主页输出 &quot;Hello World&quot;</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;主页 GET 请求&quot;</span>);</span><br><span class="line">   res.<span class="title function_">send</span>(<span class="string">&#x27;Hello GET&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//  POST 请求</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;主页 POST 请求&quot;</span>);</span><br><span class="line">   res.<span class="title function_">send</span>(<span class="string">&#x27;Hello POST&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//  /del_user 页面响应</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/del_user&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;/del_user 响应 DELETE 请求&quot;</span>);</span><br><span class="line">   res.<span class="title function_">send</span>(<span class="string">&#x27;删除页面&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//  /list_user 页面 GET 请求</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/list_user&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;/list_user GET 请求&quot;</span>);</span><br><span class="line">   res.<span class="title function_">send</span>(<span class="string">&#x27;用户列表页面&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 对页面 abcd, abxcd, ab123cd, 等响应 GET 请求</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/ab*cd&#x27;</span>, <span class="keyword">function</span>(<span class="params">req, res</span>) &#123;   </span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;/ab*cd GET 请求&quot;</span>);</span><br><span class="line">   res.<span class="title function_">send</span>(<span class="string">&#x27;正则匹配&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> server = app.<span class="title function_">listen</span>(<span class="number">8081</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> host = server.<span class="title function_">address</span>().<span class="property">address</span></span><br><span class="line">  <span class="keyword">var</span> port = server.<span class="title function_">address</span>().<span class="property">port</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;应用实例，访问地址为 http://%s:%s&quot;</span>, host, port)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="d-静态文件"><a href="#d-静态文件" class="headerlink" title="d.静态文件"></a>d.静态文件</h3><p>Express 提供了内置的中间件 <strong>express.static</strong> 来设置静态文件如：图片， CSS, JavaScript 等。</p>
+<p>你可以使用 <strong>express.static</strong> 中间件来设置静态文件路径。例如，如果你将图片， CSS, JavaScript 文件放在 public 目录下，你可以这么写：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/public&#x27;</span>, express.<span class="title function_">static</span>(<span class="string">&#x27;public&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>我们可以到 public&#x2F;images 目录下放些图片,如下所示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">node_modules</span><br><span class="line">server.<span class="property">js</span></span><br><span class="line">public/</span><br><span class="line">public/images</span><br><span class="line">public/images/logo.<span class="property">png</span></span><br></pre></td></tr></table></figure>
+
+<p>让我们再修改下 “Hello World” 应用添加处理静态文件的功能。</p>
+<p>创建 express_demo3.js 文件，代码如下所示：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/public&#x27;</span>, express.<span class="title function_">static</span>(<span class="string">&#x27;public&#x27;</span>));</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   res.<span class="title function_">send</span>(<span class="string">&#x27;Hello World&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> server = app.<span class="title function_">listen</span>(<span class="number">8081</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> host = server.<span class="title function_">address</span>().<span class="property">address</span></span><br><span class="line">  <span class="keyword">var</span> port = server.<span class="title function_">address</span>().<span class="property">port</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;应用实例，访问地址为 http://%s:%s&quot;</span>, host, port)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="e-GET方法"><a href="#e-GET方法" class="headerlink" title="e.GET方法"></a>e.GET方法</h3><p>以下实例演示了在表单中通过 GET 方法提交两个参数，我们可以使用 server.js 文件内的 <strong>process_get</strong> 路由器来处理输入：</p>
+<p>idnex.html</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=&quot;http://127.0.0.1:8081/process_get&quot; method=&quot;GET&quot;&gt;</span><br><span class="line">First Name: &lt;input type=&quot;text&quot; name=&quot;first_name&quot;&gt;  &lt;br&gt;</span><br><span class="line"> </span><br><span class="line">Last Name: &lt;input type=&quot;text&quot; name=&quot;last_name&quot;&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>server.js</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/public&#x27;</span>, express.<span class="title function_">static</span>(<span class="string">&#x27;public&#x27;</span>));</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/index.html&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   res.<span class="title function_">sendFile</span>( __dirname + <span class="string">&quot;/&quot;</span> + <span class="string">&quot;index.html&quot;</span> );</span><br><span class="line">&#125;)</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/process_get&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   <span class="comment">// 输出 JSON 格式</span></span><br><span class="line">   <span class="keyword">var</span> response = &#123;</span><br><span class="line">       <span class="string">&quot;first_name&quot;</span>:req.<span class="property">query</span>.<span class="property">first_name</span>,</span><br><span class="line">       <span class="string">&quot;last_name&quot;</span>:req.<span class="property">query</span>.<span class="property">last_name</span></span><br><span class="line">   &#125;;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(response);</span><br><span class="line">   res.<span class="title function_">end</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(response));</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> server = app.<span class="title function_">listen</span>(<span class="number">8081</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> host = server.<span class="title function_">address</span>().<span class="property">address</span></span><br><span class="line">  <span class="keyword">var</span> port = server.<span class="title function_">address</span>().<span class="property">port</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;应用实例，访问地址为 http://%s:%s&quot;</span>, host, port)</span><br><span class="line"> </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="f-文件上传"><a href="#f-文件上传" class="headerlink" title="f.文件上传"></a>f.文件上传</h3><p>以下我们创建一个用于上传文件的表单，使用 POST 方法，表单 enctype 属性设置为 multipart&#x2F;form-data。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span>文件上传表单<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>文件上传：<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">选择一个文件上传: <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;/file_upload&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;image&quot;</span> <span class="attr">size</span>=<span class="string">&quot;50&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;上传文件&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>server.js</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>();</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> bodyParser = <span class="built_in">require</span>(<span class="string">&#x27;body-parser&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> multer  = <span class="built_in">require</span>(<span class="string">&#x27;multer&#x27;</span>);</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/public&#x27;</span>, express.<span class="title function_">static</span>(<span class="string">&#x27;public&#x27;</span>));</span><br><span class="line">app.<span class="title function_">use</span>(bodyParser.<span class="title function_">urlencoded</span>(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;));</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">multer</span>(&#123; <span class="attr">dest</span>: <span class="string">&#x27;/tmp/&#x27;</span>&#125;).<span class="title function_">array</span>(<span class="string">&#x27;image&#x27;</span>));</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/index.html&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   res.<span class="title function_">sendFile</span>( __dirname + <span class="string">&quot;/&quot;</span> + <span class="string">&quot;index.html&quot;</span> );</span><br><span class="line">&#125;)</span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&#x27;/file_upload&#x27;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">files</span>[<span class="number">0</span>]);  <span class="comment">// 上传的文件信息</span></span><br><span class="line">   <span class="keyword">var</span> des_file = __dirname + <span class="string">&quot;/&quot;</span> + req.<span class="property">files</span>[<span class="number">0</span>].<span class="property">originalname</span>;</span><br><span class="line">   fs.<span class="title function_">readFile</span>( req.<span class="property">files</span>[<span class="number">0</span>].<span class="property">path</span>, <span class="keyword">function</span> (<span class="params">err, data</span>) &#123;</span><br><span class="line">        fs.<span class="title function_">writeFile</span>(des_file, data, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">         <span class="keyword">if</span>( err )&#123;</span><br><span class="line">              <span class="variable language_">console</span>.<span class="title function_">log</span>( err );</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               response = &#123;</span><br><span class="line">                   <span class="attr">message</span>:<span class="string">&#x27;File uploaded successfully&#x27;</span>, </span><br><span class="line">                   <span class="attr">filename</span>:req.<span class="property">files</span>[<span class="number">0</span>].<span class="property">originalname</span></span><br><span class="line">              &#125;;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="variable language_">console</span>.<span class="title function_">log</span>( response );</span><br><span class="line">          res.<span class="title function_">end</span>( <span class="title class_">JSON</span>.<span class="title function_">stringify</span>( response ) );</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> server = app.<span class="title function_">listen</span>(<span class="number">8081</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> host = server.<span class="title function_">address</span>().<span class="property">address</span></span><br><span class="line">  <span class="keyword">var</span> port = server.<span class="title function_">address</span>().<span class="property">port</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;应用实例，访问地址为 http://%s:%s&quot;</span>, host, port)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="g-Cookie管理"><a href="#g-Cookie管理" class="headerlink" title="g.Cookie管理"></a>g.Cookie管理</h3><p>我们可以使用中间件向 Node.js 服务器发送 cookie 信息，以下代码输出了客户端发送的 cookie 信息：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// express_cookie.js 文件</span></span><br><span class="line"><span class="keyword">var</span> express      = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">&#x27;cookie-parser&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">&#x27;util&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>()</span><br><span class="line">app.<span class="title function_">use</span>(<span class="title function_">cookieParser</span>())</span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="keyword">function</span>(<span class="params">req, res</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Cookies: &quot;</span> + util.<span class="title function_">inspect</span>(req.<span class="property">cookies</span>));</span><br><span class="line">&#125;)</span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">8081</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-RESTful-API"><a href="#4-RESTful-API" class="headerlink" title="4.RESTful API"></a>4.RESTful API</h2><p>REST即表述性状态传递（英文：Representational State Transfer，简称REST）是Roy Fielding博士在2000年他的博士论文中提出来的一种软件架构风格。</p>
+<p>表述性状态转移是一组架构约束条件和原则。满足这些约束条件和原则的应用程序或设计就是RESTful。需要注意的是，REST是设计风格而不是标准。REST通常基于使用HTTP，URI，和XML（标准通用标记语言下的一个子集）以及HTML（标准通用标记语言下的一个应用）这些现有的广泛流行的协议和标准。REST 通常使用 JSON 数据格式。</p>
+<h2 id="a-RESTful-Web-Services"><a href="#a-RESTful-Web-Services" class="headerlink" title="a.RESTful Web Services"></a>a.RESTful Web Services</h2><p>Web service是一个平台独立的，低耦合的，自包含的、基于可编程的web的应用程序，可使用开放的XML（标准通用标记语言下的一个子集）标准来描述、发布、发现、协调和配置这些应用程序，用于开发分布式的互操作的应用程序。</p>
+<p>基于 REST 架构的 Web Services 即是 RESTful。</p>
+<p>由于轻量级以及通过 HTTP 直接传输数据的特性，Web 服务的 RESTful 方法已经成为最常见的替代方法。可以使用各种语言（比如 Java 程序、Perl、Ruby、Python、PHP 和 Javascript[包括 Ajax]）实现客户端。</p>
+<p>RESTful Web 服务通常可以通过自动客户端或代表用户的应用程序访问。但是，这种服务的简便性让用户能够与之直接交互，使用它们的 Web 浏览器构建一个 GET URL 并读取返回的内容。</p>
+<h3 id="b-创建-RESTful"><a href="#b-创建-RESTful" class="headerlink" title="b.创建 RESTful"></a>b.<strong>创建 RESTful</strong></h3><p>user.json</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="string">&quot;user1&quot;</span> : &#123;</span><br><span class="line">      <span class="string">&quot;name&quot;</span> : <span class="string">&quot;mahesh&quot;</span>,</span><br><span class="line">      <span class="string">&quot;password&quot;</span> : <span class="string">&quot;password1&quot;</span>,</span><br><span class="line">      <span class="string">&quot;profession&quot;</span> : <span class="string">&quot;teacher&quot;</span>,</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: 1</span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="string">&quot;user2&quot;</span> : &#123;</span><br><span class="line">      <span class="string">&quot;name&quot;</span> : <span class="string">&quot;suresh&quot;</span>,</span><br><span class="line">      <span class="string">&quot;password&quot;</span> : <span class="string">&quot;password2&quot;</span>,</span><br><span class="line">      <span class="string">&quot;profession&quot;</span> : <span class="string">&quot;librarian&quot;</span>,</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: 2</span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="string">&quot;user3&quot;</span> : &#123;</span><br><span class="line">      <span class="string">&quot;name&quot;</span> : <span class="string">&quot;ramesh&quot;</span>,</span><br><span class="line">      <span class="string">&quot;password&quot;</span> : <span class="string">&quot;password3&quot;</span>,</span><br><span class="line">      <span class="string">&quot;profession&quot;</span> : <span class="string">&quot;clerk&quot;</span>,</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: 3</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>基于以上数据，我们创建以下 RESTful API：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>URI</th>
+<th>HTTP 方法</th>
+<th>发送内容</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>listUsers</td>
+<td>GET</td>
+<td>空</td>
+<td>显示所有用户列表</td>
+</tr>
+<tr>
+<td>2</td>
+<td>addUser</td>
+<td>POST</td>
+<td>JSON 字符串</td>
+<td>添加新用户</td>
+</tr>
+<tr>
+<td>3</td>
+<td>deleteUser</td>
+<td>DELETE</td>
+<td>JSON 字符串</td>
+<td>删除用户</td>
+</tr>
+<tr>
+<td>4</td>
+<td>:id</td>
+<td>GET</td>
+<td>空</td>
+<td>显示用户详细信息</td>
+</tr>
+</tbody></table>
+<h3 id="c-获取用户列表："><a href="#c-获取用户列表：" class="headerlink" title="c.获取用户列表："></a>c.<strong>获取用户列表：</strong></h3><p>以下代码，我们创建了 RESTful API <strong>listUsers</strong>，用于读取用户的信息列表， server.js 文件代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var express = require(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line">var app = express();</span><br><span class="line">var fs = require(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line">app.get(<span class="string">&#x27;/listUsers&#x27;</span>, <span class="keyword">function</span> (req, res) &#123;</span><br><span class="line">   fs.readFile( __dirname + <span class="string">&quot;/&quot;</span> + <span class="string">&quot;users.json&quot;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="keyword">function</span> (err, data) &#123;</span><br><span class="line">       console.log( data );</span><br><span class="line">       res.end( data );</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;)</span><br><span class="line">var server = app.listen(8081, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  var host = server.address().address</span><br><span class="line">  var port = server.address().port</span><br><span class="line">  console.log(<span class="string">&quot;应用实例，访问地址为 http://%s:%s&quot;</span>, host, port)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="d添加用户"><a href="#d添加用户" class="headerlink" title="d添加用户"></a>d<strong>添加用户</strong></h3><p>以下代码，我们创建了 RESTful API <strong>addUser</strong>， 用于添加新的用户数据，server.js 文件代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var express = require(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line">var app = express();</span><br><span class="line">var fs = require(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line">//添加的新用户数据</span><br><span class="line">var user = &#123;</span><br><span class="line">   <span class="string">&quot;user4&quot;</span> : &#123;</span><br><span class="line">      <span class="string">&quot;name&quot;</span> : <span class="string">&quot;mohit&quot;</span>,</span><br><span class="line">      <span class="string">&quot;password&quot;</span> : <span class="string">&quot;password4&quot;</span>,</span><br><span class="line">      <span class="string">&quot;profession&quot;</span> : <span class="string">&quot;teacher&quot;</span>,</span><br><span class="line">      <span class="string">&quot;id&quot;</span>: 4</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">app.get(<span class="string">&#x27;/addUser&#x27;</span>, <span class="keyword">function</span> (req, res) &#123;</span><br><span class="line">   // 读取已存在的数据</span><br><span class="line">   fs.readFile( __dirname + <span class="string">&quot;/&quot;</span> + <span class="string">&quot;users.json&quot;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="keyword">function</span> (err, data) &#123;</span><br><span class="line">       data = JSON.parse( data );</span><br><span class="line">       data[<span class="string">&quot;user4&quot;</span>] = user[<span class="string">&quot;user4&quot;</span>];</span><br><span class="line">       console.log( data );</span><br><span class="line">       res.end( JSON.stringify(data));</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;)</span><br><span class="line">var server = app.listen(8081, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  var host = server.address().address</span><br><span class="line">  var port = server.address().port</span><br><span class="line">  console.log(<span class="string">&quot;应用实例，访问地址为 http://%s:%s&quot;</span>, host, port)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="显示用户详情"><a href="#显示用户详情" class="headerlink" title="显示用户详情"></a><strong>显示用户详情</strong></h3><p>以下代码，我们创建了 RESTful API <strong>:id（用户id）</strong>， 用于读取指定用户的详细信息，server.js 文件代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var express = require(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line">var app = express();</span><br><span class="line">var fs = require(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line">app.get(<span class="string">&#x27;/:id&#x27;</span>, <span class="keyword">function</span> (req, res) &#123;</span><br><span class="line">   // 首先我们读取已存在的用户</span><br><span class="line">   fs.readFile( __dirname + <span class="string">&quot;/&quot;</span> + <span class="string">&quot;users.json&quot;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="keyword">function</span> (err, data) &#123;</span><br><span class="line">       data = JSON.parse( data );</span><br><span class="line">       var user = data[<span class="string">&quot;user&quot;</span> + req.params.id] </span><br><span class="line">       console.log( user );</span><br><span class="line">       res.end( JSON.stringify(user));</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;)</span><br><span class="line">var server = app.listen(8081, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  var host = server.address().address</span><br><span class="line">  var port = server.address().port</span><br><span class="line">  console.log(<span class="string">&quot;应用实例，访问地址为 http://%s:%s&quot;</span>, host, port)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a><strong>删除用户</strong></h3><p>以下代码，我们创建了 RESTful API <strong>deleteUser</strong>， 用于删除指定用户的详细信息，以下实例中，用户 id 为 2，server.js 文件代码如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var express = require(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line">var app = express();</span><br><span class="line">var fs = require(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line">var <span class="built_in">id</span> = 2;</span><br><span class="line">app.get(<span class="string">&#x27;/deleteUser&#x27;</span>, <span class="keyword">function</span> (req, res) &#123;</span><br><span class="line">   // First <span class="built_in">read</span> existing <span class="built_in">users</span>.</span><br><span class="line">   fs.readFile( __dirname + <span class="string">&quot;/&quot;</span> + <span class="string">&quot;users.json&quot;</span>, <span class="string">&#x27;utf8&#x27;</span>, <span class="keyword">function</span> (err, data) &#123;</span><br><span class="line">       data = JSON.parse( data );</span><br><span class="line">       delete data[<span class="string">&quot;user&quot;</span> + <span class="built_in">id</span>];</span><br><span class="line">       console.log( data );</span><br><span class="line">       res.end( JSON.stringify(data));</span><br><span class="line">   &#125;);</span><br><span class="line">&#125;)</span><br><span class="line">var server = app.listen(8081, <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">  var host = server.address().address</span><br><span class="line">  var port = server.address().port</span><br><span class="line">  console.log(<span class="string">&quot;应用实例，访问地址为 http://%s:%s&quot;</span>, host, port)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-Node-js-多进程"><a href="#5-Node-js-多进程" class="headerlink" title="5.Node.js 多进程"></a>5.<strong>Node.js 多进程</strong></h2><p>我们都知道 Node.js 是以单线程的模式运行的，但它使用的是事件驱动来处理并发，这样有助于我们在多核 cpu 的系统上创建多个子进程，从而提高性能。</p>
+<p>每个子进程总是带有三个流对象：child.stdin, child.stdout 和child.stderr。他们可能会共享父进程的 stdio 流，或者也可以是独立的被导流的流对象。</p>
+<p>Node 提供了 child_process 模块来创建子进程，方法有：</p>
+<ul>
+<li><strong>exec</strong> - child_process.exec 使用子进程执行命令，缓存子进程的输出，并将子进程的输出以回调函数参数的形式返回。</li>
+<li><strong>spawn</strong> - child_process.spawn 使用指定的命令行参数创建新进程。</li>
+<li><strong>fork</strong> - child_process.fork 是 spawn()的特殊形式，用于在子进程中运行的模块，如 fork(‘.&#x2F;son.js’) 相当于 spawn(‘node’, [‘.&#x2F;son.js’]) 。与spawn方法不同的是，fork会在父进程与子进程之间，建立一个通信管道，用于进程之间的通信。</li>
+</ul>
+<p>略（用上再看）</p>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-02-04T01:04:09+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2024年2月4日</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/01/Node-js学习（二）/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
+          
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：4.4k 字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：20 分钟</p>
+    </a>
+  </div>
+
+
+        
+      
+        
+          
   
   
   
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Nodejs%E5%AD%A6%E4%B9%A0/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>Nodejs学习</p></a></div>
+  <span hidden itemprop="keywords">Nodejs学习</span>
+  
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://snowman12137.github.io/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/&title=Node.js学习（三） - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://snowman12137.github.io/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/&title=Node.js学习（三） - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://snowman12137.github.io/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/&title=Node.js学习（三） - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/'>
+          <p class='title'>Node.js学习（二）<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>Node.js学习（二）1.文件系统Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法如下所示：
+1var fs = requir...</p>
+        </a>
+      
+    </div>
+  
+  <!-- 文章推荐 -->
+  
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/"  itemprop="url">
-        Node.js学习（二）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Node.js学习（二）1.文件系统Node.js 提供一组类似 UNIX（POSIX）标准的文件操作API。 Node 导入文件系统模块(fs)语法如下所示：
-1var fs = require(&quot;fs&quot;)
 
-a.异步和同步Node.js 文件系统（fs 模块）模块中的方法均有异步和同步版本，例如读取文件内容的函数有异步的 fs.readFile() 和同步的 fs.r...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-02-01T00:00:00+08:00">2024-02-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/">Electron-Vue-WebRTC客户端学习</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Electron-Vue-WebRTC客户端学习</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/02/01/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
+    <div id="layoutHelper-comments"></div>
 
-</div>
+  </article>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/01/30/Node-js学习（一）/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/01/30/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"  itemprop="url">
-        Node.js学习（一）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Node.js学习（一）1.Node.js的异步在了解Node.js异步之前，我们先看一看其前身JavaScript的异步编程技巧。
-一个异步过程的执行将不再与原有的序列有顺序关系。简单来理解就是：同步按你的代码顺序执行，异步不按照代码顺序执行，异步的执行效率更高。
-什么时候用异步编程
-在前端编程中（甚至后端有时也是这样），我们在处理一些简短、快速的操作时，例如计算 1 + 1 的结果，往往...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-01-30T00:00:00+08:00">2024-01-30</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/">Electron-Vue-WebRTC客户端学习</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Electron-Vue-WebRTC客户端学习</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/01/30/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/01/29/metaGEM使用小记-解决各种问题-2024-2（二）-daf9e5675b4d49cc855dd652b38a99e5/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/01/29/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%BA%8C%EF%BC%89-daf9e5675b4d49cc855dd652b38a99e5/"  itemprop="url">
-        metaGEM使用小记(解决各种问题)2024.1(二)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        metaGEM使用小记(解决各种问题)2024.2（二）书接上文，貌似配置还有点问题。跑了半天以后迟迟看不到结果，htop一看CPU占用几乎为0，应该是没跑起来，squeue 再一看，状态是PD，意思是等待，正常情况应该是R。于是我有网上找了下原因，说只有空闲条件满足job的运行条件才会运行。
 
-我做了以下操作：
-先scancle 掉所有队列里的人物
-修改slurm.config 的参数稍大...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-01-29T00:00:00+08:00">2024-01-29</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/">MAGs云分析</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/" itemprop="url"><span itemprop="name">MAGs云分析</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/01/29/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%BA%8C%EF%BC%89-daf9e5675b4d49cc855dd652b38a99e5/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/01/28/metaGEM使用小记-解决各种问题-2024-1-2a55eec867d5441b9829bd5428024882/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/01/28/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-1-2a55eec867d5441b9829bd5428024882/"  itemprop="url">
-        metaGEM使用小记(解决各种问题)2024.1(一)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        metaGEM使用小记(解决各种问题)2024.1(一)前言，如何把数据从百度云上下载到linux服务器上可以直接通过pip下载：pip install bypy -y
-第一次使用时需要随便输入一个命令以激活授权界面，如输入 bypy info
-然后打开提示的连接
-
-将复制的内容粘贴到终端后回车，等待即可。
-登陆成功后会提示如下信息
-
-登录百度网盘(我的应用数据&#x2F;bypy&#x2F...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-01-28T00:00:00+08:00">2024-01-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/">MAGs云分析</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/" itemprop="url"><span itemprop="name">MAGs云分析</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/01/28/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-1-2a55eec867d5441b9829bd5428024882/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/09/02/解决Gitee图床不显示问题/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/09/02/%E8%A7%A3%E5%86%B3Gitee%E5%9B%BE%E5%BA%8A%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/"  itemprop="url">
-        解决Gitee图床不显示问题(使用阿里云OSS搭建图床)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        问题前段时间搞博客弄了一个Gitee图床，图片可以上传成功，外部链接可以打开图片，但是hexo s后本地都打开不了图片，但是相应的源码标签里依然有图片链接地址。这就让我很疑惑。
-报错是class=lazyload error
-
-可以看到下图这里是有图片的，就是不能显示。
-
-在网上并没有找到相关的报错解释，然后我又查找了lazyload是懒加载，但是也没有查明相关的报错解决方法，于是我又怀疑是...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-09-02T16:51:50+08:00">2023-09-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url"><span itemprop="name">其他</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/09/02/%E8%A7%A3%E5%86%B3Gitee%E5%9B%BE%E5%BA%8A%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/09/02/SGX-Software-Guard-eXtensions-构建可信执行环境-一/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/"  itemprop="url">
-        SGX(Software Guard eXtensions)_linux构建可信执行环境(一)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        SGX(Software Guard eXtensions)_linux构建可信执行环境(一)：如何开发第一个最简单的 SGX 应用 HelloWorld一、了解SGX1.1SGX定义
-Intel 软件防护扩展SGX（Software Guard Extension）是一项针对台式机和服务器平台的旨在满足可信计算需求的技术。Intel SGX是Intel架构新的扩展，在原有架构上增加了一组新...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-09-02T16:42:16+08:00">2023-09-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/SGX/">SGX</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/SGX/" itemprop="url"><span itemprop="name">SGX</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/09/02/SGX-Software-Guard-eXtensions-%E6%9E%84%E5%BB%BA%E5%8F%AF%E4%BF%A1%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83-%E4%B8%80/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/05/15/RSA数学原理解析/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/15/RSA%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/"  itemprop="url">
-        RSA数学原理解析
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        1.引言
-RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网和电子商务中. 它使用一对密钥进行加密和解密, 分别称为公钥(public key)和私钥(private key). 使用公钥加密的内容只能用私钥解密, 使用私钥加密的内容只能用公钥解密, 并且不能通过公钥在可行的时间内计算出私钥. 这使得加密通信不需要交换私钥, 保证了通信的安全. 那么它是怎么做到...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-15T11:18:16+08:00">2023-05-15</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/CTF%E5%85%A5%E9%97%A8/">CTF入门</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/CTF%E5%85%A5%E9%97%A8/" itemprop="url"><span itemprop="name">CTF入门</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/15/RSA%E6%95%B0%E5%AD%A6%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/05/04/大三网络安全人工智能实验报告/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"  itemprop="url">
-        大三网络安全人工智能实验报告
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        《人工智能》课程实验报告网络与信息安全学院班  级：  20180XX             
-姓  名：  XXX          
-学  号：  20009XXXX            
-提交时间：  2023. 4. 20         
-基于神经网络的MNIST手写数字识别一、实验目的
-掌握运用神经网络模型解决有监督学习问题
-
-掌握机器学习中常用的模型训练测试方法
-
-了解不同...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-04T20:09:16+08:00">2023-05-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/">学校作业</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" itemprop="url"><span itemprop="name">学校作业</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/05/04/大三网络安全智能终端实验一/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%99%BA%E8%83%BD%E7%BB%88%E7%AB%AF%E5%AE%9E%E9%AA%8C%E4%B8%80/"  itemprop="url">
-        大三网络安全智能终端实验一
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        西安电子科技大学网信院
-智能终端实验实验报告（一）班级：2018XX学号：20009XXXX日期：2023.4.24一、实验摘要研究不断推动机器学习模型更快，更精确，更有效。然而，设计和训练模型的一个经常被忽视的方面是安全性和鲁棒性，特别是在面对希望欺骗模型的对手时。向图像添加不可察觉的扰动可以导致完全不同的模型性能。我们将通过一个图像分类器的例子来探讨这个主题。具体来说，我们将使用第一个和...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2023-05-04T20:09:16+08:00">2023-05-04</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/">学校作业</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" itemprop="url"><span itemprop="name">学校作业</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2023/05/04/%E5%A4%A7%E4%B8%89%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%99%BA%E8%83%BD%E7%BB%88%E7%AB%AF%E5%AE%9E%E9%AA%8C%E4%B8%80/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-  
 
 
 </div>
@@ -3373,156 +2970,31 @@ RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网
     
     
       
-<section class="widget blogger desktop mobile ">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box circle' href='/about/'>
-          <img no-lazy src='https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/xaing.jpg'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-          <h2>小吴の博客</h2>
-        
-        
-        
-          <p><span id="jinrishici-sentence">小吴の博客</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/2661275860@qq.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/Snowman12137/Snowman12137.github.io"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop">
-    
-  <header>
-    
-      <a href='/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/CTF%E5%85%A5%E9%97%A8/" href="/categories/CTF%E5%85%A5%E9%97%A8/"
-            active-action="action-categoriesCTFE585A5E997A8"
-            ><div class='name'>CTF入门</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/"
-            active-action="action-categoriesElectron-Vue-WebRTCE5AEA2E688B7E7ABAFE5ADA6E4B9A0"
-            ><div class='name'>Electron-Vue-WebRTC客户端学习</div><div class='badge'>(3)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/"
-            active-action="action-categoriesMAGsE4BA91E58886E69E90"
-            ><div class='name'>MAGs云分析</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/SGX/" href="/categories/SGX/"
-            active-action="action-categoriesSGX"
-            ><div class='name'>SGX</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%85%B6%E4%BB%96/" href="/categories/%E5%85%B6%E4%BB%96/"
-            active-action="action-categoriesE585B6E4BB96"
-            ><div class='name'>其他</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/"
-            active-action="action-categoriesE5ADA6E6A0A1E4BD9CE4B89A"
-            ><div class='name'>学校作业</div><div class='badge'>(2)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Nodejs%E5%AD%A6%E4%B9%A0/" style="font-size: 24px; color: #555">Nodejs学习</a> <a href="/tags/SGX/" style="font-size: 14px; color: #999">SGX</a> <a href="/tags/metaGEM/" style="font-size: 19px; color: #777">metaGEM</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/" style="font-size: 14px; color: #999">博客问题</a> <a href="/tags/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" style="font-size: 19px; color: #777">学校作业</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">机器学习</a> <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 14px; color: #999">现代密码学</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky">
+
+  
+  
+
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%B7%A5%E5%85%B7%E6%A8%A1%E5%9D%97"><span class="toc-text">1.工具模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-OS%E6%A8%A1%E5%9D%97"><span class="toc-text">a.OS模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-Path%E6%A8%A1%E5%9D%97"><span class="toc-text">b.Path模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-Net%E6%A8%A1%E5%9D%97-Socket"><span class="toc-text">c.Net模块(Socket)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d-DNS%E6%A8%A1%E5%9D%97"><span class="toc-text">d.DNS模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Web%E6%A8%A1%E5%9D%97"><span class="toc-text">2.Web模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-%E5%88%9B%E5%BB%BAWeb%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">a.创建Web服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E5%88%9B%E5%BB%BAWeb%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-text">b创建Web客户端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Express%E6%A1%86%E6%9E%B6"><span class="toc-text">3.Express框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-%E5%AE%89%E8%A3%85"><span class="toc-text">a.安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b-%E8%AF%B7%E6%B1%82%E5%92%8C%E5%93%8D%E5%BA%94"><span class="toc-text">b.请求和响应</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c-%E8%B7%AF%E7%94%B1"><span class="toc-text">c.路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#d-%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="toc-text">d.静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#e-GET%E6%96%B9%E6%B3%95"><span class="toc-text">e.GET方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#f-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">f.文件上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#g-Cookie%E7%AE%A1%E7%90%86"><span class="toc-text">g.Cookie管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-RESTful-API"><span class="toc-text">4.RESTful API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a-RESTful-Web-Services"><span class="toc-text">a.RESTful Web Services</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#b-%E5%88%9B%E5%BB%BA-RESTful"><span class="toc-text">b.创建 RESTful</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#c-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%88%97%E8%A1%A8%EF%BC%9A"><span class="toc-text">c.获取用户列表：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#d%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7"><span class="toc-text">d添加用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E8%AF%A6%E6%83%85"><span class="toc-text">显示用户详情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">删除用户</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Node-js-%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">5.Node.js 多进程</span></a></li></ol>
+  </div>
+</section>
+
+  
 
 </div>
 
@@ -4415,7 +3887,7 @@ RSA算法(RSA algorithm)是一种非对称加密算法, 广泛应用在互联网
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/Electron-Vue-WebRTC客户端学习/","name":"Electron-Vue-WebRTC客户端学习"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/02/02/Node-js学习（三）/","name":"Node.js学习（三）"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Node.js学习（三）","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/02/02/Node-js%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/","wordCount":0,"datePublished":"2024-02-01T16:00:00.000Z","dateModified":"2024-02-03T17:04:09.455Z","articleSection":"Electron-Vue-WebRTC客户端学习","keywords":"Nodejs学习","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
