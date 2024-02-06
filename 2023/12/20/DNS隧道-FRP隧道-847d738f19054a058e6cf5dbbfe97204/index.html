@@ -1,0 +1,3820 @@
+<!DOCTYPE html>
+<html lang="zh-CN,en,zh-TW,default">
+    <head hexo-theme='https://github.com/volantis-x/hexo-theme-volantis/#6.0.0-alpha.1'>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="Volantis" content="6.0.0-alpha.1">
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+  <link rel="canonical" href="https://snowman12137.github.io/2023/12/20/dns隧道-frp隧道-847d738f19054a058e6cf5dbbfe97204/"/>
+  <!-- 渲染优化 -->
+    <meta http-equiv='x-dns-prefetch-control' content='on' />
+      <link rel='dns-prefetch' href='https://unpkg.com'>
+      <link rel="preconnect" href="https://unpkg.com" crossorigin>
+      <link rel='dns-prefetch' href='https://cdn.bootcdn.net'>
+      <link rel="preconnect" href="https://cdn.bootcdn.net" crossorigin>
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Security-Policy" content=" default-src 'self' https:; block-all-mixed-content; base-uri 'self' https:; form-action 'self' https:; worker-src 'self' https:; connect-src 'self' https: *; img-src 'self' data: https: *; media-src 'self' https: *; font-src 'self' data: https: *; frame-src 'self' https: *; manifest-src 'self' https: *; child-src https:; script-src 'self' https: 'unsafe-inline' *; style-src 'self' https: 'unsafe-inline' *; ">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+  <!-- import head_begin begin -->
+  <!-- import head_begin end -->
+  <!-- Custom Files headBegin begin-->
+  
+  <!-- Custom Files headBegin end-->
+  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <!-- feed -->
+  <!-- 页面元数据 -->
+  <title>DNS隧道+FRP隧道搭建 - 小吴の博客</title>
+  <meta name="keywords" content="CTF网络攻防,null">
+  <meta desc name="description" content="我的博客 - Snowman - 小吴の博客">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="DNS隧道+FRP隧道搭建">
+<meta property="og:url" content="https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93-847d738f19054a058e6cf5dbbfe97204/index.html">
+<meta property="og:site_name" content="小吴の博客">
+<meta property="og:description" content="DNS隧道+FRP隧道一、DNS隧道准备1.DNS隧道介绍DNS隧道，是隧道技术的一种。当我们HTTP、HTTPS这样的上层协议、正反向端口转发都失败的时候，可以尝试DNS隧道。DNS隧道很难防范，因为平时的业务等功能难免会用到DNS协议进行解析，所以防火墙大多对DNS流量是放行的状态。这时候，如果我们在不出机器构造一个恶意的域名，本地DNS服务器无法给出回答时，就会以迭代查询的方式通过互联网定位">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2023-12-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-02-06T18:23:00.453Z">
+<meta property="article:author" content="Snowman">
+<meta property="article:tag" content="CTF网络攻防">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+  <style>
+    /* 首屏样式 */
+    #safearea {
+  display: none;
+}
+:root {
+  --color-site-body: #f4f4f4;
+  --color-site-bg: #f4f4f4;
+  --color-site-inner: #fff;
+  --color-site-footer: #666;
+  --color-card: #fff;
+  --color-text: #444;
+  --color-block: #f6f6f6;
+  --color-inlinecode: #c74f00;
+  --color-codeblock: #fff7ea;
+  --color-h1: #3a3a3a;
+  --color-h2: #3a3a3a;
+  --color-h3: #333;
+  --color-h4: #444;
+  --color-h5: #555;
+  --color-h6: #666;
+  --color-p: #444;
+  --color-list: #666;
+  --color-list-hl: #30ad91;
+  --color-meta: #888;
+  --color-read-bkg: #e0d8c8;
+  --color-read-post: #f8f1e2;
+  --color-copyright-bkg: #f5f5f5;
+}
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+*::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+*::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: #3dd9b6;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #ff5722;
+}
+html {
+  color: var(--color-text);
+  width: 100%;
+  height: 100%;
+  font-family: UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
+  font-size: 16px;
+}
+html >::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+html >::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+html >::-webkit-scrollbar-thumb {
+  background: #3dd9b6;
+  cursor: pointer;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+html >::-webkit-scrollbar-thumb:hover {
+  background: #ff5722;
+}
+body {
+  background-color: var(--color-site-body);
+  text-rendering: optimizelegibility;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body.modal-active {
+  overflow: hidden;
+}
+@media screen and (max-width: 680px) {
+  body.modal-active {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+a {
+  color: #2092ec;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+a:hover {
+  color: #ff5722;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+ul,
+ol {
+  padding-left: 0;
+}
+ul li,
+ol li {
+  list-style: none;
+}
+header {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+img {
+  border: 0;
+  background: none;
+  max-width: 100%;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  height: 0;
+  border: 0;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-bottom: 1px solid rgba(68,68,68,0.1);
+}
+button,
+input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button {
+  overflow: visible;
+  text-transform: none;
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+@supports (backdrop-filter: blur(20px)) {
+  .blur {
+    background: rgba(255,255,255,0.9) !important;
+    backdrop-filter: saturate(200%) blur(20px);
+  }
+}
+.shadow {
+  box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+}
+.shadow.floatable {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.shadow.floatable:hover {
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.1), 0 4px 8px 0px rgba(0,0,0,0.1), 0 8px 16px 0px rgba(0,0,0,0.1);
+}
+#l_cover {
+  min-height: 64px;
+}
+.cover-wrapper {
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: 100vh;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -khtml-flex-wrap: nowrap;
+  -moz-flex-wrap: nowrap;
+  -o-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  color: var(--color-site-inner);
+  padding: 0 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: -100px;
+}
+.cover-wrapper .cover-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.cover-wrapper .cover-bg.lazyload:not(.loaded) {
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+}
+.cover-wrapper .cover-bg.lazyload.loaded {
+  animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-name: fadeIn;
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -khtml-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -khtml-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -khtml-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -khtml-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+.cover-wrapper .cover-body {
+  z-index: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.cover-wrapper#full {
+  height: calc(100vh + 100px);
+  padding-bottom: 100px;
+}
+.cover-wrapper#half {
+  max-height: 640px;
+  min-height: 400px;
+  height: calc(36vh - 64px + 200px);
+}
+.cover-wrapper #scroll-down {
+  width: 100%;
+  height: 64px;
+  position: absolute;
+  bottom: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+.cover-wrapper #scroll-down .scroll-down-effects {
+  color: #fff;
+  font-size: 24px;
+  line-height: 64px;
+  position: absolute;
+  width: 24px;
+  left: calc(50% - 12px);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  animation: scroll-down-effect 1.5s infinite;
+  -webkit-animation: scroll-down-effect 1.5s infinite;
+  -khtml-animation: scroll-down-effect 1.5s infinite;
+  -moz-animation: scroll-down-effect 1.5s infinite;
+  -o-animation: scroll-down-effect 1.5s infinite;
+  -ms-animation: scroll-down-effect 1.5s infinite;
+}
+@-moz-keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+  50% {
+    top: -16px;
+    opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-webkit-keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+  50% {
+    top: -16px;
+    opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-o-keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+  50% {
+    top: -16px;
+    opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@keyframes scroll-down-effect {
+  0% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+  50% {
+    top: -16px;
+    opacity: 0.4;
+    -webkit-opacity: 0.4;
+    -moz-opacity: 0.4;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+.cover-wrapper .cover-body {
+  margin-top: 64px;
+  margin-bottom: 100px;
+}
+.cover-wrapper .cover-body,
+.cover-wrapper .cover-body .top,
+.cover-wrapper .cover-body .bottom {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  max-width: 100%;
+}
+.cover-wrapper .cover-body .bottom {
+  margin-top: 32px;
+}
+.cover-wrapper .cover-body .title {
+  font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
+  font-size: 3.125rem;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.cover-wrapper .cover-body .subtitle {
+  font-size: 20px;
+}
+.cover-wrapper .cover-body .logo {
+  max-height: 120px;
+  max-width: calc(100% - 4 * 16px);
+}
+@media screen and (min-height: 1024px) {
+  .cover-wrapper .cover-body .title {
+    font-size: 3rem;
+  }
+  .cover-wrapper .cover-body .subtitle {
+    font-size: 1.05rem;
+  }
+  .cover-wrapper .cover-body .logo {
+    max-height: 150px;
+  }
+}
+.cover-wrapper .cover-body .m_search {
+  position: relative;
+  max-width: calc(100% - 16px);
+  width: 320px;
+  vertical-align: middle;
+}
+.cover-wrapper .cover-body .m_search .form {
+  position: relative;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  width: 100%;
+}
+.cover-wrapper .cover-body .m_search .icon,
+.cover-wrapper .cover-body .m_search .input {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.cover-wrapper .cover-body .m_search .icon {
+  position: absolute;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  line-height: 2.5rem;
+  width: 32px;
+  top: 0;
+  left: 5px;
+  color: rgba(68,68,68,0.75);
+}
+.cover-wrapper .cover-body .m_search .input {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  height: 2.5rem;
+  width: 100%;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  font-size: 0.875rem;
+  -webkit-appearance: none;
+  padding-left: 36px;
+  border-radius: 1.4rem;
+  -webkit-border-radius: 1.4rem;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: var(--color-text);
+}
+@media screen and (max-width: 500px) {
+  .cover-wrapper .cover-body .m_search .input {
+    padding-left: 36px;
+  }
+}
+.cover-wrapper .cover-body .m_search .input:hover {
+  background: rgba(255,255,255,0.8);
+}
+.cover-wrapper .cover-body .m_search .input:focus {
+  background: #fff;
+}
+.cover-wrapper .list-h {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -khtml-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  align-items: stretch;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.cover-wrapper .list-h a {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 0;
+  -ms-flex: 1 0;
+  flex: 1 0;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  font-weight: 600;
+}
+.cover-wrapper .list-h a img {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  margin: 4px;
+  min-width: 40px;
+  max-width: 44px;
+}
+@media screen and (max-width: 768px) {
+  .cover-wrapper .list-h a img {
+    min-width: 36px;
+    max-width: 40px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .cover-wrapper .list-h a img {
+    margin: 2px 4px;
+    min-width: 32px;
+    max-width: 36px;
+  }
+}
+@media screen and (max-width: 375px) {
+  .cover-wrapper .list-h a img {
+    min-width: 28px;
+    max-width: 32px;
+  }
+}
+.cover-wrapper {
+  max-width: 100%;
+}
+.cover-wrapper.search .bottom .menu {
+  margin-top: 16px;
+}
+.cover-wrapper.search .bottom .menu .list-h a {
+  white-space: nowrap;
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 2px;
+  margin: 4px;
+  color: var(--color-site-inner);
+  opacity: 0.75;
+  -webkit-opacity: 0.75;
+  -moz-opacity: 0.75;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  border-bottom: 2px solid transparent;
+}
+.cover-wrapper.search .bottom .menu .list-h a i {
+  margin-right: 4px;
+}
+.cover-wrapper.search .bottom .menu .list-h a p {
+  font-size: 0.9375rem;
+}
+.cover-wrapper.search .bottom .menu .list-h a:hover,
+.cover-wrapper.search .bottom .menu .list-h a.active,
+.cover-wrapper.search .bottom .menu .list-h a:active {
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  border-bottom: 2px solid var(--color-site-inner);
+}
+.cover-wrapper.dock .menu,
+.cover-wrapper.featured .menu,
+.cover-wrapper.focus .menu {
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.cover-wrapper.dock .menu .list-h a,
+.cover-wrapper.featured .menu .list-h a,
+.cover-wrapper.focus .menu .list-h a {
+  -webkit-box-direction: normal;
+  -moz-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  line-height: 24px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-bottom: none;
+  text-align: center;
+  align-content: flex-end;
+  color: rgba(68,68,68,0.7);
+  font-size: 1.5rem;
+}
+@media screen and (max-width: 500px) {
+  .cover-wrapper.dock .menu .list-h a,
+  .cover-wrapper.featured .menu .list-h a,
+  .cover-wrapper.focus .menu .list-h a {
+    padding: 12px 8px;
+  }
+}
+.cover-wrapper.dock .menu .list-h a i,
+.cover-wrapper.featured .menu .list-h a i,
+.cover-wrapper.focus .menu .list-h a i {
+  margin: 8px;
+}
+.cover-wrapper.dock .menu .list-h a p,
+.cover-wrapper.featured .menu .list-h a p,
+.cover-wrapper.focus .menu .list-h a p {
+  font-size: 0.875rem;
+}
+.cover-wrapper.dock .menu .list-h a.active,
+.cover-wrapper.featured .menu .list-h a.active,
+.cover-wrapper.focus .menu .list-h a.active {
+  background: var(--color-card);
+  backdrop-filter: none;
+}
+.cover-wrapper.dock .menu .list-h a.active i,
+.cover-wrapper.featured .menu .list-h a.active i,
+.cover-wrapper.focus .menu .list-h a.active i,
+.cover-wrapper.dock .menu .list-h a.active i+p,
+.cover-wrapper.featured .menu .list-h a.active i+p,
+.cover-wrapper.focus .menu .list-h a.active i+p {
+  color: #3dd9b6;
+}
+.cover-wrapper.dock .menu .list-h a.active img+p,
+.cover-wrapper.featured .menu .list-h a.active img+p,
+.cover-wrapper.focus .menu .list-h a.active img+p {
+  color: var(--color-text);
+}
+.cover-wrapper.dock .menu .list-h a:hover,
+.cover-wrapper.featured .menu .list-h a:hover,
+.cover-wrapper.focus .menu .list-h a:hover {
+  background: var(--color-card);
+}
+.cover-wrapper.dock .top {
+  margin-bottom: 48px;
+}
+.cover-wrapper.dock .menu {
+  background: rgba(255,255,255,0.5);
+  position: absolute;
+  bottom: 0;
+  max-width: 100%;
+}
+.cover-wrapper.dock .menu .list-h {
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -khtml-flex-wrap: nowrap;
+  -moz-flex-wrap: nowrap;
+  -o-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  margin: 4px;
+}
+.cover-wrapper.dock .menu .list-h a+a {
+  margin-left: 4px;
+}
+@media screen and (max-width: 500px) {
+  .cover-wrapper.dock .menu .list-h {
+    overflow-x: scroll;
+  }
+  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+  }
+  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-track-piece {
+    background: transparent;
+  }
+  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-thumb {
+    background: #3dd9b6;
+    cursor: pointer;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+  }
+  .cover-wrapper.dock .menu .list-h::-webkit-scrollbar-thumb:hover {
+    background: #ff5722;
+  }
+}
+@supports (backdrop-filter: blur(20px)) {
+  .cover-wrapper.dock .menu {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: saturate(200%) blur(20px);
+  }
+}
+.cover-wrapper #parallax-window {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.parallax-mirror {
+  animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-name: fadeIn;
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@font-face {
+  font-family: 'UbuntuMono';
+  src: url("https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf");
+  font-weight: 'normal';
+  font-style: 'normal';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Varela Round';
+  src: url("https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/VarelaRound/VarelaRound-Regular.ttf");
+  font-weight: 'normal';
+  font-style: 'normal';
+  font-display: swap;
+}
+.l_header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 64px;
+  background: var(--color-card);
+  box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+}
+.l_header.auto {
+  transition: opacity 0.4s ease;
+  -webkit-transition: opacity 0.4s ease;
+  -khtml-transition: opacity 0.4s ease;
+  -moz-transition: opacity 0.4s ease;
+  -o-transition: opacity 0.4s ease;
+  -ms-transition: opacity 0.4s ease;
+  visibility: hidden;
+}
+.l_header.auto.show {
+  opacity: 1 !important;
+  -webkit-opacity: 1 !important;
+  -moz-opacity: 1 !important;
+  visibility: visible;
+}
+.l_header .container {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.l_header #wrapper {
+  height: 100%;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.l_header #wrapper .nav-main,
+.l_header #wrapper .nav-sub {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -khtml-flex-wrap: nowrap;
+  -moz-flex-wrap: nowrap;
+  -o-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -khtml-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  align-items: center;
+}
+.l_header #wrapper .nav-main {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.l_header #wrapper.sub .nav-main {
+  transform: translateY(-64px);
+  -webkit-transform: translateY(-64px);
+  -khtml-transform: translateY(-64px);
+  -moz-transform: translateY(-64px);
+  -o-transform: translateY(-64px);
+  -ms-transform: translateY(-64px);
+}
+.l_header #wrapper .nav-sub {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+  opacity: 0;
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  height: 64px;
+  width: calc(100% - 2 * 16px);
+  position: absolute;
+}
+.l_header #wrapper .nav-sub ::-webkit-scrollbar {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+@media screen and (min-width: 2048px) {
+  .l_header #wrapper .nav-sub {
+    max-width: 55vw;
+    margin: auto;
+  }
+}
+.l_header #wrapper.sub .nav-sub {
+  opacity: 1;
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+}
+.l_header #wrapper .title {
+  position: relative;
+  color: var(--color-text);
+  padding-left: 24px;
+  max-height: 64px;
+}
+.l_header #wrapper .nav-main .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+  line-height: 64px;
+  padding: 0 24px;
+  font-size: 1.25rem;
+  font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
+}
+.l_header #wrapper .nav-main .title img {
+  height: 64px;
+}
+.l_header .nav-sub {
+  max-width: 1080px;
+  margin: auto;
+}
+.l_header .nav-sub .title {
+  font-weight: bold;
+  font-family: UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
+  line-height: 1.2;
+  max-height: 64px;
+  white-space: normal;
+  flex-shrink: 1;
+}
+.l_header .switcher {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  line-height: 64px;
+  align-items: center;
+}
+.l_header .switcher .s-toc {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .l_header .switcher .s-toc {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: -ms-flexbox /* TWEENER - IE 10 */;
+    display: -webkit-flex /* NEW - Chrome */;
+    display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+    display: flex;
+  }
+}
+.l_header .switcher >li {
+  height: 48px;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+  margin: 2px;
+}
+@media screen and (max-width: 500px) {
+  .l_header .switcher >li {
+    margin: 0 1px;
+    height: 48px;
+  }
+}
+.l_header .switcher >li >a {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0.85em 1.1em;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  border: none;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+  color: #3dd9b6;
+}
+.l_header .switcher >li >a:hover {
+  border: none;
+}
+.l_header .switcher >li >a.active,
+.l_header .switcher >li >a:active {
+  border: none;
+  background: var(--color-site-bg);
+}
+@media screen and (max-width: 500px) {
+  .l_header .switcher >li >a {
+    width: 36px;
+    height: 48px;
+  }
+}
+.l_header .nav-sub .switcher {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+}
+.l_header .m_search {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  height: 64px;
+  width: 240px;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+@media screen and (max-width: 1024px) {
+  .l_header .m_search {
+    width: 44px;
+    min-width: 44px;
+  }
+  .l_header .m_search input::placeholder {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+  }
+  .l_header .m_search:hover {
+    width: 240px;
+  }
+  .l_header .m_search:hover input::placeholder {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@media screen and (min-width: 500px) {
+  .l_header .m_search:hover .input {
+    width: 100%;
+  }
+  .l_header .m_search:hover .input::placeholder {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@media screen and (max-width: 500px) {
+  .l_header .m_search {
+    min-width: 0;
+  }
+  .l_header .m_search input::placeholder {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+.l_header .m_search .form {
+  position: relative;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.l_header .m_search .icon {
+  position: absolute;
+  width: 36px;
+  left: 5px;
+  color: var(--color-meta);
+}
+@media screen and (max-width: 500px) {
+  .l_header .m_search .icon {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: none;
+  }
+}
+.l_header .m_search .input {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  line-height: 1.3;
+  width: 100%;
+  color: var(--color-text);
+  background: #fafafa;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-left: 40px;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border: none;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+@media screen and (min-width: 500px) {
+  .l_header .m_search .input:focus {
+    box-shadow: 0 4px 8px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 4px 8px 0px rgba(0,0,0,0.1);
+  }
+}
+@media screen and (max-width: 500px) {
+  .l_header .m_search .input {
+    background: var(--color-block);
+    padding-left: 8px;
+    border: none;
+  }
+  .l_header .m_search .input:hover,
+  .l_header .m_search .input:focus {
+    border: none;
+  }
+}
+@media (max-width: 500px) {
+  .l_header .m_search {
+    left: 0;
+    width: 0;
+    overflow: hidden;
+    position: absolute;
+    background: #fff;
+    transition: all 0.28s ease;
+    -webkit-transition: all 0.28s ease;
+    -khtml-transition: all 0.28s ease;
+    -moz-transition: all 0.28s ease;
+    -o-transition: all 0.28s ease;
+    -ms-transition: all 0.28s ease;
+  }
+  .l_header .m_search .input {
+    border-radius: 32px;
+    -webkit-border-radius: 32px;
+    margin-left: 16px;
+    padding-left: 16px;
+  }
+  .l_header.z_search-open .m_search {
+    width: 100%;
+  }
+  .l_header.z_search-open .m_search .input {
+    width: calc(100% - 120px);
+  }
+}
+ul.m-pc >li>a {
+  color: inherit;
+  border-bottom: 2px solid transparent;
+}
+ul.m-pc >li>a:active,
+ul.m-pc >li>a.active {
+  border-bottom: 2px solid #3dd9b6;
+}
+ul.m-pc li:hover >ul.list-v,
+ul.list-v li:hover >ul.list-v {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+ul.nav-list-h {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: -ms-flexbox /* TWEENER - IE 10 */;
+  display: -webkit-flex /* NEW - Chrome */;
+  display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+  display: flex;
+  align-items: stretch;
+}
+ul.nav-list-h>li {
+  position: relative;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -khtml-justify-content: center;
+  -moz-justify-content: center;
+  -o-justify-content: center;
+  -ms-justify-content: center;
+  height: 100%;
+  line-height: 2.4;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+ul.nav-list-h>li >a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 600;
+}
+ul.list-v {
+  z-index: 1;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  position: absolute;
+  background: var(--color-card);
+  box-shadow: 0 2px 4px 0px rgba(0,0,0,0.08), 0 4px 8px 0px rgba(0,0,0,0.08), 0 8px 16px 0px rgba(0,0,0,0.08);
+  -webkit-box-shadow: 0 2px 4px 0px rgba(0,0,0,0.08), 0 4px 8px 0px rgba(0,0,0,0.08), 0 8px 16px 0px rgba(0,0,0,0.08);
+  margin-top: -6px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  padding: 8px 0;
+}
+ul.list-v.show {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+}
+ul.list-v hr {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+ul.list-v >li {
+  white-space: nowrap;
+  word-break: keep-all;
+}
+ul.list-v >li.header {
+  font-size: 0.78125rem;
+  font-weight: bold;
+  line-height: 2em;
+  color: var(--color-meta);
+  margin: 8px 16px 4px;
+}
+ul.list-v >li.header i {
+  margin-right: 8px;
+}
+ul.list-v >li ul {
+  margin-left: 0;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  margin-top: -40px;
+}
+ul.list-v .aplayer-container {
+  min-height: 64px;
+  padding: 6px 16px;
+}
+ul.list-v >li>a {
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  color: var(--color-list);
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 36px;
+  padding: 0 20px 0 16px;
+  text-overflow: ellipsis;
+  margin: 0 4px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+@media screen and (max-width: 1024px) {
+  ul.list-v >li>a {
+    line-height: 40px;
+  }
+}
+ul.list-v >li>a >i {
+  margin-right: 8px;
+}
+ul.list-v >li>a:active,
+ul.list-v >li>a.active {
+  color: var(--color-list-hl);
+}
+ul.list-v >li>a:hover {
+  color: var(--color-list-hl);
+  background: var(--color-site-bg);
+}
+.l_header .menu >ul>li>a {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: block;
+  padding: 0 8px;
+}
+.l_header .menu >ul>li>a >i {
+  margin-right: 4px;
+}
+.l_header ul.nav-list-h>li {
+  color: var(--color-list);
+  line-height: 64px;
+}
+.l_header ul.nav-list-h>li >a {
+  max-height: 64px;
+  overflow: hidden;
+  color: inherit;
+}
+.l_header ul.nav-list-h>li >a:active,
+.l_header ul.nav-list-h>li >a.active {
+  color: #3dd9b6;
+}
+.l_header ul.nav-list-h>li:hover>a {
+  color: var(--color-list-hl);
+}
+.l_header ul.nav-list-h>li i.music {
+  animation: rotate-effect 1.5s linear infinite;
+  -webkit-animation: rotate-effect 1.5s linear infinite;
+  -khtml-animation: rotate-effect 1.5s linear infinite;
+  -moz-animation: rotate-effect 1.5s linear infinite;
+  -o-animation: rotate-effect 1.5s linear infinite;
+  -ms-animation: rotate-effect 1.5s linear infinite;
+}
+@-moz-keyframes rotate-effect {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -khtml-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -khtml-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -khtml-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -khtml-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate-effect {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -khtml-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -khtml-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -khtml-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -khtml-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+@-o-keyframes rotate-effect {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -khtml-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -khtml-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -khtml-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -khtml-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+@keyframes rotate-effect {
+  0% {
+    transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -khtml-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+  }
+  25% {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -khtml-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -khtml-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+    -khtml-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -khtml-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+  }
+}
+.menu-phone li ul.list-v {
+  right: calc(100% - 0.5 * 16px);
+}
+.menu-phone li ul.list-v ul {
+  right: calc(100% - 0.5 * 16px);
+}
+#wrapper {
+  max-width: 1080px;
+  margin: auto;
+}
+@media screen and (min-width: 2048px) {
+  #wrapper {
+    max-width: 55vw;
+  }
+}
+#wrapper .menu {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1 1;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  margin: 0 16px 0 0;
+}
+#wrapper .menu .list-v ul {
+  left: calc(100% - 0.5 * 16px);
+}
+.menu-phone {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  margin-top: 16px;
+  right: 8px;
+  transition: all 0.28s ease;
+  -webkit-transition: all 0.28s ease;
+  -khtml-transition: all 0.28s ease;
+  -moz-transition: all 0.28s ease;
+  -o-transition: all 0.28s ease;
+  -ms-transition: all 0.28s ease;
+}
+.menu-phone ul {
+  right: calc(100% - 0.5 * 16px);
+}
+@media screen and (max-width: 500px) {
+  .menu-phone {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: block;
+  }
+}
+.l_header {
+  max-width: 65vw;
+  left: calc((100% - 65vw) * 0.5);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+@media screen and (max-width: 2048px) {
+  .l_header {
+    max-width: 1112px;
+    left: calc((100% - 1112px) * 0.5);
+  }
+}
+@media screen and (max-width: 1112px) {
+  .l_header {
+    left: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .l_header .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .l_header #wrapper .nav-main .title {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .l_header #wrapper .nav-sub {
+    width: 100%;
+  }
+  .l_header #wrapper .nav-sub .title {
+    overflow-y: scroll;
+    margin-top: 2px;
+    padding: 8px 16px;
+  }
+  .l_header #wrapper .switcher {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: -ms-flexbox /* TWEENER - IE 10 */;
+    display: -webkit-flex /* NEW - Chrome */;
+    display: flex /* NEW, Spec - Opera 12.1, Firefox 20+ */;
+    display: flex;
+    margin-right: 8px;
+  }
+  .l_header .menu {
+    display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+    display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .list-v li {
+    max-width: 270px;
+  }
+}
+#u-search {
+  display: -webkit-box /* OLD - iOS 6-, Safari 3.1-6 */;
+  display: -moz-box /* OLD - Firefox 19- (buggy but mostly works) */;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 60px 20px;
+  z-index: 1001;
+}
+@media screen and (max-width: 680px) {
+  #u-search {
+    padding: 0px;
+  }
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  
+<script>
+if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
+    document.write(
+	'<style>'+
+		'html{'+
+			'overflow-x: hidden !important;'+
+			'overflow-y: hidden !important;'+
+		'}'+
+		'.kill-ie{'+
+			'text-align:center;'+
+			'height: 100%;'+
+			'margin-top: 15%;'+
+			'margin-bottom: 5500%;'+
+		'}'+
+    '.kill-t{'+
+      'font-size: 2rem;'+
+    '}'+
+    '.kill-c{'+
+      'font-size: 1.2rem;'+
+    '}'+
+		'#l_header,#l_body{'+
+			'display: none;'+
+		'}'+
+	'</style>'+
+    '<div class="kill-ie">'+
+        `<span class="kill-t"><b>抱歉，您的浏览器无法访问本站</b></span><br/>`+
+        `<span class="kill-c">微软已经于2016年终止了对 Internet Explorer (IE) 10 及更早版本的支持，<br/>继续使用存在极大的安全隐患，请使用当代主流的浏览器进行访问。</span><br/>`+
+        `<a target="_blank" rel="noopener" href="https://blogs.windows.com/windowsexperience/2021/05/19/the-future-of-internet-explorer-on-windows-10-is-in-microsoft-edge/"><strong>了解详情 ></strong></a>`+
+    '</div>');
+</script>
+
+
+<noscript>
+	<style>
+		html{
+			overflow-x: hidden !important;
+			overflow-y: hidden !important;
+		}
+		.kill-noscript{
+			text-align:center;
+			height: 100%;
+			margin-top: 15%;
+			margin-bottom: 5500%;
+		}
+    .kill-t{
+      font-size: 2rem;
+    }
+    .kill-c{
+      font-size: 1.2rem;
+    }
+		#l_header,#l_body{
+			display: none;
+		}
+	</style>
+    <div class="kill-noscript">
+        <span class="kill-t"><b>抱歉，您的浏览器无法访问本站</b></span><br/>
+        <span class="kill-c">本页面需要浏览器支持（启用）JavaScript</span><br/>
+        <a target="_blank" rel="noopener" href="https://www.baidu.com/s?wd=启用JavaScript"><strong>了解详情 ></strong></a>
+    </div>
+</noscript>
+
+
+  <script>
+  /************这个文件存放不需要重载的全局变量和全局函数*********/
+  window.volantis = {}; // volantis 全局变量
+  volantis.debug = "env"; // 调试模式
+  volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
+  /******************** volantis.dom.$ ********************************/
+  // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
+  function volantisDom(ele) {
+    if (!ele) ele = document.createElement("div")
+    this.ele = ele;
+    // ==============================================================
+    this.ele.find = (c) => {
+      let q = this.ele.querySelector(c)
+      if (q)
+        return new volantisDom(q)
+    }
+    // ==============================================================
+    this.ele.hasClass = (c) => {
+      return this.ele.className.match(new RegExp('(\\s|^)' + c + '(\\s|$)'));
+    }
+    this.ele.addClass = (c) => {
+      this.ele.classList.add(c);
+      return this.ele
+    }
+    this.ele.removeClass = (c) => {
+      this.ele.classList.remove(c);
+      return this.ele
+    }
+    this.ele.toggleClass = (c) => {
+      if (this.ele.hasClass(c)) {
+        this.ele.removeClass(c)
+      } else {
+        this.ele.addClass(c)
+      }
+      return this.ele
+    }
+    // ==============================================================
+    this.ele.on = (c, f) => {
+      this.ele.addEventListener(c, f, false)
+      return this.ele
+    }
+    this.ele.click = (f, r) => {
+      this.ele.on("click", f, r)
+      return this.ele
+    }
+    this.ele.scroll = (f, r) => {
+      this.ele.on("scroll", f, r)
+      return this.ele
+    }
+    // ==============================================================
+    this.ele.html = (c) => {
+      // if(c=== undefined){
+      //   return this.ele.innerHTML
+      // }else{
+      this.ele.innerHTML = c
+      return this.ele
+      // }
+    }
+    // ==============================================================
+    this.ele.hide = (c) => {
+      this.ele.style.display = "none"
+      return this.ele
+    }
+    this.ele.show = (c) => {
+      this.ele.style.display = "block"
+      return this.ele
+    }
+    // ==============================================================
+    return this.ele
+  }
+  volantis.dom.$ = (ele) => {
+    return !!ele ? new volantisDom(ele) : null;
+  }
+  /******************** RunItem ********************************/
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          volantis.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+  /******************** RightMenu ********************************/
+  // volantis.rightmenu.handle(callBack[,"callBackName"]) 外部菜单项控制
+  // 可在 volantis.mouseEvent 处获取右键事件
+  volantis.rightmenu = {};
+  volantis.rightmenu.method = {
+    handle: new RunItem(),
+  }
+  volantis.rightmenu = Object.assign(volantis.rightmenu, {
+    handle: volantis.rightmenu.method.handle.push,
+  });
+  /********************  Dark Mode  ********************************/
+  // /layout/_partial/scripts/darkmode.ejs
+  // volantis.dark.mode 当前模式 dark or light
+  // volantis.dark.toggle() 暗黑模式触发器
+  // volantis.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  volantis.dark = {};
+  volantis.dark.method = {
+    toggle: new RunItem(),
+  };
+  volantis.dark = Object.assign(volantis.dark, {
+    push: volantis.dark.method.toggle.push,
+  });
+  /********************  Message  ********************************/
+  // VolantisApp.message
+  /********************  isMobile  ********************************/
+  // /source/js/app.js
+  // volantis.isMobile
+  // volantis.isMobileOld
+  /********************脚本动态加载函数********************************/
+  // volantis.js(src, cb)  cb 可以传入onload回调函数 或者 JSON对象 例如: volantis.js("src", ()=>{}) 或 volantis.js("src", {defer:true,onload:()=>{}})
+  // volantis.css(src)
+
+  // 返回Promise对象，如下方法同步加载资源，这利于处理文件资源之间的依赖关系，例如：APlayer 需要在 MetingJS 之前加载
+  // (async () => {
+  //     await volantis.js("...theme.plugins.aplayer.js.aplayer...")
+  //     await volantis.js("...theme.plugins.aplayer.js.meting...")
+  // })();
+
+  // 已经加入了setTimeout
+  volantis.js = (src, cb) => {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var HEAD = document.getElementsByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        if (cb) {
+          if (JSON.stringify(cb)) {
+            for (let p in cb) {
+              if (p == "onload") {
+                script[p] = () => {
+                  cb[p]()
+                  resolve()
+                }
+              } else {
+                script[p] = cb[p]
+                script.onload = resolve
+              }
+            }
+          } else {
+            script.onload = () => {
+              cb()
+              resolve()
+            };
+          }
+        } else {
+          script.onload = resolve
+        }
+        script.setAttribute("src", src);
+        HEAD.appendChild(script);
+      });
+    });
+  }
+  volantis.css = (src) => {
+    return new Promise(resolve => {
+      setTimeout(function () {
+        var link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.href = src;
+        link.onload = resolve;
+        document.getElementsByTagName("head")[0].appendChild(link);
+      });
+    });
+  }
+  /********************按需加载的插件********************************/
+  // volantis.import.jQuery().then(()=>{})
+  volantis.import = {
+    jQuery: () => {
+      if (typeof jQuery == "undefined") {
+        return volantis.js("https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js")
+      } else {
+        return new Promise(resolve => {
+          resolve()
+        });
+      }
+    }
+  }
+  /********************** requestAnimationFrame ********************************/
+  // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+  // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+  volantis.requestAnimationFrame = (fn) => {
+    if (!window.requestAnimationFrame) {
+      window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+    }
+    window.requestAnimationFrame(fn)
+  }
+  /************************ layoutHelper *****************************************/
+  volantis.layoutHelper = (helper, html, opt) => {
+    opt = Object.assign({ clean: false}, opt)
+    function myhelper(helper, html, clean) {
+      volantis.tempDiv = document.createElement("div");
+      volantis.tempDiv.innerHTML = html;
+      let layoutHelper = document.querySelector("#layoutHelper-" + helper)
+      if (layoutHelper) {
+        if (clean) {
+          layoutHelper.innerHTML = ""
+        }
+        layoutHelper.append(volantis.tempDiv);
+      }
+    }
+    myhelper(helper, html, opt.clean)
+  }
+  /****************************** 滚动事件处理 ****************************************/
+  volantis.scroll = {
+    engine: new RunItem(),
+    unengine: new RunItem(),
+  };
+  volantis.scroll = Object.assign(volantis.scroll, {
+    push: volantis.scroll.engine.push,
+  });
+  // 滚动条距离顶部的距离
+  volantis.scroll.getScrollTop = () => {
+    let scrollPos;
+    if (window.pageYOffset) {
+      scrollPos = window.pageYOffset;
+    } else if (document.compatMode && document.compatMode != 'BackCompat') {
+      scrollPos = document.documentElement.scrollTop;
+    } else if (document.body) {
+      scrollPos = document.body.scrollTop;
+    }
+    return scrollPos;
+  }
+  volantis.scroll.scrollHeight = function () {
+    return Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+    )
+  }
+  volantis.scroll.offsetHeight = function () {
+    return Math.max(
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    )
+  }
+  volantis.scroll.progress = function () {
+    return volantis.scroll.getScrollTop() / (volantis.scroll.scrollHeight() - volantis.scroll.offsetHeight())
+  }
+  // 使用 requestAnimationFrame 处理滚动事件
+  // `volantis.scroll.del` 中存储了一个数值, 该数值检测一定时间间隔内滚动条滚动的位移, 数值的检测频率是浏览器的刷新频率. 数值为正数时, 表示向下滚动. 数值为负数时, 表示向上滚动.
+  volantis.scroll.handleScrollEvents = () => {
+    volantis.scroll.lastScrollTop = volantis.scroll.getScrollTop()
+    function loop() {
+      const scrollTop = volantis.scroll.getScrollTop();
+      if (volantis.scroll.lastScrollTop !== scrollTop) {
+        volantis.scroll.del = scrollTop - volantis.scroll.lastScrollTop;
+        volantis.scroll.lastScrollTop = scrollTop;
+        // if (volantis.scroll.del > 0) {
+        //   console.log("向下滚动");
+        // } else {
+        //   console.log("向上滚动");
+        // }
+        // 注销过期的unengine未滚动事件
+        volantis.scroll.unengine.list = []
+        volantis.scroll.engine.start();
+      } else {
+        volantis.scroll.unengine.start();
+      }
+      volantis.requestAnimationFrame(loop)
+    }
+    volantis.requestAnimationFrame(loop)
+  }
+  volantis.scroll.handleScrollEvents()
+  volantis.scroll.ele = null;
+  // 触发页面滚动至目标元素位置
+  volantis.scroll.to = (ele, option = {}) => {
+    if (!ele) return;
+    volantis.scroll.ele = ele;
+    // 默认配置
+    opt = {
+      top: ele.getBoundingClientRect().top + document.documentElement.scrollTop,
+      behavior: "smooth"
+    }
+    // 定义配置
+    if ("top" in option) {
+      opt.top = option.top
+    }
+    if ("behavior" in option) {
+      opt.behavior = option.behavior
+    }
+    if ("addTop" in option) {
+      opt.top += option.addTop
+    }
+    if (!("observerDic" in option)) {
+      option.observerDic = 100
+    }
+    // 滚动
+    window.scrollTo(opt);
+    // 监视器
+    // 监视并矫正元素滚动到指定位置
+    // 用于处理 lazyload 引起的 cls 导致的定位失败问题
+    // option.observer = false
+    if (option.observer) {
+      setTimeout(() => {
+        if (volantis.scroll.ele != ele) {
+          return
+        }
+        volantis.scroll.unengine.push(() => {
+          let me = ele.getBoundingClientRect().top
+          if (!(me >= -option.observerDic && me <= option.observerDic)) {
+            volantis.scroll.to(ele, option)
+          }
+          volantis.scroll.unengine.remove("unengineObserver")
+        }, "unengineObserver")
+      }, 1000)
+    }
+  }
+  /********************** Content Visibility ********************************/
+  // 见 source/css/first.styl 如果遇到任何问题 删除 .post-story 即可
+  // 一个元素被声明 content-visibility 属性后 如果元素不在 viewport 中 浏览器不会计算其后代元素样式和属性 从而节省 Style & Layout 耗时
+  // content-visibility 的副作用: 锚点失效 等等(实验初期 暂不明确), 使用此方法清除样式
+  volantis.cleanContentVisibility = () => {
+    if (document.querySelector(".post-story")) {
+      console.log("cleanContentVisibility");
+      document.querySelectorAll(".post-story").forEach(e => {
+        e.classList.remove("post-story")
+      })
+    }
+  }
+  /******************************************************************************/
+  /******************************************************************************/
+  /******************************************************************************/
+  //图像加载出错时的处理
+  function errorImgAvatar(img) {
+    img.src = "https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg";
+    img.onerror = null;
+  }
+  function errorImgCover(img) {
+    img.src = "https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg";
+    img.onerror = null;
+  }
+  /******************************************************************************/
+</script>
+
+<script>
+  window.pdata={}
+  pdata.ispage=true;
+  pdata.commentPath="";
+  pdata.commentPlaceholder="";
+  pdata.commentConfig={};
+  volantis.GLOBAL_CONFIG ={
+    root: '/',
+    debug: "env",
+    default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
+    lastupdate: new Date(1707243937730),
+    cdn: {
+      izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
+      izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
+      fancybox_css: 'https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/4.0.31/fancybox.min.css',
+      fancybox_js: 'https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/4.0.31/fancybox.umd.min.js'
+    },
+    sidebar: {
+      for_page: ["blogger","category","tagcloud","donate"],
+      for_post: ["toc"],
+      webinfo: {
+        lastupd: {
+          enable: true,
+          friendlyShow: true
+        },
+        runtime: {
+          data: "2020/01/01",
+          unit: "天"
+        }
+      }
+    },
+    plugins: {
+      message: {"enable":true,"icon":{"default":"fa-solid fa-info-circle light-blue","quection":"fa-solid fa-question-circle light-blue"},"time":{"default":5000,"quection":20000},"position":"topRight","transitionIn":"bounceInLeft","transitionOut":"fadeOutRight","titleColor":"var(--color-text)","messageColor":"var(--color-text)","backgroundColor":"var(--color-card)","zindex":2147483647,"copyright":{"enable":true,"title":"知识共享许可协议","message":"请遵守 CC BY-NC-SA 4.0 协议。","icon":"far fa-copyright light-blue"},"aplayer":{"enable":true,"play":"fa-solid fa-play","pause":"fa-solid fa-pause"},"rightmenu":{"enable":true,"notice":true}},
+      
+      
+      rightmenus: {"enable":"ture","order":["plugins.navigation","hr","plugins.inputBox","plugins.seletctText","plugins.elementCheck","plugins.elementImage","menus.link","hr","menus.darkMode","plugins.articlePage","music"],"options":{"iconPrefix":"fa-solid","articleShowLink":true,"musicAlwaysShow":true},"plugins":{"navigation":[{"id":"left","name":"转到上一页","icon":"fa-solid fa-arrow-left","event":"history.back()","group":"navigation"},{"id":"right","name":"转到下一页","icon":"fa-solid fa-arrow-right","event":"history.forward()","group":"navigation"},{"id":"redo","name":"刷新当前页面","icon":"fa-solid fa-redo","event":"window.location.reload()","group":"navigation"},{"id":"up","name":"回到顶部","icon":"fa-solid fa-arrow-up","event":"VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)","group":"navigation"}],"inputBox":[{"id":"copyPaste","name":"粘贴文本","icon":"fa-solid fa-paste","event":"copyPaste","group":"inputBox"},{"id":"copyAll","name":"全选文本","icon":"fa-solid fa-object-ungroup","event":"copyAll","group":"inputBox"},{"id":"copyCut","name":"剪切文本","icon":"fa-solid fa-cut","event":"copyCut","group":"inputBox"}],"seletctText":[{"id":"copyText","name":"复制文本","icon":"fa-solid fa-copy","event":"copyText","group":"seletctText"},{"id":"searchWord","name":"站内搜索","icon":"fa-solid fa-search","event":"OpenSearch(__text__)","group":"seletctText"},{"id":"bingSearch","name":"必应搜索","icon":"fa-solid fa-search","event":"window.open(`https://cn.bing.com/search?q=${__text__}`)","group":"seletctText"}],"elementCheck":[{"id":"openTab","name":"新标签页打开","icon":"fa-solid fa-external-link-square-alt","event":"window.open(__link__)","group":"elementCheck"},{"id":"copyLink","name":"复制链接地址","icon":"fa-solid fa-link","event":"copyLink","group":"elementCheck"}],"elementImage":[{"id":"copyImg","name":"复制图片","icon":"fa-solid fa-image","event":"copyImg","group":"elementImage"},{"id":"googleImg","name":"谷歌识图","icon":"fa-solid fa-images","event":"window.open(`https://www.google.com.hk/searchbyimage?image_url=${__link__}`)","group":"elementImage"}],"articlePage":[{"id":"printMode","name":"打印页面","icon":"fa-solid fa-print","event":"printMode","group":"articlePage"},{"id":"readMode","name":"阅读模式","icon":"fa-solid fa-book-open","event":"readMode","group":"articlePage"}]},"menus":{"link":[{"id":"help","name":"常见问题","icon":"fa-solid fa-question","link":"https://volantis.js.org/faqs/","group":"link"},{"id":"examples","name":"示例博客","icon":"fa-solid fa-rss","link":"https://volantis.js.org/examples/","group":"link"},{"id":"contributors","name":"加入社区","icon":"fa-solid fa-fan","link":"https://volantis.js.org/contributors/","group":"link"},"hr",{"id":"source_docs","name":"本站源码","icon":"fa-solid fa-code-branch","link":"https://github.com/volantis-x/volantis-docs/","group":"link"},{"id":"source_theme","name":"主题源码","icon":"fa-solid fa-code-branch","link":"https://github.com/volantis-x/hexo-theme-volantis/","group":"link"}],"darkMode":[{"id":"darkMode","name":"暗黑模式","icon":"fa-solid fa-moon","event":"volantis.dark.toggle()","group":"darkMode"}]}}
+      
+    },
+    search: {
+      
+
+      
+        dataPath: (("/" || "/").endsWith("/") ? "/" || "/" : "//" || "/") + "content.json",
+      
+
+      
+    },
+    languages: {
+      
+        search: {
+          hits_empty: "找不到您查询的内容：${query}",
+          hits_stats: "找到 ${hits} 条结果，用时 ${time} 毫秒",
+        }
+      
+    }
+  }
+</script>
+  <!-- import head_end begin -->
+  <!-- import head_end end -->
+  <!-- Custom Files headEnd begin-->
+  
+  <!-- Custom Files headEnd end-->
+</head>
+  <body itemscope itemtype="http://schema.org/WebPage">
+    <!-- import body_begin begin-->
+    <!-- import body_begin end-->
+    <!-- Custom Files bodyBegin begin-->
+    
+    <!-- Custom Files bodyBegin end-->
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+  <div class='container'>
+  <div id='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h m-phone'>
+        <li><a id="s-comment" class="fa-solid fa-comments fa-fw" target="_self" title="comment"></a></li>
+        
+          <li><a id="s-toc" class="s-toc fa-solid fa-list fa-fw" target="_self" title="toc"></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+            <img no-lazy class='logo' src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/Logo-NavBar@3x.png'/>
+          
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h m-pc'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/" title="博客"
+                  
+                  
+                  
+                    active-action="action-home"
+                  >
+                  <i class='fa-solid fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/categories/" title="分类"
+                  
+                  
+                  
+                    active-action="action-categories"
+                  >
+                  <i class='fa-solid fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/tags/" title="标签"
+                  
+                  
+                  
+                    active-action="action-tags"
+                  >
+                  <i class='fa-solid fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/archives/" title="归档"
+                  
+                  
+                  
+                    active-action="action-archives"
+                  >
+                  <i class='fa-solid fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/friends/" title="友链"
+                  
+                  
+                  
+                    active-action="action-friends"
+                  >
+                  <i class='fa-solid fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/about/" title="关于"
+                  
+                  
+                  
+                    active-action="action-about"
+                  >
+                  <i class='fa-solid fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+      
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fa-solid fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+      
+
+			<ul class='switcher nav-list-h m-phone'>
+				
+					<li><a class="s-search fa-solid fa-search fa-fw" target="_self" title="search"></a></li>
+				
+				<li>
+          <a class="s-menu fa-solid fa-bars fa-fw" target="_self" title="menu"></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/" title="博客"
+                  
+                  
+                  
+                    active-action="action-home"
+                  >
+                  <i class='fa-solid fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/categories/" title="分类"
+                  
+                  
+                  
+                    active-action="action-categories"
+                  >
+                  <i class='fa-solid fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/tags/" title="标签"
+                  
+                  
+                  
+                    active-action="action-tags"
+                  >
+                  <i class='fa-solid fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/archives/" title="归档"
+                  
+                  
+                  
+                    active-action="action-archives"
+                  >
+                  <i class='fa-solid fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/friends/" title="友链"
+                  
+                  
+                  
+                    active-action="action-friends"
+                  >
+                  <i class='fa-solid fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/about/" title="关于"
+                  
+                  
+                  
+                    active-action="action-about"
+                  >
+                  <i class='fa-solid fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+
+      <!-- Custom Files header begin -->
+      
+      <!-- Custom Files header end -->
+		</div>
+	</div>
+  </div>
+</header>
+
+    <div id="l_body">
+      <div id="l_cover">
+  
+</div>
+
+      <div id="safearea">
+        <div class="body-wrapper">
+          
+<div id="l_main" class=''>
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2023/12/20/DNS隧道-FRP隧道-847d738f19054a058e6cf5dbbfe97204/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+
+
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title" itemprop="name headline">
+        DNS隧道+FRP隧道搭建
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">Sn0wm1an</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：3.6k 字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：18 分钟</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+  
+  
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/">CTF网络攻防</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" itemprop="url"><span itemprop="name">CTF网络攻防</span></a>
+      </span>
+    
+  </div>
+  
+
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2023-12-20T00:00:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2023年12月20日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="DNS隧道-FRP隧道"><a href="#DNS隧道-FRP隧道" class="headerlink" title="DNS隧道+FRP隧道"></a>DNS隧道+FRP隧道</h1><h2 id="一、DNS隧道准备"><a href="#一、DNS隧道准备" class="headerlink" title="一、DNS隧道准备"></a>一、DNS隧道准备</h2><h3 id="1-DNS隧道介绍"><a href="#1-DNS隧道介绍" class="headerlink" title="1.DNS隧道介绍"></a>1.DNS隧道介绍</h3><p>DNS隧道，是隧道技术的一种。当我们HTTP、HTTPS这样的上层协议、正反向端口转发都失败的时候，可以尝试DNS隧道。DNS隧道很难防范，因为平时的业务等功能难免会用到DNS协议进行解析，所以防火墙大多对DNS流量是放行的状态。这时候，如果我们在不出机器构造一个恶意的域名，本地DNS服务器无法给出回答时，就会以迭代查询的方式通过互联网定位到所查询域的权威DNS服务器。最后，这条DNS请求会落到我们提前搭建好的恶意DNS服务器上，于是乎，我们的不出网主机就和恶意DNS服务器交流上了。</p>
+<p>搭建DNS隧道的工具目前有iodine，dnscat，dns2tcp等。</p>
+<p>我目前使用的是iodine工具去搭建。</p>
+<h3 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2.前期准备"></a>2.前期准备</h3><p>1个域名、1个公网服务器</p>
+<p>看别的博主使用了一个匿名域名申请网站<a target="_blank" rel="noopener" href="http://www.freenom.com/zh/index.html">http://www.freenom.com/zh/index.html</a>，但是我没有申请成功过</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>于是我去阿里云<a target="_blank" rel="noopener" href="https://dns.console.aliyun.com/">https://dns.console.aliyun.com/</a>买了付费的域名，正好还可以用在我的博客上。</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%201.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%201.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>先添加两条A记录，再添加一条NS记录</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%202.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%202.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>第一条A类记录www，告诉域名系统，”<a target="_blank" rel="noopener" href="http://www.woshishui120.ga/">www</a>.xiaowublog.top”的IP地址是”39<a target="_blank" rel="noopener" href="http://121.xxx.xxx.xxx/">.xxx.xxx.xxx</a>“</p>
+<p>第二条A类记录@，告诉域名系统，”xiaowublog.top”的IP地址是”39<a target="_blank" rel="noopener" href="http://121.xxx.xxx.xxx/">.xxx.xxx.xxx</a>“</p>
+<p>第三条NS记录，告诉域名系统，”<a target="_blank" rel="noopener" href="http://ns.woshishui120.ga/">ns.xiaowu</a>blog.top”的域名由”<a target="_blank" rel="noopener" href="http://www.woshishui120.ga/">www.</a>xiaowublog.top”进行解析。</p>
+<p>到此前期准备工作就已经完成了，已经将域名绑定到了我们的公网服务器上。</p>
+<p>(虽然提示10分钟到72小时之内解析完成。但实际上几分钟部分DNS服务器就会刷新好，10分钟左右就会部署完毕，如果点击生效检测没有解析到预定的结果，那么就是配置出了问题)</p>
+<p>正常的ns.xxx.xx解析结果应该是如下的</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%203.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%203.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<h2 id="二、iodine-DNS隧道搭建"><a href="#二、iodine-DNS隧道搭建" class="headerlink" title="二、iodine DNS隧道搭建"></a>二、iodine DNS隧道搭建</h2><p>在我们的公网服务器安装iodine，该工具服务端为iodined，客户端为iodine。</p>
+<p>执行apt install iodine命令会同时安装服务端与客户端。</p>
+<h3 id="1-服务端"><a href="#1-服务端" class="headerlink" title="1.服务端"></a>1.服务端</h3><p>先进入服务器的安全组，一定一定要打开UDP的53端口</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%204.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%204.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>在公网服务器上部署iodine服务端。(需要root权限运行)</p>
+<p>iodined -f -c -P 123.com 192.168.50.1 ns.xiaowublog.top -DD</p>
+<ul>
+<li>-f：在前台运行</li>
+<li>-c：禁止检查所有传入请求的客户端IP地址。</li>
+<li>-P：客户端和服务端之间用于验证身份的密码。</li>
+<li>-D：指定调试级别，-DD指第二级。“D”的数量随级别增加。</li>
+</ul>
+<p>这里的192.168.50.1为自定义局域网虚拟IP地址，建议不要与现有网段冲突注意！填写的地址为NS记录</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%205.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%205.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>执行完该命令之后会新生成一个dns0虚拟网卡，ip地址就是刚才命令中输入的ip地址(192.168.50.1)。</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%206.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%206.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>DNS默认使用53UDP端口进行转发，所以如果53端口被占用需要kill掉。</p>
+<h3 id="2-客户端-被攻击端"><a href="#2-客户端-被攻击端" class="headerlink" title="2.客户端(被攻击端)"></a>2.客户端(被攻击端)</h3><p>客户端我使用的是kali</p>
+<p>iodine -f -P 123.com ns.xiaowublog.top -M 200 -O base64  (-m 128 我的代码运行时会出现分片错误，所以指定分片大小，可加可不加，若大小选择不合适会导致丢包率极大，传输效率变小)</p>
+<ul>
+<li>r：iodine有时会自动将DNS隧道切换为UDP隧道，该参数的作用是强制在任何情况下使用DNS隧道</li>
+<li>M：指定上行主机的大小。</li>
+<li>m：调节最大下行分片的大小。</li>
+<li>f：在前台运行</li>
+<li>T：指定DNS请求类型TYPE，可选项有NULL、PRIVATE、TXT、SRV、CNAME、MX、A。</li>
+<li>O：指定数据编码规范。</li>
+<li>P：客户端和服务端之间用于验证身份的密码。</li>
+<li>L：指定是否开启懒惰模式，默认开启。</li>
+<li>I：指定两个请求之间的时间间隔。</li>
+</ul>
+<p>正常运行应该是这样</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%207.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%207.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>下图是服务端运行截图，可以看到编码还是有错误的</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%208.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%208.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>可以看到kali客户端的网卡也创建成功</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%209.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%209.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>ping 192.168.50.2</p>
+<p>可以看到在服务器上ping客户端的dns0新网卡可以ping通</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2010.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2010.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>现在就相当于公网服务器与kali之间生成了一个虚拟网卡，这两个虚拟网卡之间是互通的。</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/34523523526.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/34523523526.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="34523523526"></p>
+<p>在公网服务器上连接kali的虚拟地址，使用ssh做一个动态端口转发。</p>
+<p>ssh -D 60688 <a href="mailto:root@192.168.200.2">root@192.168.50.2</a></p>
+<p>但此时只相当于在公网服务器的192.168.50.1的60688端口搭建了一个socks5代理隧道，如果想要本地使用该隧道是行不通的，因为192.168.50.1相当于一个内网地址，是不能直接访问得到的，所以需要将公网服务器虚拟网卡地址192.168.50.1的60688端口数据转发到公网服务器公网地址的一个端口上。这个端口转发我还没试(不知道采用哪个工具会好点)。</p>
+<p>这里使用FRP搭建反向隧道</p>
+<h3 id="3-FRP搭建隧道"><a href="#3-FRP搭建隧道" class="headerlink" title="3.FRP搭建隧道"></a>3.FRP搭建隧道</h3><p>下载FRP对应的版本，因为FRP在0.50以后更新，语法与操作和之前的版本很不一样，因此咨询了一个大佬新版本的使用方法，下面链接时FRP的下载地址。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/fatedier/frp/releases/tag/v0.52.3">https://github.com/fatedier/frp/releases/tag/v0.52.3</a></p>
+<p>下面是下载后的目录结构</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2011.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2011.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>frps是服务端的执行文件，对应的frps.tonl是服务端的配置文件。</p>
+<p>相应的frpc是服务端的执行文件，对应的frpc.tonl是服务端的配置文件。</p>
+<ul>
+<li><strong>服务端配置</strong></li>
+</ul>
+<p>配置文件frps.tonl</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">serverAddr = <span class="string">&quot;192.168.50.1&quot;</span></span><br><span class="line">serverPort = 7000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frps -c frps.tonl</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2012.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2012.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<ul>
+<li><strong>客户端配置</strong></li>
+</ul>
+<p>配置文件frpc.tonl(tcp链接)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">serverAddr = <span class="string">&quot;192.168.50.2&quot;</span></span><br><span class="line">serverPort = 7000</span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;kali-ssh&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 22</span><br><span class="line">remotePort = 6000</span><br></pre></td></tr></table></figure>
+
+<p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frpc -c frpc.tonl</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2013.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2013.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>可以看到客户端有一条新的连接命令</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2014.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2014.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<ul>
+<li><strong>连接命令</strong></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -o --Port=6000 root@192.168.50.2</span><br></pre></td></tr></table></figure>
+
+<p>我们开启一个新虚拟机通过连接服务端的FRP直接连接到kali上，成功连接。</p>
+<p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2015.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/Untitled%2015.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
+<p>此外附上所有的frpc.toml配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># your proxy name will be changed to &#123;user&#125;.&#123;proxy&#125;</span></span><br><span class="line">user = <span class="string">&quot;your_name&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># A literal address or host name for IPv6 must be enclosed</span></span><br><span class="line"><span class="comment"># in square brackets, as in &quot;[::1]:80&quot;, &quot;[ipv6-host]:http&quot; or &quot;[ipv6-host%zone]:80&quot;</span></span><br><span class="line"><span class="comment"># For single serverAddr field, no need square brackets, like serverAddr = &quot;::&quot;.</span></span><br><span class="line">serverAddr = <span class="string">&quot;0.0.0.0&quot;</span></span><br><span class="line">serverPort = 7000</span><br><span class="line"></span><br><span class="line"><span class="comment"># STUN server to help penetrate NAT hole.</span></span><br><span class="line"><span class="comment"># natHoleStunServer = &quot;stun.easyvoip.com:3478&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Decide if exit program when first login failed, otherwise continuous relogin to frps</span></span><br><span class="line"><span class="comment"># default is true</span></span><br><span class="line">loginFailExit = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># console or real logFile path like ./frpc.log</span></span><br><span class="line">log.to = <span class="string">&quot;./frpc.log&quot;</span></span><br><span class="line"><span class="comment"># trace, debug, info, warn, error</span></span><br><span class="line">log.level = <span class="string">&quot;info&quot;</span></span><br><span class="line">log.maxDays = 3</span><br><span class="line"><span class="comment"># disable log colors when log.to is console, default is false</span></span><br><span class="line">log.disablePrintColor = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">auth.method = <span class="string">&quot;token&quot;</span></span><br><span class="line"><span class="comment"># auth.additionalScopes specifies additional scopes to include authentication information.</span></span><br><span class="line"><span class="comment"># Optional values are HeartBeats, NewWorkConns.</span></span><br><span class="line"><span class="comment"># auth.additionalScopes = [&quot;HeartBeats&quot;, &quot;NewWorkConns&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># auth token</span></span><br><span class="line">auth.token = <span class="string">&quot;12345678&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># oidc.clientID specifies the client ID to use to get a token in OIDC authentication.</span></span><br><span class="line"><span class="comment"># auth.oidc.clientID = &quot;&quot;</span></span><br><span class="line"><span class="comment"># oidc.clientSecret specifies the client secret to use to get a token in OIDC authentication.</span></span><br><span class="line"><span class="comment"># auth.oidc.clientSecret = &quot;&quot;</span></span><br><span class="line"><span class="comment"># oidc.audience specifies the audience of the token in OIDC authentication.</span></span><br><span class="line"><span class="comment"># auth.oidc.audience = &quot;&quot;</span></span><br><span class="line"><span class="comment"># oidc_scope specifies the permisssions of the token in OIDC authentication if AuthenticationMethod == &quot;oidc&quot;. By default, this value is &quot;&quot;.</span></span><br><span class="line"><span class="comment"># auth.oidc.scope = &quot;&quot;</span></span><br><span class="line"><span class="comment"># oidc.tokenEndpointURL specifies the URL which implements OIDC Token Endpoint.</span></span><br><span class="line"><span class="comment"># It will be used to get an OIDC token.</span></span><br><span class="line"><span class="comment"># auth.oidc.tokenEndpointURL = &quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># oidc.additionalEndpointParams specifies additional parameters to be sent to the OIDC Token Endpoint.</span></span><br><span class="line"><span class="comment"># For example, if you want to specify the &quot;audience&quot; parameter, you can set as follow.</span></span><br><span class="line"><span class="comment"># frp will add &quot;audience=&lt;value&gt;&quot; &quot;var1=&lt;value&gt;&quot; to the additional parameters.</span></span><br><span class="line"><span class="comment"># auth.oidc.additionalEndpointParams.audience = &quot;https://dev.auth.com/api/v2/&quot;</span></span><br><span class="line"><span class="comment"># auth.oidc.additionalEndpointParams.var1 = &quot;foobar&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set admin address for control frpc&#x27;s action by http api such as reload</span></span><br><span class="line">webServer.addr = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">webServer.port = 7400</span><br><span class="line">webServer.user = <span class="string">&quot;admin&quot;</span></span><br><span class="line">webServer.password = <span class="string">&quot;admin&quot;</span></span><br><span class="line"><span class="comment"># Admin assets directory. By default, these assets are bundled with frpc.</span></span><br><span class="line"><span class="comment"># webServer.assetsDir = &quot;./static&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable golang pprof handlers in admin listener.</span></span><br><span class="line">webServer.pprofEnable = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The maximum amount of time a dial to server will wait for a connect to complete. Default value is 10 seconds.</span></span><br><span class="line"><span class="comment"># transport.dialServerTimeout = 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dialServerKeepalive specifies the interval between keep-alive probes for an active network connection between frpc and frps.</span></span><br><span class="line"><span class="comment"># If negative, keep-alive probes are disabled.</span></span><br><span class="line"><span class="comment"># transport.dialServerKeepalive = 7200</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># connections will be established in advance, default value is zero</span></span><br><span class="line">transport.poolCount = 5</span><br><span class="line"></span><br><span class="line"><span class="comment"># If tcp stream multiplexing is used, default is true, it must be same with frps</span></span><br><span class="line"><span class="comment"># transport.tcpMux = true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify keep alive interval for tcp mux.</span></span><br><span class="line"><span class="comment"># only valid if tcpMux is enabled.</span></span><br><span class="line"><span class="comment"># transport.tcpMuxKeepaliveInterval = 60</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Communication protocol used to connect to server</span></span><br><span class="line"><span class="comment"># supports tcp, kcp, quic, websocket and wss now, default is tcp</span></span><br><span class="line">transport.protocol = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># set client binding ip when connect server, default is empty.</span></span><br><span class="line"><span class="comment"># only when protocol = tcp or websocket, the value will be used.</span></span><br><span class="line">transport.connectServerLocalIP = <span class="string">&quot;0.0.0.0&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if you want to connect frps by http proxy or socks5 proxy or ntlm proxy, you can set proxyURL here or in global environment variables</span></span><br><span class="line"><span class="comment"># it only works when protocol is tcp</span></span><br><span class="line"><span class="comment"># transport.proxyURL = &quot;http://user:passwd@192.168.1.128:8080&quot;</span></span><br><span class="line"><span class="comment"># transport.proxyURL = &quot;socks5://user:passwd@192.168.1.128:1080&quot;</span></span><br><span class="line"><span class="comment"># transport.proxyURL = &quot;ntlm://user:passwd@192.168.1.128:2080&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># quic protocol options</span></span><br><span class="line"><span class="comment"># transport.quic.keepalivePeriod = 10</span></span><br><span class="line"><span class="comment"># transport.quic.maxIdleTimeout = 30</span></span><br><span class="line"><span class="comment"># transport.quic.maxIncomingStreams = 100000</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If tls.enable is true, frpc will connect frps by tls.</span></span><br><span class="line"><span class="comment"># Since v0.50.0, the default value has been changed to true, and tls is enabled by default.</span></span><br><span class="line">transport.tls.enable = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># transport.tls.certFile = &quot;client.crt&quot;</span></span><br><span class="line"><span class="comment"># transport.tls.keyFile = &quot;client.key&quot;</span></span><br><span class="line"><span class="comment"># transport.tls.trustedCaFile = &quot;ca.crt&quot;</span></span><br><span class="line"><span class="comment"># transport.tls.serverName = &quot;example.com&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If the disableCustomTLSFirstByte is set to false, frpc will establish a connection with frps using the</span></span><br><span class="line"><span class="comment"># first custom byte when tls is enabled.</span></span><br><span class="line"><span class="comment"># Since v0.50.0, the default value has been changed to true, and the first custom byte is disabled by default.</span></span><br><span class="line"><span class="comment"># transport.tls.disableCustomTLSFirstByte = true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Heartbeat configure, it&#x27;s not recommended to modify the default value.</span></span><br><span class="line"><span class="comment"># The default value of heartbeat_interval is 10 and heartbeat_timeout is 90. Set negative value</span></span><br><span class="line"><span class="comment"># to disable it.</span></span><br><span class="line"><span class="comment"># transport.heartbeatInterval = 30</span></span><br><span class="line"><span class="comment"># transport.heartbeatTimeout = 90</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify a dns server, so frpc will use this instead of default one</span></span><br><span class="line"><span class="comment"># dnsServer = &quot;8.8.8.8&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Proxy names you want to start.</span></span><br><span class="line"><span class="comment"># Default is empty, means all proxies.</span></span><br><span class="line"><span class="comment"># start = [&quot;ssh&quot;, &quot;dns&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify udp packet size, unit is byte. If not set, the default value is 1500.</span></span><br><span class="line"><span class="comment"># This parameter should be same between client and server.</span></span><br><span class="line"><span class="comment"># It affects the udp and sudp proxy.</span></span><br><span class="line">udpPacketSize = 1500</span><br><span class="line"></span><br><span class="line"><span class="comment"># Additional metadatas for client.</span></span><br><span class="line">metadatas.var1 = <span class="string">&quot;abc&quot;</span></span><br><span class="line">metadatas.var2 = <span class="string">&quot;123&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Include other config files for proxies.</span></span><br><span class="line"><span class="comment"># includes = [&quot;./confd/*.ini&quot;]</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line"><span class="comment"># &#x27;ssh&#x27; is the unique proxy name</span></span><br><span class="line"><span class="comment"># If global user is not empty, it will be changed to &#123;user&#125;.&#123;proxy&#125; such as &#x27;your_name.ssh&#x27;</span></span><br><span class="line">name = <span class="string">&quot;ssh&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 22</span><br><span class="line"><span class="comment"># Limit bandwidth for this proxy, unit is KB and MB</span></span><br><span class="line">transport.bandwidthLimit = <span class="string">&quot;1MB&quot;</span></span><br><span class="line"><span class="comment"># Where to limit bandwidth, can be &#x27;client&#x27; or &#x27;server&#x27;, default is &#x27;client&#x27;</span></span><br><span class="line">transport.bandwidthLimitMode = <span class="string">&quot;client&quot;</span></span><br><span class="line"><span class="comment"># If true, traffic of this proxy will be encrypted, default is false</span></span><br><span class="line">transport.useEncryption = <span class="literal">false</span></span><br><span class="line"><span class="comment"># If true, traffic will be compressed</span></span><br><span class="line">transport.useCompression = <span class="literal">false</span></span><br><span class="line"><span class="comment"># Remote port listen by frps</span></span><br><span class="line">remotePort = 6001</span><br><span class="line"><span class="comment"># frps will load balancing connections for proxies in same group</span></span><br><span class="line">loadBalancer.group = <span class="string">&quot;test_group&quot;</span></span><br><span class="line"><span class="comment"># group should have same group key</span></span><br><span class="line">loadBalancer.groupKey = <span class="string">&quot;123456&quot;</span></span><br><span class="line"><span class="comment"># Enable health check for the backend service, it supports &#x27;tcp&#x27; and &#x27;http&#x27; now.</span></span><br><span class="line"><span class="comment"># frpc will connect local service&#x27;s port to detect it&#x27;s healthy status</span></span><br><span class="line">healthCheck.<span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line"><span class="comment"># Health check connection timeout</span></span><br><span class="line">healthCheck.timeoutSeconds = 3</span><br><span class="line"><span class="comment"># If continuous failed in 3 times, the proxy will be removed from frps</span></span><br><span class="line">healthCheck.maxFailed = 3</span><br><span class="line"><span class="comment"># every 10 seconds will do a health check</span></span><br><span class="line">healthCheck.intervalSeconds = 10</span><br><span class="line"><span class="comment"># additional meta info for each proxy</span></span><br><span class="line">metadatas.var1 = <span class="string">&quot;abc&quot;</span></span><br><span class="line">metadatas.var2 = <span class="string">&quot;123&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;ssh_random&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;192.168.31.100&quot;</span></span><br><span class="line">localPort = 22</span><br><span class="line"><span class="comment"># If remote_port is 0, frps will assign a random port for you</span></span><br><span class="line">remotePort = 0</span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;dns&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;udp&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;114.114.114.114&quot;</span></span><br><span class="line">localPort = 53</span><br><span class="line">remotePort = 6002</span><br><span class="line"></span><br><span class="line"><span class="comment"># Resolve your domain names to [server_addr] so you can use http://web01.yourdomain.com to browse web01 and http://web02.yourdomain.com to browse web02</span></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;web01&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;http&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 80</span><br><span class="line"><span class="comment"># http username and password are safety certification for http protocol</span></span><br><span class="line"><span class="comment"># if not set, you can access this custom_domains without certification</span></span><br><span class="line">httpUser = <span class="string">&quot;admin&quot;</span></span><br><span class="line">httpPassword = <span class="string">&quot;admin&quot;</span></span><br><span class="line"><span class="comment"># if domain for frps is frps.com, then you can access [web01] proxy by URL http://web01.frps.com</span></span><br><span class="line">subdomain = <span class="string">&quot;web01&quot;</span></span><br><span class="line">customDomains = [<span class="string">&quot;web01.yourdomain.com&quot;</span>]</span><br><span class="line"><span class="comment"># locations is only available for http type</span></span><br><span class="line">locations = [<span class="string">&quot;/&quot;</span>, <span class="string">&quot;/pic&quot;</span>]</span><br><span class="line"><span class="comment"># route requests to this service if http basic auto user is abc</span></span><br><span class="line"><span class="comment"># route_by_http_user = abc</span></span><br><span class="line">hostHeaderRewrite = <span class="string">&quot;example.com&quot;</span></span><br><span class="line"><span class="comment"># params with prefix &quot;header_&quot; will be used to update http request headers</span></span><br><span class="line">requestHeaders.set.x-from-where = <span class="string">&quot;frp&quot;</span></span><br><span class="line">healthCheck.<span class="built_in">type</span> = <span class="string">&quot;http&quot;</span></span><br><span class="line"><span class="comment"># frpc will send a GET http request &#x27;/status&#x27; to local http service</span></span><br><span class="line"><span class="comment"># http service is alive when it return 2xx http response code</span></span><br><span class="line">healthCheck.path = <span class="string">&quot;/status&quot;</span></span><br><span class="line">healthCheck.intervalSeconds = 10</span><br><span class="line">healthCheck.maxFailed = 3</span><br><span class="line">healthCheck.timeoutSeconds = 3</span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;web02&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;https&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 8000</span><br><span class="line">subdomain = <span class="string">&quot;web02&quot;</span></span><br><span class="line">customDomains = [<span class="string">&quot;web02.yourdomain.com&quot;</span>]</span><br><span class="line"><span class="comment"># if not empty, frpc will use proxy protocol to transfer connection info to your local service</span></span><br><span class="line"><span class="comment"># v1 or v2 or empty</span></span><br><span class="line">transport.proxyProtocolVersion = <span class="string">&quot;v2&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;tcpmuxhttpconnect&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcpmux&quot;</span></span><br><span class="line">multiplexer = <span class="string">&quot;httpconnect&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 10701</span><br><span class="line">customDomains = [<span class="string">&quot;tunnel1&quot;</span>]</span><br><span class="line"><span class="comment"># routeByHTTPUser = &quot;user1&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;plugin_unix_domain_socket&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">remotePort = 6003</span><br><span class="line"><span class="comment"># if plugin is defined, local_ip and local_port is useless</span></span><br><span class="line"><span class="comment"># plugin will handle connections got from frps</span></span><br><span class="line">[proxies.plugin]</span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;unix_domain_socket&quot;</span></span><br><span class="line">unixPath = <span class="string">&quot;/var/run/docker.sock&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;plugin_http_proxy&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">remotePort = 6004</span><br><span class="line">[proxies.plugin]</span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;http_proxy&quot;</span></span><br><span class="line">httpUser = <span class="string">&quot;abc&quot;</span></span><br><span class="line">httpPassword = <span class="string">&quot;abc&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;plugin_socks5&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">remotePort = 6005</span><br><span class="line">[proxies.plugin]</span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;socks5&quot;</span></span><br><span class="line">username = <span class="string">&quot;abc&quot;</span></span><br><span class="line">password = <span class="string">&quot;abc&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;plugin_static_file&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">remotePort = 6006</span><br><span class="line">[proxies.plugin]</span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;static_file&quot;</span></span><br><span class="line">localPath = <span class="string">&quot;/var/www/blog&quot;</span></span><br><span class="line">stripPrefix = <span class="string">&quot;static&quot;</span></span><br><span class="line">httpUser = <span class="string">&quot;abc&quot;</span></span><br><span class="line">httpPassword = <span class="string">&quot;abc&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;plugin_https2http&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;https&quot;</span></span><br><span class="line">customDomains = [<span class="string">&quot;test.yourdomain.com&quot;</span>]</span><br><span class="line">[proxies.plugin]</span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;https2http&quot;</span></span><br><span class="line">localAddr = <span class="string">&quot;127.0.0.1:80&quot;</span></span><br><span class="line">crtPath = <span class="string">&quot;./server.crt&quot;</span></span><br><span class="line">keyPath = <span class="string">&quot;./server.key&quot;</span></span><br><span class="line">hostHeaderRewrite = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">requestHeaders.set.x-from-where = <span class="string">&quot;frp&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;plugin_https2https&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;https&quot;</span></span><br><span class="line">customDomains = [<span class="string">&quot;test.yourdomain.com&quot;</span>]</span><br><span class="line">[proxies.plugin]</span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;https2https&quot;</span></span><br><span class="line">localAddr = <span class="string">&quot;127.0.0.1:443&quot;</span></span><br><span class="line">crtPath = <span class="string">&quot;./server.crt&quot;</span></span><br><span class="line">keyPath = <span class="string">&quot;./server.key&quot;</span></span><br><span class="line">hostHeaderRewrite = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">requestHeaders.set.x-from-where = <span class="string">&quot;frp&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;plugin_http2https&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;http&quot;</span></span><br><span class="line">customDomains = [<span class="string">&quot;test.yourdomain.com&quot;</span>]</span><br><span class="line">[proxies.plugin]</span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;http2https&quot;</span></span><br><span class="line">localAddr = <span class="string">&quot;127.0.0.1:443&quot;</span></span><br><span class="line">hostHeaderRewrite = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">requestHeaders.set.x-from-where = <span class="string">&quot;frp&quot;</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;secret_tcp&quot;</span></span><br><span class="line"><span class="comment"># If the type is secret tcp, remote_port is useless</span></span><br><span class="line"><span class="comment"># Who want to connect local port should deploy another frpc with stcp proxy and role is visitor</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;stcp&quot;</span></span><br><span class="line"><span class="comment"># secretKey is used for authentication for visitors</span></span><br><span class="line">secretKey = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 22</span><br><span class="line"><span class="comment"># If not empty, only visitors from specified users can connect.</span></span><br><span class="line"><span class="comment"># Otherwise, visitors from same user can connect. &#x27;*&#x27; means allow all users.</span></span><br><span class="line">allowUsers = [<span class="string">&quot;*&quot;</span>]</span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;p2p_tcp&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;xtcp&quot;</span></span><br><span class="line">secretKey = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 22</span><br><span class="line"><span class="comment"># If not empty, only visitors from specified users can connect.</span></span><br><span class="line"><span class="comment"># Otherwise, visitors from same user can connect. &#x27;*&#x27; means allow all users.</span></span><br><span class="line">allowUsers = [<span class="string">&quot;user1&quot;</span>, <span class="string">&quot;user2&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># frpc role visitor -&gt; frps -&gt; frpc role server</span></span><br><span class="line">[[visitors]]</span><br><span class="line">name = <span class="string">&quot;secret_tcp_visitor&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;stcp&quot;</span></span><br><span class="line"><span class="comment"># the server name you want to visitor</span></span><br><span class="line">serverName = <span class="string">&quot;secret_tcp&quot;</span></span><br><span class="line">secretKey = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line"><span class="comment"># connect this address to visitor stcp server</span></span><br><span class="line">bindAddr = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="comment"># bindPort can be less than 0, it means don&#x27;t bind to the port and only receive connections redirected from</span></span><br><span class="line"><span class="comment"># other visitors. (This is not supported for SUDP now)</span></span><br><span class="line">bindPort = 9000</span><br><span class="line"></span><br><span class="line">[[visitors]]</span><br><span class="line">name = <span class="string">&quot;p2p_tcp_visitor&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;xtcp&quot;</span></span><br><span class="line"><span class="comment"># if the server user is not set, it defaults to the current user</span></span><br><span class="line">serverUser = <span class="string">&quot;user1&quot;</span></span><br><span class="line">serverName = <span class="string">&quot;p2p_tcp&quot;</span></span><br><span class="line">secretKey = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line">bindAddr = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line"><span class="comment"># bindPort can be less than 0, it means don&#x27;t bind to the port and only receive connections redirected from</span></span><br><span class="line"><span class="comment"># other visitors. (This is not supported for SUDP now)</span></span><br><span class="line">bindPort = 9001</span><br><span class="line"><span class="comment"># when automatic tunnel persistence is required, set it to true</span></span><br><span class="line">keepTunnelOpen = <span class="literal">false</span></span><br><span class="line"><span class="comment"># effective when keep_tunnel_open is set to true, the number of attempts to punch through per hour</span></span><br><span class="line">maxRetriesAnHour = 8</span><br><span class="line">minRetryInterval = 90</span><br><span class="line"><span class="comment"># fallbackTo = &quot;stcp_visitor&quot;</span></span><br><span class="line"><span class="comment"># fallbackTimeoutMs = 500</span></span><br></pre></td></tr></table></figure>
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-02-07T02:23:00+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2024年2月7日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  <div class="new-meta-item wordcount">
+    <a class='notlink'>
+      <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
+      <p>字数：3.6k 字</p>
+    </a>
+  </div>
+  <div class="new-meta-item readtime">
+    <a class='notlink'>
+      <i class="fa-solid fa-hourglass-half fa-fw" aria-hidden="true"></i>
+      <p>时长：18 分钟</p>
+    </a>
+  </div>
+
+
+        
+      
+        
+          
+  
+  
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>CTF网络攻防</p></a></div>
+  <span hidden itemprop="keywords">CTF网络攻防</span>
+  
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93-847d738f19054a058e6cf5dbbfe97204/&title=DNS隧道+FRP隧道搭建 - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93-847d738f19054a058e6cf5dbbfe97204/&title=DNS隧道+FRP隧道搭建 - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93-847d738f19054a058e6cf5dbbfe97204/&title=DNS隧道+FRP隧道搭建 - 小吴の博客&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+        <a class='prev' href='/2024/01/28/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-1-2a55eec867d5441b9829bd5428024882/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>metaGEM使用小记(解决各种问题)2024.1(一)</p>
+          <p class='content'>metaGEM使用小记(解决各种问题)2024.1(一)前言，如何把数据从百度云上下载到linux服务器上可以直接通过pip下载：pip install bypy -y
+第一次使用时需要随便输入...</p>
+        </a>
+      
+      
+        <a class='next' href='/2023/09/02/%E8%A7%A3%E5%86%B3Gitee%E5%9B%BE%E5%BA%8A%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/'>
+          <p class='title'>解决Gitee图床不显示问题(使用阿里云OSS搭建图床)<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>问题前段时间搞博客弄了一个Gitee图床，图片可以上传成功，外部链接可以打开图片，但是hexo s后本地都打开不了图片，但是相应的源码标签里依然有图片链接地址。这就让我很疑惑。
+报错是class...</p>
+        </a>
+      
+    </div>
+  
+  <!-- 文章推荐 -->
+  
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93-847d738f19054a058e6cf5dbbfe97204/index.html#comments">
+    </span>
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
+    
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
+</div>
+<aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
+  
+
+  
+    
+    
+      
+    
+  
+
+
+<div class="widget-sticky">
+
+  
+  
+
+
+<section class="widget toc-wrapper desktop mobile" id="toc-div" >
+  
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+  <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81DNS%E9%9A%A7%E9%81%93%E5%87%86%E5%A4%87"><span class="toc-text">一、DNS隧道准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-DNS%E9%9A%A7%E9%81%93%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.DNS隧道介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-text">2.前期准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81iodine-DNS%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA"><span class="toc-text">二、iodine DNS隧道搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-text">1.服务端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%A2%E6%88%B7%E7%AB%AF-%E8%A2%AB%E6%94%BB%E5%87%BB%E7%AB%AF"><span class="toc-text">2.客户端(被攻击端)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-FRP%E6%90%AD%E5%BB%BA%E9%9A%A7%E9%81%93"><span class="toc-text">3.FRP搭建隧道</span></a></li></ol></li></ol>
+  </div>
+</section>
+
+  
+
+</div>
+
+  <!-- Custom Files side begin -->
+  
+  <!-- Custom Files side end -->
+</aside>
+
+
+
+        </div>
+        
+  
+  <footer class="footer clearfix"  itemscope itemtype="http://schema.org/WPFooter">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          
+            
+          
+            
+          
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.0.0-alpha.1" target="_blank" class="codename">Volantis</a>
+        作为主题
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © since 2017 XXX</a></p>
+
+        </div>
+      
+    
+    <!-- Custom Files footer begin-->
+    
+    <!-- Custom Files footer end-->
+  </footer>
+
+
+        <a id="s-top" class="fa-solid fa-arrow-up fa-fw" title="top"></a>
+      </div>
+    </div>
+    <div>
+      <script>
+  /******************** volantis.dom ********************************/
+  // 页面选择器 将dom对象缓存起来 see: /source/js/app.js etc.
+  volantis.dom.bodyAnchor = volantis.dom.$(document.getElementById("safearea")); // 页面主体
+  volantis.dom.topBtn = volantis.dom.$(document.getElementById('s-top')); // 向上
+  volantis.dom.wrapper = volantis.dom.$(document.getElementById('wrapper')); // 整个导航栏
+  volantis.dom.coverAnchor = volantis.dom.$(document.querySelector('#l_cover .cover-wrapper')); // 1个
+  volantis.dom.switcher = volantis.dom.$(document.querySelector('#l_header .switcher .s-search')); // 搜索按钮   移动端 1个
+  volantis.dom.header = volantis.dom.$(document.getElementById('l_header')); // 移动端导航栏
+  volantis.dom.search = volantis.dom.$(document.querySelector('#l_header .m_search')); // 搜索框 桌面端 移动端 1个
+  volantis.dom.mPhoneList = volantis.dom.$(document.querySelectorAll('#l_header .m-phone .list-v')); //  手机端 子菜单 多个
+</script>
+
+<script>
+  
+  volantis.css("https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+  
+  
+  
+</script>
+
+<!-- required -->
+
+
+<!-- internal -->
+
+<script src="/js/app.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="rightmenu-wrapper">
+  <ul class="list-v rightmenu" id="rightmenu-content">
+    
+  <li class='navigation menuNavigation-Content'>
+
+
+    <a class="nav icon-only fix-cursor-default" onclick="history.back()"><i class="fa-solid fa-arrow-left fa-fw"></i></a>
+
+
+
+    <a class="nav icon-only fix-cursor-default" onclick="history.forward()"><i class="fa-solid fa-arrow-right fa-fw"></i></a>
+
+
+
+    <a class="nav icon-only fix-cursor-default" onclick="window.location.reload()"><i class="fa-solid fa-redo fa-fw"></i></a>
+
+
+
+    <a class="nav icon-only fix-cursor-default" onclick="VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)"><i class="fa-solid fa-arrow-up fa-fw"></i></a>
+
+
+  </li>
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyPaste" data-event="copyPaste" data-group="inputBox">
+      <i class="fa-solid fa-paste fa-fw"></i>
+      粘贴文本
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyAll" data-event="copyAll" data-group="inputBox">
+      <i class="fa-solid fa-object-ungroup fa-fw"></i>
+      全选文本
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyCut" data-event="copyCut" data-group="inputBox">
+      <i class="fa-solid fa-cut fa-fw"></i>
+      剪切文本
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyText" data-event="copyText" data-group="seletctText">
+      <i class="fa-solid fa-copy fa-fw"></i>
+      复制文本
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="searchWord" data-event="OpenSearch(__text__)" data-group="seletctText">
+      <i class="fa-solid fa-search fa-fw"></i>
+      站内搜索
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="bingSearch" data-event="window.open(`https://cn.bing.com/search?q=${__text__}`)" data-group="seletctText">
+      <i class="fa-solid fa-search fa-fw"></i>
+      必应搜索
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="openTab" data-event="window.open(__link__)" data-group="elementCheck">
+      <i class="fa-solid fa-external-link-square-alt fa-fw"></i>
+      新标签页打开
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyLink" data-event="copyLink" data-group="elementCheck">
+      <i class="fa-solid fa-link fa-fw"></i>
+      复制链接地址
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyImg" data-event="copyImg" data-group="elementImage">
+      <i class="fa-solid fa-image fa-fw"></i>
+      复制图片
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="googleImg" data-event="window.open(`https://www.google.com.hk/searchbyimage?image_url=${__link__}`)" data-group="elementImage">
+      <i class="fa-solid fa-images fa-fw"></i>
+      谷歌识图
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="help" target="_blank" rel="noopener" href="https://volantis.js.org/faqs/" data-group="link">
+      <i class="fa-solid fa-question fa-fw"></i>
+      常见问题
+    </a>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="examples" target="_blank" rel="noopener" href="https://volantis.js.org/examples/" data-group="link">
+      <i class="fa-solid fa-rss fa-fw"></i>
+      示例博客
+    </a>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="contributors" target="_blank" rel="noopener" href="https://volantis.js.org/contributors/" data-group="link">
+      <i class="fa-solid fa-fan fa-fw"></i>
+      加入社区
+    </a>
+  </li>
+
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="source_docs" target="_blank" rel="noopener" href="https://github.com/volantis-x/volantis-docs/" data-group="link">
+      <i class="fa-solid fa-code-branch fa-fw"></i>
+      本站源码
+    </a>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="source_theme" target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" data-group="link">
+      <i class="fa-solid fa-code-branch fa-fw"></i>
+      主题源码
+    </a>
+  </li>
+
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="darkMode" data-event="volantis.dark.toggle()" data-group="darkMode">
+      <i class="fa-solid fa-moon fa-fw"></i>
+      暗黑模式
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="printMode" data-event="printMode" data-group="articlePage">
+      <i class="fa-solid fa-print fa-fw"></i>
+      打印页面
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="readMode" data-event="readMode" data-group="articlePage">
+      <i class="fa-solid fa-book-open fa-fw"></i>
+      阅读模式
+    </span>
+  </li>
+
+
+<div id="menuMusic">
+  <li class='music name menuOption-Content'>
+    <p class='nav music-title fix-cursor-default'></p>
+  </li>
+  <li class='music ctrl'>
+    <a class='nav icon-only backward fix-cursor-default'  title="backward">
+      <i class='fa-solid fa-step-backward fa-fw'></i>
+    </a>
+    <a class='nav icon-only toggle fix-cursor-default'  title="toggle">
+      <i class='fa-solid fa-play fa-fw'></i>
+    </a>
+    <a class='nav icon-only forward fix-cursor-default'  title="forward">
+      <i class='fa-solid fa-step-forward fa-fw'></i>
+    </a>
+  </li>
+  <li class='music volume'>
+    <div class='nav volume'>
+      <div class="aplayer-volume-bar-wrap">
+        <div class="aplayer-volume-bar fix-cursor-pointer">
+          <div class="aplayer-volume"></div>
+          <i class='left fa-solid fa-volume-off fa-fw'></i>
+          <i class='right fa-solid fa-volume-up fa-fw'></i>
+        </div>
+      </div>
+    </div>
+  </li>
+</div>
+
+  </ul>
+</div>
+<script src="/js/plugins/rightMenus.js"></script>
+<script>
+  const RightMenusFunction = {};
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  //RightMenusFunction['copyPaste'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['copyAll'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['copyCut'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['copyText'] = (fun) => {fun()}
+
+
+
+
+
+  RightMenusFunction['searchWord'] = (__text__) => {OpenSearch(__text__)}
+
+
+
+
+
+  RightMenusFunction['bingSearch'] = (__text__) => {window.open(`https://cn.bing.com/search?q=${__text__}`)}
+
+
+
+
+
+  RightMenusFunction['openTab'] = (__link__) => {window.open(__link__)}
+
+
+
+
+
+  //RightMenusFunction['copyLink'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['copyImg'] = (fun) => {fun()}
+
+
+
+
+
+  RightMenusFunction['googleImg'] = (__link__) => {window.open(`https://www.google.com.hk/searchbyimage?image_url=${__link__}`)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  RightMenusFunction['darkMode'] = () => {volantis.dark.toggle()}
+
+
+
+
+
+  //RightMenusFunction['printMode'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['readMode'] = (fun) => {fun()}
+
+
+
+
+
+</script>
+
+
+
+<!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
+
+
+
+<script>
+  function loadIssuesJS() {
+    
+      const sites_api = document.getElementById('sites-api');
+      if (sites_api != undefined && typeof SitesJS === 'undefined') {
+        volantis.js("/js/plugins/tags/sites.js")
+      }
+    
+    
+      const friends_api = document.getElementById('friends-api');
+      if (friends_api != undefined && typeof FriendsJS === 'undefined') {
+        volantis.js("/js/plugins/tags/friends.js")
+      }
+    
+    
+      const contributors_api = document.getElementById('contributors-api');
+      if (contributors_api != undefined && typeof ContributorsJS === 'undefined') {
+        volantis.js("/js/plugins/tags/contributors.js")
+      }
+    
+  };
+  loadIssuesJS()
+</script>
+
+
+
+
+  <script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.1.0/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 0
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    lazyLoadInstance.update();
+  });
+</script>
+
+
+
+
+  
+
+<script>
+  window.FPConfig = {
+	delay: 0,
+	ignoreKeywords: ["#"],
+	maxRPS: 6,
+	hoverDelay: 0
+  };
+</script>
+<script defer src="https://unpkg.com/volantis-static@0.0.1660614606622/libs/flying-pages/flying-pages.min.js"></script>
+
+
+
+
+
+
+
+
+
+      <script>
+  volantis.layoutHelper("comments",`<div id="giscus_container"></div>`)
+
+  volantis.giscus = {};
+
+  function check_giscus() {
+    if (volantis.dark.mode === "dark") {
+      volantis.giscus.Theme = 'dark';
+    } else {
+      volantis.giscus.Theme = 'light';
+    }
+
+    return document.getElementById("giscus_container");
+  }
+
+  function p_giscus() {
+    const HEAD = check_giscus();
+    if (!HEAD) return;
+    let cfg = Object.assign({"repo":"Snowman12137/blog-comments","repo-id":"R_kgDOLKoZ0Q","category":"Announcements","category-id":"DIC_kwDOLKoZ0c4CcwFX","mapping":"pathname","reactions-enabled":"1","emit-metadata":"0","lang":"zh-CN","theme":{"light":"light","dark":"dark"}},pdata.commentConfig)
+    const script = document.createElement('script');
+    script.setAttribute('src', 'https://giscus.app/client.js');
+    Object.keys(cfg).forEach(k=>{
+      if (k != "theme") {
+        script.setAttribute('data-'+k, cfg[k]);
+      }
+    })
+    script.setAttribute('data-theme', volantis.giscus.Theme);
+    script.setAttribute('crossorigin', "anonymous");
+    HEAD.appendChild(script);
+  }
+
+  function dark_giscus() {
+    const HEAD = check_giscus();
+    if (!HEAD) return;
+
+    const message = {
+      setConfig: {
+        theme: volantis.giscus.Theme
+      }
+    };
+    const giscusIframe = document.querySelector('iframe.giscus-frame');
+    giscusIframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+  }
+  p_giscus();
+  volantis.dark.push(dark_giscus);
+</script>
+
+    
+
+
+
+
+
+<!-- optional -->
+
+  <script>
+  async function loadSearchScript() {
+    
+        
+    
+    return volantis.js("/js/search/hexo.js");
+  }
+
+  function loadSearchService() {
+    loadSearchScript();
+    document.querySelectorAll(".input.u-search-input").forEach((e) => {
+      e.removeEventListener("focus", loadSearchService, false);
+    });
+
+    document.querySelectorAll(".u-search-form").forEach((e) => {
+      e.addEventListener("submit", (event) => {
+        event.preventDefault();
+      }, false);
+    });
+  }
+
+  // 打开并搜索 字符串 s
+  function OpenSearch(s) {
+    if (typeof SearchService === 'undefined')
+      loadSearchScript().then(() => {
+        SearchService.setQueryText(s);
+        SearchService.search();
+      });
+    else {
+      SearchService.setQueryText(s);
+      SearchService.search();
+    }
+  }
+
+  // 访问含有 ?s=xxx  的链接时打开搜索 // 与搜索引擎 structured data 相关: /scripts/helpers/structured-data/lib/config.js
+  if (window.location.search && /^\?s=/g.test(window.location.search)) {
+    let queryText = decodeURI(window.location.search)
+      .replace(/\ /g, "-")
+      .replace(/^\?s=/g, "");
+    OpenSearch(queryText);
+  }
+
+  // 搜索输入框获取焦点时加载搜索
+  document.querySelectorAll(".input.u-search-input").forEach((e) => {
+    e.addEventListener("focus", loadSearchService, false);
+  });
+</script>
+
+
+
+
+
+
+
+  <script>
+
+
+
+  function p_highlightjs_copyCode(){
+    if (!(document.querySelector(".highlight .code pre") ||
+      document.querySelector(".article pre code"))) {
+      return;
+    }
+    VolantisApp.utilCopyCode(".highlight .code pre, .article pre code")
+  }
+  volantis.requestAnimationFrame(p_highlightjs_copyCode)
+
+</script>
+
+
+
+
+
+
+
+
+  <script>
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp"];
+  let index = 0;
+  let IntervalParallax = null;
+
+  function parallax(){
+    let ParallaxWindow = document.querySelector("#parallax-window");
+    
+    Parallax.window = ParallaxWindow;
+    Parallax.options.fade = 1500;
+    Parallax.cache = 1;
+    next_parallax();
+    Parallax.init();
+    if (imgs.length>1) {
+      IntervalParallax = setInterval(function () {
+        next_parallax();
+      }, '10000');
+    }
+  }
+
+  function next_parallax() {
+    if (typeof Parallax == "undefined") {
+      return
+    }
+    
+      if (!document.querySelector("#full")&&!document.querySelector("#half")) {
+        return
+      }
+    
+    if (imgs.length>=1) {
+      Parallax.options.src = imgs[index % imgs.length];
+      Parallax.start();
+      index++;
+      if (Parallax.cache) {
+        fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
+        if (index == imgs.length) {
+          Parallax.cache = 0;
+        }
+      }
+    }
+  }
+  var runningOnBrowser = typeof window !== "undefined";
+  var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+  if (!isBot) {
+    volantis.js('/js/plugins/parallax.js').then(()=>{
+      parallax()
+    })
+  }
+</script>
+
+
+
+
+  <script>
+  function load_swiper() {
+    if (!document.querySelectorAll(".swiper-container")[0]) return;
+    volantis.css("https://cdn.bootcdn.net/ajax/libs/Swiper/8.3.2/swiper-bundle.min.css");
+    volantis.js("https://cdn.bootcdn.net/ajax/libs/Swiper/8.3.2/swiper-bundle.min.js").then(() => {
+      p_swiper();
+    });
+  }
+
+  load_swiper();
+
+  function p_swiper() {
+    volantis.swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      spaceBetween: 8,
+      centeredSlides: true,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  }
+
+</script>
+
+
+
+  <script>
+  volantis.css("https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.min.css");
+  volantis.js("https://cdn.bootcdn.net/ajax/libs/pace/1.2.4/pace.min.js").then(() => {
+    Pace.options.restartOnPushState = false;
+    // 阅读进度
+    volantis.scroll.push(() => {
+      Pace.stop();
+      Pace.trigger('start');
+      Pace.bar.update(volantis.scroll.progress() * 100);
+      document.body.className = document.body.className.replaceAll("pace-running ","");
+    },"阅读进度")
+    // todo：配置项开关, 哪些页面添加阅读进度
+  })
+</script>
+
+
+
+
+<script>
+  function listenSidebarTOC() {
+    const navItems = document.querySelectorAll(".toc li");
+    if (!navItems.length) return;
+    const targets = []
+    const sections = Array.from(navItems).forEach((element) => {
+      const link = element.querySelector(".toc-link");
+      const target = document.getElementById(
+        link.getAttribute("href") ? decodeURI(link.getAttribute("href")).replace("#", "") : link.getAttribute("toc-action").split("toc-")[1] // 兼容 hexo-blog-encrypt
+      );
+      targets.push(target)
+      // 解除 a 标签 href 的 锚点定位, a 标签 href 的 锚点定位 会随机启用?? 产生错位???
+      if (link.getAttribute("href")) {
+        link.setAttribute("toc-action", "toc-" + decodeURI(link.getAttribute("href")).replace("#", ""))
+        link.removeAttribute("href")
+      }
+      // 配置 点击 触发新的锚点定位
+      if (target && target.id) {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          // 这里的 addTop 是通过错位使得 toc 自动展开.
+          volantis.scroll.to(target, { addTop: 5, observer: true })
+          // Anchor id
+          history.pushState(null, document.title, "#" + target.id);
+        });
+      }
+      return target;
+    });
+
+    function activateNavByIndex(target) {
+      if (target.classList.contains("active-current")) return;
+
+      document.querySelectorAll(".toc .active").forEach((element) => {
+        element.classList.remove("active", "active-current");
+      });
+      target.classList.add("active", "active-current");
+      let parent = target.parentNode;
+      while (!parent.matches(".toc")) {
+        if (parent.matches("li")) parent.classList.add("active");
+        parent = parent.parentNode;
+      }
+    }
+
+    // 方案一：
+    volantis.activateNavIndex = 0
+    activateNavByIndex(navItems[volantis.activateNavIndex])
+    if (targets[0]) {
+      volantis.scroll.push(() => {
+        if (targets[0].getBoundingClientRect().top >= 0) {
+          volantis.activateNavIndex = 0
+        } else if (targets[targets.length - 1].getBoundingClientRect().top < 0) {
+          volantis.activateNavIndex = targets.length - 1
+        } else {
+          for (let index = 0; index < targets.length; index++) {
+            const target0 = targets[index];
+            const target1 = targets[(index + 1) % targets.length];
+            if (target0.getBoundingClientRect().top < 0 && target1.getBoundingClientRect().top >= 0) {
+              volantis.activateNavIndex = index
+              break;
+            }
+          }
+        }
+        activateNavByIndex(navItems[volantis.activateNavIndex])
+      })
+    }
+
+    // 方案二：
+    // IntersectionObserver 不是完美精确到像素级别 也不是低延时性的
+    // function findIndex(entries) {
+    //   let index = 0;
+    //   let entry = entries[index];
+    //   if (entry.boundingClientRect.top > 0) {
+    //     index = sections.indexOf(entry.target);
+    //     return index === 0 ? 0 : index - 1;
+    //   }
+    //   for (; index < entries.length; index++) {
+    //     if (entries[index].boundingClientRect.top <= 0) {
+    //       entry = entries[index];
+    //     } else {
+    //       return sections.indexOf(entry.target);
+    //     }
+    //   }
+    //   return sections.indexOf(entry.target);
+    // }
+    // function createIntersectionObserver(marginTop) {
+    //   marginTop = Math.floor(marginTop + 10000);
+    //   let intersectionObserver = new IntersectionObserver(
+    //     (entries, observe) => {
+    //       let scrollHeight = document.documentElement.scrollHeight;
+    //       if (scrollHeight > marginTop) {
+    //         observe.disconnect();
+    //         createIntersectionObserver(scrollHeight);
+    //         return;
+    //       }
+    //       let index = findIndex(entries);
+    //       activateNavByIndex(navItems[index]);
+    //     }, {
+    //       rootMargin: marginTop + "px 0px -100% 0px",
+    //       threshold: 0,
+    //     }
+    //   );
+    //   sections.forEach((element) => {
+    //     element && intersectionObserver.observe(element);
+    //   });
+    // }
+    // createIntersectionObserver(document.documentElement.scrollHeight);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    volantis.requestAnimationFrame(listenSidebarTOC)
+  });
+</script>
+
+
+
+
+
+<script>
+  document.onreadystatechange = function () {
+    if (document.readyState == 'complete') {
+      // 页面加载完毕 样式加载失败，或是当前网速慢，或是开启了省流模式
+      const { saveData, effectiveType } = navigator.connection || navigator.mozConnection || navigator.webkitConnection || {}
+      if (getComputedStyle(document.querySelector("#safearea"), null)["display"] == "none" || saveData || /2g/.test(effectiveType)) {
+        document.querySelectorAll(".reveal").forEach(function (e) {
+          e.style["opacity"] = "1";
+        });
+        document.querySelector("#safearea").style["display"] = "block";
+      }
+    }
+  }
+</script>
+
+
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/CTF网络攻防/","name":"CTF网络攻防"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2023/12/20/DNS隧道-FRP隧道-847d738f19054a058e6cf5dbbfe97204/","name":"DNS隧道+FRP隧道搭建"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"DNS隧道+FRP隧道搭建","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93-847d738f19054a058e6cf5dbbfe97204/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93-847d738f19054a058e6cf5dbbfe97204/","wordCount":0,"datePublished":"2023-12-19T16:00:00.000Z","dateModified":"2024-02-06T18:23:00.453Z","articleSection":"CTF网络攻防","keywords":"CTF网络攻防","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+
+
+
+    </div>
+    <!-- import body_end begin-->
+    <!-- import body_end end-->
+    <!-- Custom Files bodyEnd begin-->
+    
+    <!-- Custom Files bodyEnd end-->
+  </body>
+</html>
+<script type="text/javascript" src="/js/love.js"></script>
+<script type="text/javascript" src="\js\FunnyTitle.js"></script>
