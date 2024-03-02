@@ -33,13 +33,13 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>分类：docker - 小吴の博客</title>
+  <title>分类：Docker - 小吴の博客</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="我的博客 - Snowman - 小吴の博客">
   
 <meta property="og:type" content="website">
 <meta property="og:title" content="小吴の博客">
-<meta property="og:url" content="https://snowman12137.github.io/categories/docker/index.html">
+<meta property="og:url" content="https://snowman12137.github.io/categories/Docker/index.html">
 <meta property="og:site_name" content="小吴の博客">
 <meta property="og:description" content="我的博客">
 <meta property="og:locale" content="zh_CN">
@@ -2174,7 +2174,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1709373332620),
+    lastupdate: new Date(1709389321970),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2518,6 +2518,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
       
     
     
@@ -2525,7 +2529,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/27/Docker学习-二-docker基本操作-29260b33a8e64d8a97d968c0e6f26703/">
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/02/Docker学习-三-Dockerfile与Compose-cc33bdd80c804e1fb3125511f62e09c2/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="小吴の博客">
   </span>
@@ -2543,7 +2547,233 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/27/Docker%E5%AD%A6%E4%B9%A0-%E4%BA%8C-docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-29260b33a8e64d8a97d968c0e6f26703/"  itemprop="url">
+      <a href="/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%89-Dockerfile%E4%B8%8ECompose-cc33bdd80c804e1fb3125511f62e09c2/"  itemprop="url">
+        Docker学习(三):Dockerfile与Compose
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        Docker学习(三):Dockerfile与Compose原文来自菜鸟：https://www.runoob.com/docker/docker-dockerfile.html
+（菜鸟讲的太详细了，泪目）
+一、什么是 Dockerfile？Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。
+1.使用 Dockerfile 定制镜像这里仅讲解如...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-02T00:00:00+08:00">2024-03-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Docker/">Docker</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Docker/" itemprop="url"><span itemprop="name">Docker</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%89-Dockerfile%E4%B8%8ECompose-cc33bdd80c804e1fb3125511f62e09c2/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/02/Docker学习-四-文件传输与服务搭建-9eb8186804694de18718aa6fd4ae82a4/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/"  itemprop="url">
+        Docker学习(四):文件传输与服务搭建
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        Docker学习(四):文件传输与服务搭建一、文件传输1.先拿到容器ID全称拿到短ID
+
+1docker inspect -f &#x27;&#123;&#123;.Id&#125;&#125;&#x27; d162c8a4d084
+
+
+2.传输文件1docker cp 本地文件路径 ID全称:容器路径
+
+1docker cp .\Desktop\HelloWorld.txt d162c8a...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-02T00:00:00+08:00">2024-03-02</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Docker/">Docker</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Docker/" itemprop="url"><span itemprop="name">Docker</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/01/Docker学习-一-安装docker（win）-842d24f88e8940f28160a957ffea2fc8/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E5%AE%89%E8%A3%85docker%EF%BC%88win%EF%BC%89-842d24f88e8940f28160a957ffea2fc8/"  itemprop="url">
+        Docker学习(一):安装docker（win）
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        Docker学习(一):安装docker（win）教程来自菜鸟
+一、前言因为项目的代码必须要在Linux才能运行，为了跨平台的性能考虑，因此我打算使用win+docker的形式来运行后端，开始学习。
+二、Windows Docker 安装Docker 并非是一个通用的容器工具，它依赖于已存在并运行的 Linux 内核环境。
+Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-01T00:00:00+08:00">2024-03-01</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Docker/">Docker</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Docker/" itemprop="url"><span itemprop="name">Docker</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E5%AE%89%E8%A3%85docker%EF%BC%88win%EF%BC%89-842d24f88e8940f28160a957ffea2fc8/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/01/Docker学习-二-docker基本操作-29260b33a8e64d8a97d968c0e6f26703/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%BA%8C-docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-29260b33a8e64d8a97d968c0e6f26703/"  itemprop="url">
         Docker学习(二):docker基本操作
       </a>
     </h2>
@@ -2576,94 +2806,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             <meta itemprop="url" content="/">
           </span>
         
-        <time itemprop="dateCreated datePublished" datetime="2024-02-27T00:00:00+08:00">2024-02-27</time>
+        <time itemprop="dateCreated datePublished" datetime="2024-03-01T00:00:00+08:00">2024-03-01</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/docker/">docker</a>
+          <a class="category-link" href="/categories/Docker/">Docker</a>
           
             <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/docker/" itemprop="url"><span itemprop="name">docker</span></a>
+              <a href="/categories/Docker/" itemprop="url"><span itemprop="name">Docker</span></a>
             </span>
           
         
       </div>
       
         <div>
-          <a class='readmore' href='/2024/02/27/Docker%E5%AD%A6%E4%B9%A0-%E4%BA%8C-docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-29260b33a8e64d8a97d968c0e6f26703/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/26/Docker学习-一-安装docker（win）-842d24f88e8940f28160a957ffea2fc8/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/26/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E5%AE%89%E8%A3%85docker%EF%BC%88win%EF%BC%89-842d24f88e8940f28160a957ffea2fc8/"  itemprop="url">
-        Docker学习(一):安装docker（win）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Docker学习(一):安装docker（win）教程来自菜鸟
-一、前言因为项目的代码必须要在Linux才能运行，为了跨平台的性能考虑，因此我打算使用win+docker的形式来运行后端，开始学习。
-二、Windows Docker 安装Docker 并非是一个通用的容器工具，它依赖于已存在并运行的 Linux 内核环境。
-Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-02-26T00:00:00+08:00">2024-02-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/docker/">docker</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/docker/" itemprop="url"><span itemprop="name">docker</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/02/26/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E5%AE%89%E8%A3%85docker%EF%BC%88win%EF%BC%89-842d24f88e8940f28160a957ffea2fc8/' itemprop="url">
+          <a class='readmore' href='/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%BA%8C-docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-29260b33a8e64d8a97d968c0e6f26703/' itemprop="url">
             阅读全文
           </a>
         </div>
@@ -2789,9 +2945,14 @@ Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
             ><div class='name'>CTF网络攻防</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/Docker/" href="/categories/Docker/"
+            active-action="action-categoriesDocker"
+            ><div class='name'>Docker</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/" href="/categories/Electron-Vue-WebRTC%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%A6%E4%B9%A0/"
             active-action="action-categoriesElectron-Vue-WebRTCE5AEA2E688B7E7ABAFE5ADA6E4B9A0"
-            ><div class='name'>Electron-Vue-WebRTC客户端学习</div><div class='badge'>(3)</div></a></li>
+            ><div class='name'>Electron-Vue-WebRTC客户端学习</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/"
@@ -2809,11 +2970,6 @@ Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
             ><div class='name'>SGX</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
-            title="/categories/docker/" href="/categories/docker/"
-            active-action="action-categoriesdocker"
-            ><div class='name'>docker</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
             title="/categories/%E5%85%B6%E4%BB%96/" href="/categories/%E5%85%B6%E4%BB%96/"
             active-action="action-categoriesE585B6E4BB96"
             ><div class='name'>其他</div><div class='badge'>(2)</div></a></li>
@@ -2821,12 +2977,17 @@ Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
           <li><a class="flat-box"
             title="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/"
             active-action="action-categoriesE5898DE7ABAFE5ADA6E4B9A0"
-            ><div class='name'>前端学习</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>前端学习</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/"
             active-action="action-categoriesE5ADA6E6A0A1E4BD9CE4B89A"
             ><div class='name'>学校作业</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" href="/categories/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"
+            active-action="action-categoriesE7949FE789A9E8AEA1E7AE97E69CBAE7A791E5ADA6"
+            ><div class='name'>生物计算机科学</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -2851,7 +3012,7 @@ Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
 
 
     <div class='content'>
-      <a href="/tags/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" style="font-size: 14px; color: #999">CTF网络攻防</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Nodejs%E5%AD%A6%E4%B9%A0/" style="font-size: 24px; color: #555">Nodejs学习</a> <a href="/tags/SGX/" style="font-size: 14px; color: #999">SGX</a> <a href="/tags/docker/" style="font-size: 19px; color: #777">docker</a> <a href="/tags/metaGEM/" style="font-size: 24px; color: #555">metaGEM</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-VUE/" style="font-size: 19px; color: #777">前端学习,VUE</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/" style="font-size: 19px; color: #777">博客问题</a> <a href="/tags/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" style="font-size: 19px; color: #777">学校作业</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">机器学习</a> <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 14px; color: #999">现代密码学</a>
+      <a href="/tags/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" style="font-size: 14px; color: #999">CTF网络攻防</a> <a href="/tags/Docker/" style="font-size: 24px; color: #555">Docker</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Nodejs%E5%AD%A6%E4%B9%A0/" style="font-size: 17.33px; color: #828282">Nodejs学习</a> <a href="/tags/SGX/" style="font-size: 14px; color: #999">SGX</a> <a href="/tags/metaGEM/" style="font-size: 20.67px; color: #6c6c6c">metaGEM</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-VUE/" style="font-size: 20.67px; color: #6c6c6c">前端学习,VUE</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/" style="font-size: 17.33px; color: #828282">博客问题</a> <a href="/tags/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" style="font-size: 17.33px; color: #828282">学校作业</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">机器学习</a> <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 14px; color: #999">现代密码学</a>
     </div>
   </section>
 
@@ -3519,7 +3680,7 @@ Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3754,7 +3915,7 @@ Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/docker/","name":"docker"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/Docker/","name":"Docker"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
