@@ -2174,7 +2174,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1711375565328),
+    lastupdate: new Date(1711378529257),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2636,9 +2636,465 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/25/django学习（三）/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/25/django%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/"  itemprop="url">
+        django学习（三）
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        django学习（三）一 Django Admin 管理工具Django 提供了基于 web 的管理工具。
+Django 自动管理工具是 django.contrib 的一部分。你可以在项目的 settings.py 中的 INSTALLED_APPS 看到它：
+12345678INSTALLED_APPS = (    &#x27;django.contrib.admin&#x27;,  ...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-25T00:00:00+08:00">2024-03-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Django%E5%AD%A6%E4%B9%A0/">Django学习</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Django%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Django学习</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/25/django%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/25/django学习（二）/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/25/django%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/"  itemprop="url">
+        django学习（二）
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        django学习（二）教程来源于菜鸟：https://www.runoob.com/django/django-form.html
+一、Django 表单HTML表单是网站交互性的经典方式。 本章将介绍如何用Django对用户提交的表单数据进行处理。
+1. HTTP 请求HTTP协议以”请求－回复”的方式工作。客户发送请求时，可以在请求中附加数据。服务器通过解析请求，就可以获得客户传来的数据...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-25T00:00:00+08:00">2024-03-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Django%E5%AD%A6%E4%B9%A0/">Django学习</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Django%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Django学习</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/25/django%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/25/django学习（一）/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/25/django%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/"  itemprop="url">
+        django学习（一）
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        django学习（一）教程来自菜鸟：https://www.runoob.com/django/django-first-app.html
+一、第一个项目1.创建项目使用 django-admin 来创建 HelloWorld 项目：
+1django-admin startproject backend
+
+创建完成后我们可以查看下项目的目录结构：
+12345678910(base) test...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-25T00:00:00+08:00">2024-03-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Django%E5%AD%A6%E4%B9%A0/">Django学习</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/Django%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">Django学习</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/25/django%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/25/数论基础-一-—群环域/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/25/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-%E4%B8%80-%E2%80%94%E7%BE%A4%E7%8E%AF%E5%9F%9F/"  itemprop="url">
+        数论基础(一)—群环域
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        数论基础(一)—群环域参考文章：
+https://blog.csdn.net/qq_44925830&#x2F;article&#x2F;details&#x2F;123300315
+https://accu.cc/content/cryptography/group_ring_field&#x2F;
+一、群环域基本概念1. 群（加法）数学里面的群(G, group)是由集合和二元运算(用符...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-25T00:00:00+08:00">2024-03-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%90%8C%E6%80%81%E5%AF%86%E7%A0%81/">同态密码</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%90%8C%E6%80%81%E5%AF%86%E7%A0%81/" itemprop="url"><span itemprop="name">同态密码</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/25/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-%E4%B8%80-%E2%80%94%E7%BE%A4%E7%8E%AF%E5%9F%9F/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/25/数论基础-二-—椭圆曲线/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/25/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E2%80%94%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF/"  itemprop="url">
+        数论基础(二)—椭圆曲线
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        数论基础(二)—椭圆曲线参考文章：
+https://accu.cc/content/cryptography/ecc/
+https://blog.csdn.net/qq_44925830&#x2F;article&#x2F;details&#x2F;123300315
+https://zhuanlan.zhihu.com/p/603240120
+https://juejin.cn/post/...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-25T00:00:00+08:00">2024-03-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E5%90%8C%E6%80%81%E5%AF%86%E7%A0%81/">同态密码</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E5%90%8C%E6%80%81%E5%AF%86%E7%A0%81/" itemprop="url"><span itemprop="name">同态密码</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/25/%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E2%80%94%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/25/通过共表达网络分析（WGCNA）-5201c79a5b3e49c5a4f38f90d7c724ba/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="小吴の博客">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="小吴の博客">
+    <meta itemprop="description" content="我的博客">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2024/03/25/%E9%80%9A%E8%BF%87%E5%85%B1%E8%A1%A8%E8%BE%BE%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%EF%BC%88WGCNA%EF%BC%89-5201c79a5b3e49c5a4f38f90d7c724ba/"  itemprop="url">
+        通过共表达网络分析（WGCNA）
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        通过共表达网络分析（WGCNA）文章解析：谭永飞. 通过共表达网络分析 (WGCNA) 探究前列腺癌发生与进展相关功能基因模块. MS thesis. 吉林大学, 2018.
+数据来源：TCGA（The Cancer Genome Atlas） (https://portal.gdc.cancer.gov/) 
+一、数据下载与处理文章使用了TCGA-Assembler的R程序包下载TCGA规...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Sn0wm1an">
+            <meta itemprop="url" content="/">
+          </span>
+        
+        <time itemprop="dateCreated datePublished" datetime="2024-03-25T00:00:00+08:00">2024-03-25</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">生物计算机科学</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" itemprop="url"><span itemprop="name">生物计算机科学</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2024/03/25/%E9%80%9A%E8%BF%87%E5%85%B1%E8%A1%A8%E8%BE%BE%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%EF%BC%88WGCNA%EF%BC%89-5201c79a5b3e49c5a4f38f90d7c724ba/' itemprop="url">
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -2967,459 +3423,6 @@ https://dl.clashforwindows.org/releases/latest/Clash.for.Windows.Setup.0.20.39.e
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/02/Docker学习-四-文件传输与服务搭建-9eb8186804694de18718aa6fd4ae82a4/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/"  itemprop="url">
-        Docker学习(四):文件传输与服务搭建
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Docker学习(四):文件传输与服务搭建一、文件传输1.先拿到容器ID全称拿到短ID
-
-1docker inspect -f &#x27;&#123;&#123;.Id&#125;&#125;&#x27; d162c8a4d084
-
-
-2.传输文件1docker cp 本地文件路径 ID全称:容器路径
-
-1docker cp .\Desktop\HelloWorld.txt d162c8a...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-03-02T00:00:00+08:00">2024-03-02</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Docker/">Docker</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Docker/" itemprop="url"><span itemprop="name">Docker</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/01/Docker学习-一-安装docker（win）-842d24f88e8940f28160a957ffea2fc8/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E5%AE%89%E8%A3%85docker%EF%BC%88win%EF%BC%89-842d24f88e8940f28160a957ffea2fc8/"  itemprop="url">
-        Docker学习(一):安装docker（win）
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Docker学习(一):安装docker（win）教程来自菜鸟
-一、前言因为项目的代码必须要在Linux才能运行，为了跨平台的性能考虑，因此我打算使用win+docker的形式来运行后端，开始学习。
-二、Windows Docker 安装Docker 并非是一个通用的容器工具，它依赖于已存在并运行的 Linux 内核环境。
-Docker 实质上是在已经运行的 Linux 下制造了一个隔离的文...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-03-01T00:00:00+08:00">2024-03-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Docker/">Docker</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Docker/" itemprop="url"><span itemprop="name">Docker</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E5%AE%89%E8%A3%85docker%EF%BC%88win%EF%BC%89-842d24f88e8940f28160a957ffea2fc8/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/03/01/Docker学习-二-docker基本操作-29260b33a8e64d8a97d968c0e6f26703/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%BA%8C-docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-29260b33a8e64d8a97d968c0e6f26703/"  itemprop="url">
-        Docker学习(二):docker基本操作
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        Docker学习(二):docker基本操作一、容器使用1.获取镜像如果我们本地没有 ubuntu 镜像，我们可以使用 docker pull 命令来载入 ubuntu 镜像：
-1docker pull ubuntu
-
-2.启动容器以下命令使用 ubuntu 镜像启动一个容器，参数为以命令行模式进入该容器：
-1docker run -it ubuntu /bin/bash
-
-
-参数说明：
-
-...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-03-01T00:00:00+08:00">2024-03-01</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/Docker/">Docker</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/Docker/" itemprop="url"><span itemprop="name">Docker</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%BA%8C-docker%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-29260b33a8e64d8a97d968c0e6f26703/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/20/宏基因组实战-基因注释Prokka/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/20/%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AE%9E%E6%88%98-%E5%9F%BA%E5%9B%A0%E6%B3%A8%E9%87%8AProkka/"  itemprop="url">
-        宏基因组实战:基因注释Prokka
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        宏基因组实战:基因注释Prokka1.Prokka简介细菌基因组、宏基因组的基因注释一直是一个非常复杂的问题，Prokka的出现改变了这一切。
-Prokka: rapid prokaryotic genome annotation，快速的原核基因组注释。就是上面的神兽，猜猜是什么动物，但真不是皮卡丘。
-Prokka是一个命令行软件工具，可以在一台典型台式机上在约10分钟内充分注释一个细菌基因...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-02-20T00:00:00+08:00">2024-02-20</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">生物计算机科学</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" itemprop="url"><span itemprop="name">生物计算机科学</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/02/20/%E5%AE%8F%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%AE%9E%E6%88%98-%E5%9F%BA%E5%9B%A0%E6%B3%A8%E9%87%8AProkka/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/06/VUE学习-三/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/06/VUE%E5%AD%A6%E4%B9%A0-%E4%B8%89/"  itemprop="url">
-        VUE学习(三)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        VUE学习(三)1 Class 与 Style 绑定数据绑定的一个常见需求场景是操纵元素的 CSS class 列表和内联样式。因为 class 和 style 都是 attribute，我们可以和其他 attribute 一样使用 v-bind 将它们和动态的字符串绑定。但是，在处理比较复杂的绑定时，通过拼接生成字符串是麻烦且易出错的。因此，Vue 专门为 class 和 style 的 ...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-02-06T00:00:00+08:00">2024-02-06</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/">前端学习</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">前端学习</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/02/06/VUE%E5%AD%A6%E4%B9%A0-%E4%B8%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="https://snowman12137.github.io/2024/02/05/metaGEM使用小记-解决各种问题-2024-2（三）/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="小吴の博客">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="小吴の博客">
-    <meta itemprop="description" content="我的博客">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2024/02/05/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%B8%89%EF%BC%89/"  itemprop="url">
-        metaGEM使用小记(解决各种问题)2024.1(三)
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        metaGEM使用小记(解决各种问题)2024.2(三)正式流程这是原始文件夹省略了这些文件的内容，tree -I &#39;scripts|rules|envs&#39;
-每次新生成的文件和文件夹会用*标记出来
-12345678910111213.├── config.yaml├── dataset│   ├── L1EFG190305--AM43│   │   ├── L1EFG1903...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-          
-          <a class='avatar' href='/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
-          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
-            <meta itemprop="name" content="Sn0wm1an">
-            <meta itemprop="url" content="/">
-          </span>
-        
-        <time itemprop="dateCreated datePublished" datetime="2024-02-05T00:00:00+08:00">2024-02-05</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/">MAGs云分析</a><span class="sep"></span><a class="category-link" href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/">生物计算机科学</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/" itemprop="url"><span itemprop="name">MAGs云分析</span></a>
-            </span>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/MAGs%E4%BA%91%E5%88%86%E6%9E%90/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" itemprop="url"><span itemprop="name">生物计算机科学</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2024/02/05/metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%B8%89%EF%BC%89/' itemprop="url">
-            阅读全文
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
     
   </section>
   
@@ -3546,6 +3549,11 @@ Prokka是一个命令行软件工具，可以在一台典型台式机上在约10
             ><div class='name'>CTF网络攻防</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/Django%E5%AD%A6%E4%B9%A0/" href="/categories/Django%E5%AD%A6%E4%B9%A0/"
+            active-action="action-categoriesDjangoE5ADA6E4B9A0"
+            ><div class='name'>Django学习</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/Docker/" href="/categories/Docker/"
             active-action="action-categoriesDocker"
             ><div class='name'>Docker</div><div class='badge'>(4)</div></a></li>
@@ -3581,6 +3589,11 @@ Prokka是一个命令行软件工具，可以在一台典型台式机上在约10
             ><div class='name'>前端学习</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/%E5%90%8C%E6%80%81%E5%AF%86%E7%A0%81/" href="/categories/%E5%90%8C%E6%80%81%E5%AF%86%E7%A0%81/"
+            active-action="action-categoriesE5908CE68081E5AF86E7A081"
+            ><div class='name'>同态密码</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" href="/categories/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/"
             active-action="action-categoriesE5ADA6E6A0A1E4BD9CE4B89A"
             ><div class='name'>学校作业</div><div class='badge'>(2)</div></a></li>
@@ -3588,7 +3601,7 @@ Prokka是一个命令行软件工具，可以在一台典型台式机上在约10
           <li><a class="flat-box"
             title="/categories/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" href="/categories/%E7%94%9F%E7%89%A9%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/"
             active-action="action-categoriesE7949FE789A9E8AEA1E7AE97E69CBAE7A791E5ADA6"
-            ><div class='name'>生物计算机科学</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>生物计算机科学</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"
@@ -3623,7 +3636,7 @@ Prokka是一个命令行软件工具，可以在一台典型台式机上在约10
 
 
     <div class='content'>
-      <a href="/tags/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" style="font-size: 14px; color: #999">CTF网络攻防</a> <a href="/tags/Docker/" style="font-size: 24px; color: #555">Docker</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Nodejs%E5%AD%A6%E4%B9%A0/" style="font-size: 17.33px; color: #828282">Nodejs学习</a> <a href="/tags/SGX/" style="font-size: 14px; color: #999">SGX</a> <a href="/tags/metaGEM/" style="font-size: 20.67px; color: #6c6c6c">metaGEM</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-VUE/" style="font-size: 20.67px; color: #6c6c6c">前端学习,VUE</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/" style="font-size: 17.33px; color: #828282">博客问题</a> <a href="/tags/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" style="font-size: 17.33px; color: #828282">学校作业</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">机器学习</a> <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 14px; color: #999">现代密码学</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 20.67px; color: #6c6c6c">科学上网</a>
+      <a href="/tags/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" style="font-size: 14px; color: #999">CTF网络攻防</a> <a href="/tags/Django/" style="font-size: 20.67px; color: #6c6c6c">Django</a> <a href="/tags/Docker/" style="font-size: 24px; color: #555">Docker</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Nodejs%E5%AD%A6%E4%B9%A0/" style="font-size: 17.33px; color: #828282">Nodejs学习</a> <a href="/tags/SGX/" style="font-size: 14px; color: #999">SGX</a> <a href="/tags/WGCAN%E7%BD%91%E7%BB%9C/" style="font-size: 14px; color: #999">WGCAN网络</a> <a href="/tags/metaGEM/" style="font-size: 20.67px; color: #6c6c6c">metaGEM</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0-VUE/" style="font-size: 20.67px; color: #6c6c6c">前端学习,VUE</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/" style="font-size: 17.33px; color: #828282">博客问题</a> <a href="/tags/%E5%90%8C%E6%80%81%E5%AF%86%E7%A0%81/" style="font-size: 17.33px; color: #828282">同态密码</a> <a href="/tags/%E5%AD%A6%E6%A0%A1%E4%BD%9C%E4%B8%9A/" style="font-size: 17.33px; color: #828282">学校作业</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 14px; color: #999">机器学习</a> <a href="/tags/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6/" style="font-size: 14px; color: #999">现代密码学</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 20.67px; color: #6c6c6c">科学上网</a>
     </div>
   </section>
 
@@ -4292,7 +4305,7 @@ Prokka是一个命令行软件工具，可以在一台典型台式机上在约10
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp"];
   let index = 0;
   let IntervalParallax = null;
 
