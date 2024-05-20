@@ -41,11 +41,11 @@
 <meta property="og:title" content="metaGEM使用小记(解决各种问题)2024.1(三)">
 <meta property="og:url" content="https://snowman12137.github.io/2024/02/05/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
 <meta property="og:site_name" content="小吴の博客">
-<meta property="og:description" content="metaGEM使用小记(解决各种问题)2024.2(三)正式流程这是原始文件夹省略了这些文件的内容，tree -I &#39;scripts|rules|envs&#39; 每次新生成的文件和文件夹会用*标记出来 12345678910111213.├── config.yaml├── dataset│   ├── L1EFG190305--AM43│   │   ├── L1EFG190305-">
+<meta property="og:description" content="正式流程这是原始文件夹省略了这些文件的内容，tree -I &#39;scripts|rules|envs&#39; 每次新生成的文件和文件夹会用*标记出来 12345678910111213.├── config.yaml├── dataset│   ├── L1EFG190305--AM43│   │   ├── L1EFG190305--AM43_R1.fastq.gz│   │   └──">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-02-04T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-02T14:18:07.974Z">
+<meta property="article:modified_time" content="2024-05-20T07:17:36.002Z">
 <meta property="article:author" content="Snowman">
 <meta property="article:tag" content="metaGEM">
 <meta name="twitter:card" content="summary">
@@ -2177,7 +2177,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1716188511136),
+    lastupdate: new Date(1716189793039),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2551,7 +2551,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.5k 字</p>
+      <p>字数：2.4k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2615,7 +2615,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="metaGEM使用小记-解决各种问题-2024-2-三"><a href="#metaGEM使用小记-解决各种问题-2024-2-三" class="headerlink" title="metaGEM使用小记(解决各种问题)2024.2(三)"></a>metaGEM使用小记(解决各种问题)2024.2(三)</h1><h2 id="正式流程"><a href="#正式流程" class="headerlink" title="正式流程"></a>正式流程</h2><p>这是原始文件夹省略了这些文件的内容，<code>tree -I &#39;scripts|rules|envs&#39;</code></p>
+    <h2 id="正式流程"><a href="#正式流程" class="headerlink" title="正式流程"></a>正式流程</h2><p>这是原始文件夹省略了这些文件的内容，<code>tree -I &#39;scripts|rules|envs&#39;</code></p>
 <p>每次新生成的文件和文件夹会用*标记出来</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── config.yaml</span><br><span class="line">├── dataset</span><br><span class="line">│   ├── L1EFG190305--AM43</span><br><span class="line">│   │   ├── L1EFG190305--AM43_R1.fastq.gz</span><br><span class="line">│   │   └── L1EFG190305--AM43_R2.fastq.gz</span><br><span class="line">│   └── L1EFG190306--AM51</span><br><span class="line">│       ├── L1EFG190306--AM51_R1.fastq.gz</span><br><span class="line">│       └── L1EFG190306--AM51_R2.fastq.gz</span><br><span class="line">├── logs</span><br><span class="line">├── metaGEM.sh</span><br><span class="line">├── Snakefile</span><br><span class="line">├── temp</span><br></pre></td></tr></table></figure>
 
@@ -2769,10 +2769,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-03-02T22:18:07+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-20T15:17:36+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年3月2日</p>
+    <p>更新于：2024年5月20日</p>
   </a>
 </div>
 
@@ -2783,7 +2783,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：2.5k 字</p>
+      <p>字数：2.4k 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2875,17 +2875,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2024/02/05/%E5%A6%82%E4%BD%95%E8%AE%A9%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E8%A2%AB%E6%90%9C%E7%B4%A2%E5%88%B0/'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>如何让自己的网站被搜索到</p>
-          <p class='content'>如何让自己的网站被搜索到在有了个人网站以后，总希望更多的人来踩一踩看一看。也希望自己写的博客能够真的分享被别人搜索到，达到博客应有的分享功能。但是了解以后才发现：网站能够被搜索引擎搜索到需要自己...</p>
+          <p class='content'>在有了个人网站以后，总希望更多的人来踩一踩看一看。也希望自己写的博客能够真的分享被别人搜索到，达到博客应有的分享功能。但是了解以后才发现：网站能够被搜索引擎搜索到需要自己的网站被搜索引擎收录。一...</p>
         </a>
       
       
         <a class='next' href='/2024/02/04/VUE%E5%AD%A6%E4%B9%A0-%E4%BA%8C/'>
           <p class='title'>VUE学习(二)<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>VUE学习(二)1.快速上手安装
+          <p class='content'>1.快速上手安装
 1npm create vue@latest
 
 用最朴素的配置
-123456789101112✔ Project name: … &lt;your-projec...</p>
+123456789101112✔ Project name: … &lt;your-project-name&g...</p>
         </a>
       
     </div>
@@ -3608,7 +3608,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3843,7 +3843,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/MAGs云分析/","name":"MAGs云分析"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/MAGs云分析/生物计算机科学/","name":"生物计算机科学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/02/05/生信分析-metaGEM使用小记-解决各种问题-2024-2（三）/","name":"metaGEM使用小记(解决各种问题)2024.1(三)"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"metaGEM使用小记(解决各种问题)2024.1(三)","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/02/05/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%B8%89%EF%BC%89/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/02/05/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%B8%89%EF%BC%89/","wordCount":0,"datePublished":"2024-02-04T16:00:00.000Z","dateModified":"2024-03-02T14:18:07.974Z","articleSection":"MAGs云分析","keywords":"metaGEM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/MAGs云分析/","name":"MAGs云分析"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/MAGs云分析/生物计算机科学/","name":"生物计算机科学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/02/05/生信分析-metaGEM使用小记-解决各种问题-2024-2（三）/","name":"metaGEM使用小记(解决各种问题)2024.1(三)"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"metaGEM使用小记(解决各种问题)2024.1(三)","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/02/05/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%B8%89%EF%BC%89/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/02/05/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-2%EF%BC%88%E4%B8%89%EF%BC%89/","wordCount":0,"datePublished":"2024-02-04T16:00:00.000Z","dateModified":"2024-05-20T07:17:36.002Z","articleSection":"MAGs云分析","keywords":"metaGEM","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

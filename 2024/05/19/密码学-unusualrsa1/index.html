@@ -41,11 +41,11 @@
 <meta property="og:title" content="ctfshow-unusualrsa1">
 <meta property="og:url" content="https://snowman12137.github.io/2024/05/19/%E5%AF%86%E7%A0%81%E5%AD%A6-unusualrsa1/index.html">
 <meta property="og:site_name" content="小吴の博客">
-<meta property="og:description" content="ctfshow-unusualrsa11 题解下载的代码如下 12345678910111213141516171819202122# ********************# @Author: Lazzaro# ********************from Crypto.Util.number import getPrime,bytes_to_long,long_to_bytesfrom">
+<meta property="og:description" content="1 题解下载的代码如下 12345678910111213141516171819202122# ********************# @Author: Lazzaro# ********************from Crypto.Util.number import getPrime,bytes_to_long,long_to_bytesfrom random import randi">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-05-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-05-20T06:52:26.277Z">
+<meta property="article:modified_time" content="2024-05-20T07:16:41.658Z">
 <meta property="article:author" content="Snowman">
 <meta property="article:tag" content="密码学">
 <meta name="twitter:card" content="summary">
@@ -2177,7 +2177,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1716188511136),
+    lastupdate: new Date(1716189793039),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2551,7 +2551,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：579 字</p>
+      <p>字数：578 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2571,14 +2571,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/CTF/">CTF</a><span class="sep"></span><a class="category-link" href="/categories/CTF/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+    <a class="category-link" href="/categories/CTF-crypto/">CTF-crypto</a><span class="sep"></span><a class="category-link" href="/categories/CTF-crypto/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/CTF/" itemprop="url"><span itemprop="name">CTF</span></a>
+        <a href="/categories/CTF-crypto/" itemprop="url"><span itemprop="name">CTF-crypto</span></a>
       </span>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/CTF/%E5%AF%86%E7%A0%81%E5%AD%A6/" itemprop="url"><span itemprop="name">密码学</span></a>
+        <a href="/categories/CTF-crypto/%E5%AF%86%E7%A0%81%E5%AD%A6/" itemprop="url"><span itemprop="name">密码学</span></a>
       </span>
     
   </div>
@@ -2615,7 +2615,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="ctfshow-unusualrsa1"><a href="#ctfshow-unusualrsa1" class="headerlink" title="ctfshow-unusualrsa1"></a>ctfshow-unusualrsa1</h1><h2 id="1-题解"><a href="#1-题解" class="headerlink" title="1 题解"></a>1 题解</h2><p>下载的代码如下</p>
+    <h2 id="1-题解"><a href="#1-题解" class="headerlink" title="1 题解"></a>1 题解</h2><p>下载的代码如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ********************</span></span><br><span class="line"><span class="comment"># @Author: Lazzaro</span></span><br><span class="line"><span class="comment"># ********************</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> getPrime,bytes_to_long,long_to_bytes</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> randint</span><br><span class="line"><span class="keyword">from</span> secret <span class="keyword">import</span> flag</span><br><span class="line"></span><br><span class="line">p = getPrime(<span class="number">1024</span>)</span><br><span class="line">q = getPrime(<span class="number">1024</span>)</span><br><span class="line">n = p*q</span><br><span class="line"><span class="built_in">print</span>(n)</span><br><span class="line"></span><br><span class="line">m = bytes_to_long(long_to_bytes(randint(<span class="number">0</span>,<span class="number">30</span>))*<span class="number">208</span>+flag)</span><br><span class="line"><span class="keyword">assert</span>(m.bit_length()==<span class="number">2044</span>)</span><br><span class="line"><span class="built_in">print</span>((m&gt;&gt;<span class="number">315</span>)&lt;&lt;<span class="number">315</span>)</span><br><span class="line">c = <span class="built_in">pow</span>(m,<span class="number">3</span>,n)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"></span><br><span class="line"><span class="comment">#14113948189208713011909396304970377626324044633561155020366406284451614054260708934598840781397326960921718892801653205159753091559901114082556464576477585198060530094478860626532455065960136263963965819002575418616768412539016154873800614138683106056209070597212668250136909436974469812231498651367459717175769611385545792201291192023843434476550550829737236225181770896867698281325858412643953550465132756142888893550007041167700300621499970661661288422834479368072744930285128061160879720771910458653611076539210357701565156322144818787619821653007453741709031635862923191561438148729294430924288173571196757351837</span></span><br><span class="line"><span class="comment">#1520800285708753284739523608878585974609134243280728660335545667177630830064371336150456537012842986526527904043383436211487979254140749228004148347597566264500276581990635110200009305900689510908049771218073767918907869112593870878204145615928290375086195098919355531430003571366638390993296583488184959318678321571278510231561645872308920917404996519309473979203661442792048291421574603018835698487725981963573816645574675640357569465990665689618997534740389987351864738104038598104713275375385003471306823348792559733332094774873827383320058176803218213042061965933143968710199376164960850951030741280074168795136</span></span><br><span class="line"><span class="comment">#6635663565033382363211849843446648120305449056573116171933923595209656581213410699649926913276685818674688954045817246263487415328838542489103709103428412175252447323358040041217431171817865818374522191881448865227314554997131690963910348820833080760482835650538394814181656599175839964284713498394589419605748581347163389157651739759144560719049281761889094518791244702056048080280278984031050608249265997808217512349309696532160108250480622956599732443714546043439089844571655280770141647694859907985919056009576606333143546094941635324929407538860140272562570973340199814409134962729885962133342668270226853146819</span></span><br></pre></td></tr></table></figure>
 
 <p>这个代码是将m右移315位然后左移315位。相当于把最低位的315位置为0</p>
@@ -2667,7 +2667,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-20T14:52:26+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-20T15:16:41+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2024年5月20日</p>
@@ -2681,7 +2681,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fa-solid fa-keyboard fa-fw" aria-hidden="true"></i>
-      <p>字数：579 字</p>
+      <p>字数：578 字</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
@@ -2774,9 +2774,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='next' href='/2024/05/18/%E5%AF%86%E7%A0%81%E5%AD%A6-ctfshow-%E5%86%85%E9%83%A8%E8%B5%9B-%E7%AD%BE%E5%88%B0/'>
           <p class='title'>ctfshow-内部赛-签到<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>ctfshow-内部赛-签到编码工具:肥肠的好用
+          <p class='content'>编码工具:肥肠的好用
 https://gchq.github.io/CyberChef
-1 base64下载文档发现是一个base64加密，解密完发现是这个，但是不知...</p>
+1 base64下载文档发现是一个base64加密，解密完发现是这个，但是不知道这个是什么，搜索一下
+
+2...</p>
         </a>
       
     </div>
@@ -3499,7 +3501,7 @@ https://gchq.github.io/CyberChef
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3734,7 +3736,7 @@ https://gchq.github.io/CyberChef
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/CTF/","name":"CTF"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/CTF/密码学/","name":"密码学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/05/19/密码学-unusualrsa1/","name":"ctfshow-unusualrsa1"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ctfshow-unusualrsa1","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/05/19/%E5%AF%86%E7%A0%81%E5%AD%A6-unusualrsa1/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/05/19/%E5%AF%86%E7%A0%81%E5%AD%A6-unusualrsa1/","wordCount":0,"datePublished":"2024-05-18T16:00:00.000Z","dateModified":"2024-05-20T06:52:26.277Z","articleSection":"CTF","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/CTF-crypto/","name":"CTF-crypto"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/CTF-crypto/密码学/","name":"密码学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/05/19/密码学-unusualrsa1/","name":"ctfshow-unusualrsa1"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"ctfshow-unusualrsa1","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/05/19/%E5%AF%86%E7%A0%81%E5%AD%A6-unusualrsa1/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/05/19/%E5%AF%86%E7%A0%81%E5%AD%A6-unusualrsa1/","wordCount":0,"datePublished":"2024-05-18T16:00:00.000Z","dateModified":"2024-05-20T07:16:41.658Z","articleSection":"CTF-crypto","keywords":"密码学","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

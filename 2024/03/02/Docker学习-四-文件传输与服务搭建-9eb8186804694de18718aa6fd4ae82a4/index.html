@@ -41,11 +41,11 @@
 <meta property="og:title" content="Docker学习(四):文件传输与服务搭建">
 <meta property="og:url" content="https://snowman12137.github.io/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/index.html">
 <meta property="og:site_name" content="小吴の博客">
-<meta property="og:description" content="Docker学习(四):文件传输与服务搭建一、文件传输1.先拿到容器ID全称拿到短ID  1docker inspect -f &amp;#x27;&amp;#123;&amp;#123;.Id&amp;#125;&amp;#125;&amp;#x27; d162c8a4d084   2.传输文件1docker cp 本地文件路径 ID全称:容器路径  1docker cp .\Desktop\HelloWorld.txt d162c8a4d0">
+<meta property="og:description" content="一、文件传输1.先拿到容器ID全称拿到短ID  1docker inspect -f &amp;#x27;&amp;#123;&amp;#123;.Id&amp;#125;&amp;#125;&amp;#x27; d162c8a4d084   2.传输文件1docker cp 本地文件路径 ID全称:容器路径  1docker cp .\Desktop\HelloWorld.txt d162c8a4d08424c31fff1ca59462b9e">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-03-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-02T14:19:25.710Z">
+<meta property="article:modified_time" content="2024-05-20T07:17:59.253Z">
 <meta property="article:author" content="Snowman">
 <meta property="article:tag" content="Docker">
 <meta name="twitter:card" content="summary">
@@ -2177,7 +2177,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1716188511136),
+    lastupdate: new Date(1716189793039),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2571,10 +2571,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/Docker/">Docker</a>
+    <a class="category-link" href="/categories/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80-%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/">各种语言/工具学习</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/Docker/" itemprop="url"><span itemprop="name">Docker</span></a>
+        <a href="/categories/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80-%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0/" itemprop="url"><span itemprop="name">各种语言/工具学习</span></a>
       </span>
     
   </div>
@@ -2611,7 +2611,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="Docker学习-四-文件传输与服务搭建"><a href="#Docker学习-四-文件传输与服务搭建" class="headerlink" title="Docker学习(四):文件传输与服务搭建"></a>Docker学习(四):文件传输与服务搭建</h1><h1 id="一、文件传输"><a href="#一、文件传输" class="headerlink" title="一、文件传输"></a>一、文件传输</h1><h2 id="1-先拿到容器ID全称"><a href="#1-先拿到容器ID全称" class="headerlink" title="1.先拿到容器ID全称"></a>1.先拿到容器ID全称</h2><p>拿到短ID</p>
+    <h1 id="一、文件传输"><a href="#一、文件传输" class="headerlink" title="一、文件传输"></a>一、文件传输</h1><h2 id="1-先拿到容器ID全称"><a href="#1-先拿到容器ID全称" class="headerlink" title="1.先拿到容器ID全称"></a>1.先拿到容器ID全称</h2><p>拿到短ID</p>
 <p><img src="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/202403022211510.png" class="lazyload" data-srcset="https://my-bloag-image-xiaowu.oss-cn-beijing.aliyuncs.com/image/202403022211510.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Untitled"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect -f <span class="string">&#x27;&#123;&#123;.Id&#125;&#125;&#x27;</span> d162c8a4d084</span><br></pre></td></tr></table></figure>
 
@@ -2697,10 +2697,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-03-02T22:19:25+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-20T15:17:59+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年3月2日</p>
+    <p>更新于：2024年5月20日</p>
   </a>
 </div>
 
@@ -2801,22 +2801,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2024/03/16/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E5%B7%A5%E5%85%B7/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>科学上网工具</p>
-          <p class='content'>科学上网工具
-系列文章：
-科学上网工具
-国内手机号注册Google账号（2024亲测有效）
-Chatgpt api充值 &#x2F; 升级plus 教程 &#x2F;虚拟信用卡
-
-首先你要从某种...</p>
+        <a class='prev' href='/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%89-Dockerfile%E4%B8%8ECompose-cc33bdd80c804e1fb3125511f62e09c2/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>Docker学习(三):Dockerfile与Compose</p>
+          <p class='content'>原文来自菜鸟：https://www.runoob.com/docker/docker-dockerfile.html
+（菜鸟讲的太详细了，泪目）
+一、什么是 Dockerfile？Docker...</p>
         </a>
       
       
-        <a class='next' href='/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%89-Dockerfile%E4%B8%8ECompose-cc33bdd80c804e1fb3125511f62e09c2/'>
-          <p class='title'>Docker学习(三):Dockerfile与Compose<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Docker学习(三):Dockerfile与Compose原文来自菜鸟：https://www.runoob.com/docker/docker-dockerfile.html
-（菜鸟讲的太详...</p>
+        <a class='next' href='/2024/03/01/Docker%E5%AD%A6%E4%B9%A0-%E4%B8%80-%E5%AE%89%E8%A3%85docker%EF%BC%88win%EF%BC%89-842d24f88e8940f28160a957ffea2fc8/'>
+          <p class='title'>Docker学习(一):安装docker（win）<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>教程来自菜鸟
+一、前言因为项目的代码必须要在Linux才能运行，为了跨平台的性能考虑，因此我打算使用win+docker的形式来运行后端，开始学习。
+二、Windows Docker 安装Doc...</p>
         </a>
       
     </div>
@@ -3539,7 +3536,7 @@ Chatgpt api充值 &#x2F; 升级plus 教程 &#x2F;虚拟信用卡
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3774,7 +3771,7 @@ Chatgpt api充值 &#x2F; 升级plus 教程 &#x2F;虚拟信用卡
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/Docker/","name":"Docker"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/03/02/Docker学习-四-文件传输与服务搭建-9eb8186804694de18718aa6fd4ae82a4/","name":"Docker学习(四):文件传输与服务搭建"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker学习(四):文件传输与服务搭建","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/","wordCount":0,"datePublished":"2024-03-01T16:00:00.000Z","dateModified":"2024-03-02T14:19:25.710Z","articleSection":"Docker","keywords":"Docker","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/各种语言-工具学习/","name":"各种语言/工具学习"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/03/02/Docker学习-四-文件传输与服务搭建-9eb8186804694de18718aa6fd4ae82a4/","name":"Docker学习(四):文件传输与服务搭建"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Docker学习(四):文件传输与服务搭建","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/03/02/Docker%E5%AD%A6%E4%B9%A0-%E5%9B%9B-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E4%B8%8E%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA-9eb8186804694de18718aa6fd4ae82a4/","wordCount":0,"datePublished":"2024-03-01T16:00:00.000Z","dateModified":"2024-05-20T07:17:59.253Z","articleSection":"各种语言/工具学习","keywords":"Docker","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

@@ -34,20 +34,20 @@
   <!-- feed -->
   <!-- 页面元数据 -->
   <title>DNS隧道+FRP隧道搭建 - 小吴の博客</title>
-  <meta name="keywords" content="CTF网络攻防,null">
+  <meta name="keywords" content="CTF-web,null">
   <meta desc name="description" content="我的博客 - Snowman - 小吴の博客">
   
 <meta property="og:type" content="article">
 <meta property="og:title" content="DNS隧道+FRP隧道搭建">
 <meta property="og:url" content="https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93/index.html">
 <meta property="og:site_name" content="小吴の博客">
-<meta property="og:description" content="DNS隧道+FRP隧道一、DNS隧道准备1.DNS隧道介绍DNS隧道，是隧道技术的一种。当我们HTTP、HTTPS这样的上层协议、正反向端口转发都失败的时候，可以尝试DNS隧道。DNS隧道很难防范，因为平时的业务等功能难免会用到DNS协议进行解析，所以防火墙大多对DNS流量是放行的状态。这时候，如果我们在不出机器构造一个恶意的域名，本地DNS服务器无法给出回答时，就会以迭代查询的方式通过互联网定位">
+<meta property="og:description" content="一、DNS隧道准备1.DNS隧道介绍DNS隧道，是隧道技术的一种。当我们HTTP、HTTPS这样的上层协议、正反向端口转发都失败的时候，可以尝试DNS隧道。DNS隧道很难防范，因为平时的业务等功能难免会用到DNS协议进行解析，所以防火墙大多对DNS流量是放行的状态。这时候，如果我们在不出机器构造一个恶意的域名，本地DNS服务器无法给出回答时，就会以迭代查询的方式通过互联网定位到所查询域的权威DNS">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2023-12-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-02T14:20:28.072Z">
+<meta property="article:modified_time" content="2024-05-20T07:18:08.207Z">
 <meta property="article:author" content="Snowman">
-<meta property="article:tag" content="CTF网络攻防">
+<meta property="article:tag" content="CTF-web">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
   <style>
@@ -2177,7 +2177,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1716188511136),
+    lastupdate: new Date(1716189793039),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2571,10 +2571,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/">CTF网络攻防</a>
+    <a class="category-link" href="/categories/CTF-web/">CTF-web</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" itemprop="url"><span itemprop="name">CTF网络攻防</span></a>
+        <a href="/categories/CTF-web/" itemprop="url"><span itemprop="name">CTF-web</span></a>
       </span>
     
   </div>
@@ -2611,7 +2611,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="DNS隧道-FRP隧道"><a href="#DNS隧道-FRP隧道" class="headerlink" title="DNS隧道+FRP隧道"></a>DNS隧道+FRP隧道</h1><h2 id="一、DNS隧道准备"><a href="#一、DNS隧道准备" class="headerlink" title="一、DNS隧道准备"></a>一、DNS隧道准备</h2><h3 id="1-DNS隧道介绍"><a href="#1-DNS隧道介绍" class="headerlink" title="1.DNS隧道介绍"></a>1.DNS隧道介绍</h3><p>DNS隧道，是隧道技术的一种。当我们HTTP、HTTPS这样的上层协议、正反向端口转发都失败的时候，可以尝试DNS隧道。DNS隧道很难防范，因为平时的业务等功能难免会用到DNS协议进行解析，所以防火墙大多对DNS流量是放行的状态。这时候，如果我们在不出机器构造一个恶意的域名，本地DNS服务器无法给出回答时，就会以迭代查询的方式通过互联网定位到所查询域的权威DNS服务器。最后，这条DNS请求会落到我们提前搭建好的恶意DNS服务器上，于是乎，我们的不出网主机就和恶意DNS服务器交流上了。</p>
+    <h2 id="一、DNS隧道准备"><a href="#一、DNS隧道准备" class="headerlink" title="一、DNS隧道准备"></a>一、DNS隧道准备</h2><h3 id="1-DNS隧道介绍"><a href="#1-DNS隧道介绍" class="headerlink" title="1.DNS隧道介绍"></a>1.DNS隧道介绍</h3><p>DNS隧道，是隧道技术的一种。当我们HTTP、HTTPS这样的上层协议、正反向端口转发都失败的时候，可以尝试DNS隧道。DNS隧道很难防范，因为平时的业务等功能难免会用到DNS协议进行解析，所以防火墙大多对DNS流量是放行的状态。这时候，如果我们在不出机器构造一个恶意的域名，本地DNS服务器无法给出回答时，就会以迭代查询的方式通过互联网定位到所查询域的权威DNS服务器。最后，这条DNS请求会落到我们提前搭建好的恶意DNS服务器上，于是乎，我们的不出网主机就和恶意DNS服务器交流上了。</p>
 <p>搭建DNS隧道的工具目前有iodine，dnscat，dns2tcp等。</p>
 <p>我目前使用的是iodine工具去搭建。</p>
 <h3 id="2-前期准备"><a href="#2-前期准备" class="headerlink" title="2.前期准备"></a>2.前期准备</h3><p>1个域名、1个公网服务器</p>
@@ -2732,10 +2732,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-03-02T22:20:28+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-20T15:18:08+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年3月2日</p>
+    <p>更新于：2024年5月20日</p>
   </a>
 </div>
 
@@ -2764,8 +2764,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
   
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTF%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>CTF网络攻防</p></a></div>
-  <span hidden itemprop="keywords">CTF网络攻防</span>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/CTF-web/" rel="nofollow"><i class="fa-solid fa-hashtag fa-fw" aria-hidden="true"></i><p>CTF-web</p></a></div>
+  <span hidden itemprop="keywords">CTF-web</span>
   
 
 
@@ -2838,8 +2838,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2024/01/28/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-metaGEM%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0-%E8%A7%A3%E5%86%B3%E5%90%84%E7%A7%8D%E9%97%AE%E9%A2%98-2024-1%EF%BC%88%E4%B8%80%EF%BC%89-2a55eec867d5441b9829bd5428024882/'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>metaGEM使用小记(解决各种问题)2024.1(一)</p>
-          <p class='content'>metaGEM使用小记(解决各种问题)2024.1(一)前言，如何把数据从百度云上下载到linux服务器上可以直接通过pip下载：pip install bypy -y
-第一次使用时需要随便输入...</p>
+          <p class='content'>前言，如何把数据从百度云上下载到linux服务器上可以直接通过pip下载：pip install bypy -y
+第一次使用时需要随便输入一个命令以激活授权界面，如输入 bypy info
+然后...</p>
         </a>
       
       
@@ -3569,7 +3570,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -3804,7 +3805,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/CTF网络攻防/","name":"CTF网络攻防"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2023/12/20/DNS隧道-FRP隧道/","name":"DNS隧道+FRP隧道搭建"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"DNS隧道+FRP隧道搭建","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93/","wordCount":0,"datePublished":"2023-12-19T16:00:00.000Z","dateModified":"2024-03-02T14:20:28.072Z","articleSection":"CTF网络攻防","keywords":"CTF网络攻防","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/CTF-web/","name":"CTF-web"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2023/12/20/DNS隧道-FRP隧道/","name":"DNS隧道+FRP隧道搭建"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"DNS隧道+FRP隧道搭建","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2023/12/20/DNS%E9%9A%A7%E9%81%93-FRP%E9%9A%A7%E9%81%93/","wordCount":0,"datePublished":"2023-12-19T16:00:00.000Z","dateModified":"2024-05-20T07:18:08.207Z","articleSection":"CTF-web","keywords":"CTF-web","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

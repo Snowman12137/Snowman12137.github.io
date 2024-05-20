@@ -41,11 +41,11 @@
 <meta property="og:title" content="通过共表达网络分析（WGCNA）">
 <meta property="og:url" content="https://snowman12137.github.io/2024/03/25/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-%E9%80%9A%E8%BF%87%E5%85%B1%E8%A1%A8%E8%BE%BE%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%EF%BC%88WGCNA%EF%BC%89/index.html">
 <meta property="og:site_name" content="小吴の博客">
-<meta property="og:description" content="通过共表达网络分析（WGCNA）文章解析：谭永飞. 通过共表达网络分析 (WGCNA) 探究前列腺癌发生与进展相关功能基因模块. MS thesis. 吉林大学, 2018. 数据来源：TCGA（The Cancer Genome Atlas） (https:&#x2F;&#x2F;portal.gdc.cancer.gov&#x2F;)  一、数据下载与处理文章使用了TCGA-Assembler的R程序包下载TCGA规范化处">
+<meta property="og:description" content="文章解析：谭永飞. 通过共表达网络分析 (WGCNA) 探究前列腺癌发生与进展相关功能基因模块. MS thesis. 吉林大学, 2018. 数据来源：TCGA（The Cancer Genome Atlas） (https:&#x2F;&#x2F;portal.gdc.cancer.gov&#x2F;)  一、数据下载与处理文章使用了TCGA-Assembler的R程序包下载TCGA规范化处理过后的LV3开放前列腺癌数据和">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2024-03-24T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-03-25T14:51:16.314Z">
+<meta property="article:modified_time" content="2024-05-20T07:17:32.680Z">
 <meta property="article:author" content="Snowman">
 <meta property="article:tag" content="WGCAN网络">
 <meta name="twitter:card" content="summary">
@@ -2177,7 +2177,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     root: '/',
     debug: "env",
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1716188511136),
+    lastupdate: new Date(1716189793039),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2611,7 +2611,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="通过共表达网络分析（WGCNA）"><a href="#通过共表达网络分析（WGCNA）" class="headerlink" title="通过共表达网络分析（WGCNA）"></a>通过共表达网络分析（WGCNA）</h1><p>文章解析：谭永飞. <em>通过共表达网络分析 (WGCNA) 探究前列腺癌发生与进展相关功能基因模块</em>. MS thesis. 吉林大学, 2018.</p>
+    <p>文章解析：谭永飞. <em>通过共表达网络分析 (WGCNA) 探究前列腺癌发生与进展相关功能基因模块</em>. MS thesis. 吉林大学, 2018.</p>
 <p>数据来源：TCGA（The Cancer Genome Atlas） (<a target="_blank" rel="noopener" href="https://portal.gdc.cancer.gov/">https://portal.gdc.cancer.gov/</a>) </p>
 <h1 id="一、数据下载与处理"><a href="#一、数据下载与处理" class="headerlink" title="一、数据下载与处理"></a>一、数据下载与处理</h1><p>文章使用了TCGA-Assembler的R程序包下载TCGA规范化处理过后的LV3开放前列腺癌数据和临床信息总共553个癌症样本文件，包括正常样本52个，癌症样本501个。分别下载这553个样本的count以及FPKM数据和临床信息。</p>
 <p>参考安装文章：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1481868">https://cloud.tencent.com/developer/article/1481868</a></p>
@@ -2989,10 +2989,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-03-25T22:51:16+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2024-05-20T15:17:32+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2024年3月25日</p>
+    <p>更新于：2024年5月20日</p>
   </a>
 </div>
 
@@ -3095,19 +3095,20 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class='prev' href='/2024/03/25/%E5%AF%86%E7%A0%81%E5%AD%A6-%E6%95%B0%E8%AE%BA%E5%9F%BA%E7%A1%80-%E4%BA%8C-%E2%80%94%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF/'>
           <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>数论基础(二)—椭圆曲线</p>
-          <p class='content'>数论基础(二)—椭圆曲线参考文章：
+          <p class='content'>参考文章：
 https://accu.cc/content/cryptography/ecc/
-https://blog.csdn.net/qq_44925830&#x2...</p>
+https://blog.csdn.net/qq_44925830&#x2F;article&#x...</p>
         </a>
       
       
         <a class='next' href='/2024/03/16/Chatgpt-api%E5%85%85%E5%80%BC-%E5%8D%87%E7%BA%A7plus-%E6%95%99%E7%A8%8B-%E8%99%9A%E6%8B%9F%E4%BF%A1%E7%94%A8%E5%8D%A1/'>
           <p class='title'>Chatgpt api充值 / 升级plus 教程 /虚拟信用卡<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>Chatgpt api充值 &#x2F; 升级plus 教程 &#x2F;虚拟信用卡
-系列文章：
+          <p class='content'>系列文章：
 科学上网工具
 国内手机号注册Google账号（2024亲测有效）
-Chatgpt api充值 &...</p>
+Chatgpt api充值 &#x2F; 升级plus 教程 &#x2F;虚拟信用卡
+
+最近碰到好多同学问 api怎...</p>
         </a>
       
     </div>
@@ -3830,7 +3831,7 @@ Chatgpt api充值 &...</p>
 
 
   <script>
-  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp"];
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp"];
   let index = 0;
   let IntervalParallax = null;
 
@@ -4065,7 +4066,7 @@ Chatgpt api充值 &...</p>
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/生物计算机科学/","name":"生物计算机科学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/03/25/生信分析-通过共表达网络分析（WGCNA）/","name":"通过共表达网络分析（WGCNA）"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"通过共表达网络分析（WGCNA）","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/03/25/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-%E9%80%9A%E8%BF%87%E5%85%B1%E8%A1%A8%E8%BE%BE%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%EF%BC%88WGCNA%EF%BC%89/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/03/25/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-%E9%80%9A%E8%BF%87%E5%85%B1%E8%A1%A8%E8%BE%BE%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%EF%BC%88WGCNA%EF%BC%89/","wordCount":0,"datePublished":"2024-03-24T16:00:00.000Z","dateModified":"2024-03-25T14:51:16.314Z","articleSection":"生物计算机科学","keywords":"WGCAN网络","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","sameAs":["https://github.com/volantis-x"],"description":"我的博客"},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https://snowman12137.github.io/","name":"小吴の博客"}},{"@type":"ListItem","position":2,"item":{"@id":"https://snowman12137.github.io/categories/生物计算机科学/","name":"生物计算机科学"}},{"@type":"ListItem","position":3,"item":{"@id":"https://snowman12137.github.io/2024/03/25/生信分析-通过共表达网络分析（WGCNA）/","name":"通过共表达网络分析（WGCNA）"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"小吴の博客","url":"https://snowman12137.github.io/","keywords":null,"description":"我的博客","author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/","description":"我的博客"},"publisher":{"@type":"Organization","name":"小吴の博客","url":"https://snowman12137.github.io/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"https://snowman12137.github.io?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"通过共表达网络分析（WGCNA）","description":"我的博客","inLanguage":["zh-CN","en","zh-TW","default"],"mainEntityOfPage":{"@type":"WebPage","@id":"https://snowman12137.github.io/2024/03/25/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-%E9%80%9A%E8%BF%87%E5%85%B1%E8%A1%A8%E8%BE%BE%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%EF%BC%88WGCNA%EF%BC%89/"},"author":{"@type":"Person","name":"Snowman","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"https://snowman12137.github.io/"},"publisher":{"@type":"Organization","name":"小吴の博客","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"https://snowman12137.github.io/2024/03/25/%E7%94%9F%E4%BF%A1%E5%88%86%E6%9E%90-%E9%80%9A%E8%BF%87%E5%85%B1%E8%A1%A8%E8%BE%BE%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%EF%BC%88WGCNA%EF%BC%89/","wordCount":0,"datePublished":"2024-03-24T16:00:00.000Z","dateModified":"2024-05-20T07:17:32.680Z","articleSection":"生物计算机科学","keywords":"WGCAN网络","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
